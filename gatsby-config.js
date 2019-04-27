@@ -26,6 +26,26 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
+    }, 
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        baseUrl: "themesgrove.com",
+        protocol: "https",
+        hostingWPCOM: false,
+        useACF: true,
+        verboseOutput: true,
+        perPage: 100,
+        includedRoutes: [
+          "**/posts",
+          "**/pages",
+          "**/media",
+          "**/categories",
+          "**/tags",
+          "**/taxonomies",
+          "**/users",
+        ],
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
