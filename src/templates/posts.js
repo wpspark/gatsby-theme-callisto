@@ -1,12 +1,17 @@
-import React, { Component } from "react"
-import Link from "gatsby-link"
+import React, { Component } from 'react'
 import PropTypes from "prop-types"
+import Link from 'gatsby-link'
 import styled from 'styled-components'
 import SEO from "../components/seo"
 import Layout from "../components/layout"
-import { graphql } from 'gatsby'
-
-// import Img from "gatsby-image"
+ 
+const NavLink = props => {
+  if (!props.test) {
+    return <Link to={props.url}>{props.text}</Link>
+  } else {
+    return <span>{props.text}</span>
+  }
+}
 
 const TgExcerptLink = styled.a`
     background:red;
@@ -20,102 +25,49 @@ const SingleArticleBox = styled.div`
     background:#eee;
 `
 
-class PostsTemplate extends Component {
-    render() {
-        const data = this.props.data
-        console.log(data.allWordpressPost.edges);
-        return(
-            <Layout>
-                <SEO title="all posts"  />
-                <div className="articles-page">
-                    <h1>Posts</h1>
-                    <ArticleWrapper className="article-wrapper">
-                        {data.allWordpressPost.edges.map(({node}) => (                        
-                            <SingleArticleBox key={node.slug} className="single-article-box">
-                                <Link to={'post/' + node.slug}>
-                                <h3 dangerouslySetInnerHTML={{__html:node.title}}/>
-                                </Link>
-                                <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-                                {/* <div dangerouslySetInnerHTML={{__html:node.excerpt}} /> */}
-                                <Link to={'post/' + node.slug}>
-                                    <TgExcerptLink>Read More</TgExcerptLink>
-                                </Link>
-                                <div>
-                                    <span>Categories: </span>
-                                    <span className="cat">{node.categories && node.categories.map(category => <span dangerouslySetInnerHTML={{__html:category.name}} /> )}</span>
-                                    {/* <span dangerouslySetInnerHTML={{__html:node.categories[0].name}} /> */}
-                                </div>
-                            </SingleArticleBox>
-                        ))}
-                    </ArticleWrapper>
+
+class IndexPage extends Component {
+    
+  render() {
+    const { group, index, first, last, pageCount } = this.props.pageContext;
+    const previousUrl = index - 1 == 1 ? '' : (index - 1).toString()
+    const nextUrl = (index + 1).toString()
+    console.log(this.props);
+    return (
+        <Layout>
+            <SEO title="all posts"  />
+            <div className="articles-page">
+                <h1>{pageCount} Pages</h1>
+                <ArticleWrapper className="article-wrapper ">
+                    {group.map(({node}) => (                        
+                        <SingleArticleBox key={node.slug} className="single-article-box uk-card uk-card-default uk-card-body">
+                            <Link to={'post/' + node.slug}>
+                            <h3 dangerouslySetInnerHTML={{__html:node.title}}/>
+                            </Link>
+                            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                            {/* <div dangerouslySetInnerHTML={{__html:node.excerpt}} /> */}
+                            <Link to={'post/' + node.slug}>
+                                <TgExcerptLink>Read More</TgExcerptLink>
+                            </Link>
+                            <div>
+                                <span>Categories: </span>
+                                <span className="cat">{node.categories && node.categories.map(category => <span dangerouslySetInnerHTML={{__html:category.name}} /> )}</span>
+                                {/* <span dangerouslySetInnerHTML={{__html:node.categories[0].name}} /> */}
+                            </div>
+                        </SingleArticleBox>
+                    ))}
+                </ArticleWrapper>
+
+                <div className="previousLink">
+                    <NavLink test={first} url={'posts/' + previousUrl} text="Go to Previous Page" />
                 </div>
-            </Layout>
-        )
-    }
-}
-// {data.allWordpressPost.edges.map(({node}) => (
-//     <div key={node.slug} className={"post"} style={{ marginBottom: 50 }}>
-//             <h3>{node.title}</h3>
-
-//         <div className={"post-content"} dangerouslySetInnerHTML={{__html: node.excerpt}} />
-
-//         {node.date}
-//     </div>
-// ))}
-
-
-// {data.allWordpressPost.edges.map(  ({node}) => (
-//     <div key={node.slug} className={"post"} style={{ marginBottom: 50 }}>
-//             <h3>{node.title}</h3>
-
-//         <div className={"post-content"} dangerouslySetInnerHTML={{__html: node.excerpt}} />
-
-//         {node.date}
-//     </div>
-// ))}
-
-
-// export default PostsTemplate
-
-// export const pageQuery = graphql`
-//     query currentPostQuery($id: String!) {
-//         wordpressPost(id: { eq: $id }) {
-//             title
-//             content
-//         }
-//         site {
-//             siteMetadata {
-//                 title
-//             }
-//         }
-//     }
-// `
-
-PostsTemplate.propTypes = {
-    data: PropTypes.object.isRequired,
-    edges: PropTypes.array,
+                <div className="nextLink">
+                    <NavLink test={last} url={'posts/' + nextUrl} text="Go to Next Page" />
+                </div>
+            </div>
+        </Layout>
+    )
+  }
 }
 
-export default PostsTemplate
-
-export const postsQuery = graphql`
-    query postsQuery{
-        allWordpressPost{
-            edges{
-                node{
-                    id
-                    title
-                    excerpt
-                    slug
-                    date(formatString: "MMMM DD, YYYY")
-                    categories{
-                        id
-                        name
-                        slug
-                        link
-                    }
-                }
-            }
-        }
-    }
-`
+export default IndexPage

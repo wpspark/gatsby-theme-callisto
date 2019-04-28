@@ -79,7 +79,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         .concat(meta)}
     >
     
-    <link rel="stylesheet" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700|Roboto" rel="stylesheet"></link>
     </Helmet>
   )
 }

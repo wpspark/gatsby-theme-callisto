@@ -5,6 +5,7 @@ import {Link, graphql } from 'gatsby'
 import styled from 'styled-components'
 // import PropTypes from "prop-types"
 // import Img from "gatsby-image"
+import '../components/rootStyle.scss'
 
 const Back = styled.a`
     background:red;
@@ -15,6 +16,7 @@ const Back = styled.a`
 `
 
 const SingleArticle = styled.div`
+    font-family: 'Roboto', sans-serif;
     img{
         object-fit:cover;
     }
