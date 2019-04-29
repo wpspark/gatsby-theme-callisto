@@ -56,6 +56,7 @@ const createPaginatedPages = require('gatsby-paginate');
     }
   }
   `
+  
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -115,6 +116,15 @@ exports.createPages = ({ graphql, actions }) => {
             pathPrefix: 'posts',
           });
 
+          createPaginatedPages({
+            edges: result.data.allWordpressPost.edges,
+            createPage: createPage,
+            pageTemplate: './src/templates/index.js',
+            pageLength: 3,
+            pathPrefix: '',
+            context:{}
+          });
+
           _.each(result.data.allWordpressPost.edges, edge => {
               createPage({
                   path: `/post/${edge.node.slug}/`,
@@ -150,6 +160,7 @@ exports.createPages = ({ graphql, actions }) => {
                 component: slash(singleCategory),
                 context: {
                     id: edge.node.id,
+                    slug: edge.node.slug
                 },
             });
         });

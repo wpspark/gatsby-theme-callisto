@@ -51,7 +51,12 @@ class IndexPage extends Component {
                             </Link>
                             <div>
                                 <span>Categories: </span>
-                                <span className="cat">{node.categories && node.categories.map(category => <span dangerouslySetInnerHTML={{__html:category.name}} /> )}</span>
+                                <span className="cat">
+                                    {node.categories && node.categories.map(
+                                            category => <Link to={'categories/'+ category.slug}><span dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link>
+                                        )
+                                    }
+                                </span>
                                 {/* <span dangerouslySetInnerHTML={{__html:node.categories[0].name}} /> */}
                             </div>
                         </SingleArticleBox>

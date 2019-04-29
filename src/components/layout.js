@@ -10,13 +10,33 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Menu from "./Menu"
 import "./layout.css"
 import './rootStyle.scss'
 
-const Layout = ({ children }) => (
+const Layout = ({ children, data }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
+        allWordpressWpApiMenusMenusItems(filter: {
+                  slug: {
+                      eq: "main-menu"
+                  }
+          }){
+          edges{
+              node{
+                  id
+                  name
+                  items {
+                      wordpress_id
+                      order
+                      wordpress_parent
+                      title
+                      url          
+                  }
+              }
+          }
+        }
         site {
           siteMetadata {
             title
@@ -27,6 +47,7 @@ const Layout = ({ children }) => (
     render={data => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
+        <Menu menu={data}/>
         <div
           style={{
             margin: `0 auto`,
@@ -52,3 +73,4 @@ Layout.propTypes = {
 }
 
 export default Layout
+
