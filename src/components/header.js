@@ -1,6 +1,18 @@
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import styled from 'styled-components'
+import {Link} from 'gatsby'
+
+const HeaderWrapper = styled.div`
+  background:#eee;
+  h1{
+    padding:10px;
+    font-size:20px;
+    margin:0;
+  }
+  
+`
 
 const Header = ({ siteTitle }) => (
   // <header
@@ -30,16 +42,14 @@ const Header = ({ siteTitle }) => (
   //   </div>
   // </header>
   <header>
-    <div className="uk-navbar-container tm-navbar-container">
+    <HeaderWrapper className="">
       <div className="uk-container">
-        <nav className="uk-navbar">
-          <div className="uk-navbar-left">
-            <a href="../" className="uk-navbar-item uk-logo">
-              <img uk-svg="" src="../images/uikit-logo.svg" className="uk-margin-small-right" hidden="true" /> 
-            UIkit
-            </a>
-          </div>
-          <div className="uk-navbar-right">
+          <Link to="/">
+            <h1 className=""> Blog Demo </h1>
+          </Link>
+          {/* <nav className="uk-navbar uk-align-center"> */}
+
+          {/* <div className="uk-navbar-right">
             <ul className="uk-navbar-nav uk-visible@m">
               <li className="uk-active">
                 <Link to="/">
@@ -58,12 +68,13 @@ const Header = ({ siteTitle }) => (
                   Categories
                 </Link>
               </li>
-              
             </ul>
-          </div>
-        </nav>
+          </div> */}
+
+          {/* </nav> */}
+
       </div>
-    </div>
+    </HeaderWrapper>
   </header>
 )
 

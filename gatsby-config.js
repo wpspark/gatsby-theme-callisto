@@ -40,11 +40,11 @@ module.exports = {
         includedRoutes: [
           "**/posts",
           "**/pages",
-          // "**/media",
+          "**/media",
           "**/categories",
           "**/tags",
           "**/taxonomies",
-          // "**/users",
+          "**/users",
           "/wp-api-menus/**",
         ],
       }

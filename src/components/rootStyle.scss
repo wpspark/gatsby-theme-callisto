@@ -14,6 +14,26 @@ $montserrat: 'Montserrat', sans-serif;
 body { 
   font-family: $roboto;
 }
+.header, .all-category{
+  // background:#eee;
+}
+a{
+  &:hover{
+    text-decoration: none;
+  }
+}
+.app-page{
+  padding:30px 0px;
+  border-top:solid 2px #eee;
+  background:#f8f8f8;
+}
+.uk-navbar-nav{
+  li{
+    a{
+      font-family: $montserrat;
+    }
+  }
+}
 
 h1, h2, h3, h4, h5 {font-family: $montserrat}
 

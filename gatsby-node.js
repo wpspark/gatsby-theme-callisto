@@ -35,6 +35,17 @@ const createPaginatedPages = require('gatsby-paginate');
                 slug
                 link
             }
+            featured_media{
+              localFile{
+                  childImageSharp{
+                      original {
+                          width
+                          height
+                          src
+                      }
+                  }
+              }
+            }
           }
         }
       }
@@ -120,7 +131,7 @@ exports.createPages = ({ graphql, actions }) => {
             edges: result.data.allWordpressPost.edges,
             createPage: createPage,
             pageTemplate: './src/templates/index.js',
-            pageLength: 3,
+            pageLength: 50,
             pathPrefix: '',
             context:{}
           });
@@ -131,6 +142,7 @@ exports.createPages = ({ graphql, actions }) => {
                   component: slash(postTemplate),
                   context: {
                       id: edge.node.id,
+                      featuredImage: edge.node.featured_media
                   },
               });
           });
@@ -160,7 +172,8 @@ exports.createPages = ({ graphql, actions }) => {
                 component: slash(singleCategory),
                 context: {
                     id: edge.node.id,
-                    slug: edge.node.slug
+                    slug: edge.node.slug,
+                    name: edge.node.name,
                 },
             });
         });

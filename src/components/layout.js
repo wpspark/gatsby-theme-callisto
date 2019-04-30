@@ -10,7 +10,10 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import Menu from "./Menu"
+// import Menu from "./Menu"
+import Footer from './Footer'
+import AllCategroy from './AllCategory'
+import FirstPost from './FirstPost'
 import "./layout.css"
 import './rootStyle.scss'
 
@@ -42,27 +45,52 @@ const Layout = ({ children, data }) => (
             title
           }
         }
+        allWordpressCategory{
+          edges{
+            node{
+              id
+              wordpress_id
+              slug
+              name
+              count
+            }
+          }
+        }
+        wordpressPost{
+          id
+          title
+          slug
+          categories {
+            id
+            name
+            slug
+          }
+          featured_media{
+            localFile{
+                childImageSharp{
+                    original {
+                        width
+                        height
+                        src
+                    }
+                }
+            }
+          }
+        }
       }
     `}
     render={data => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <Menu menu={data}/>
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+        <FirstPost data={data.wordpressPost}/>
+        <AllCategroy data={data.allWordpressCategory} />
+        {/* <Menu menu={data}/> */}
+        <div className="app-page">
+          <div className="uk-container" >
+            <main>{children}</main>
+          </div>
         </div>
+        <Footer/>
       </>
     )}
   />

@@ -3,57 +3,28 @@ import React, {Component} from "react"
 import styled from 'styled-components'
 import SEO from "../components/seo"
 import Layout from "../components/layout"
-import {Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import CategoryArticles from '../components/CategoryArticles'
 
-const TgExcerptLink = styled.a`
-    background:red;
-`
-const ArticleWrapper = styled.div`
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap:20px;
-`
-const SingleArticleBox = styled.div`
-    background:#eee;
+const ArticlePage = styled.div`
+    h2{
+        margin:30px 0px;
+    }
 `
 
 class SingleCategory extends Component {
     render() {
         const data = this.props.data.allWordpressPost.edges;
-        console.log(this.props.data.allWordpressCategory);
+        const title = this.props.pageContext.name;
 
         return ( 
             <Layout>
                 <SEO title="all posts"  />
-                <div className="articles-page">
-                    <ArticleWrapper className="article-wrapper ">
-                        {data.map(({node}) => (                        
-                            <SingleArticleBox key={node.slug} className="single-article-box uk-card uk-card-default uk-card-body">
-                                <Link to={'post/' + node.slug}>
-                                    <h3 dangerouslySetInnerHTML={{__html:node.title}}/>
-                                </Link>
-                                <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-                                {/* <div dangerouslySetInnerHTML={{__html:node.excerpt}} /> */}
-                                <Link to={'post/' + node.slug}>
-                                    <TgExcerptLink>Read More</TgExcerptLink>
-                                </Link>
-                                <div>
-                                    <span>Categories: </span>
-                                    <span className="cat">
-                                        {node.categories && node.categories.map(
-                                                category => <Link to={'categories/'+ category.slug}><span dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link>
-                                            )
-                                        }
-                                    </span>
-                                    {/* <span dangerouslySetInnerHTML={{__html:node.categories[0].name}} /> */}
-                                </div>
-                            </SingleArticleBox>
-                        ))}
-                    </ArticleWrapper>
-                </div>
+                <ArticlePage className="articles-page">
+                    <h2 dangerouslySetInnerHTML={{__html:title}} />
+                    <CategoryArticles data={data} />
+                </ArticlePage>
             </Layout>
-            
-
         )
     }
 }
@@ -82,6 +53,17 @@ export const categoryQuery = graphql`
                     name
                     slug
                     link
+                }
+                featured_media{
+                    localFile{
+                        childImageSharp{
+                            original {
+                                width
+                                height
+                                src
+                            }
+                        }
+                    }
                 }
                 
                 }

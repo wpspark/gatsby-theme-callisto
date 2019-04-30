@@ -1,12 +1,12 @@
 // import React from "react"
 import React, { Component } from 'react'
 
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 import BlogList from '../components/BlogList'
+// import AllCategroy from '../components/AllCategory'
 
 // import '../components/rootStyle.scss'
 
@@ -41,10 +41,10 @@ class MainIndexPage extends Component {
   //   }
   // };
   render() {
-    console.log(this.props);
     return (
       <Layout>
         <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+        {/* <AllCategroy data={this.props.data.allWordpressCategory}/> */}
         <BlogList pageContext={this.props.pageContext}/>
         {/* <Link to="/page-2/">Go to page 2</Link> */}
       </Layout>
@@ -72,6 +72,17 @@ export const postsQuery3 = graphql`
                     }
                 }
             }
+        }
+        allWordpressCategory{
+          edges{
+            node{
+              id
+              wordpress_id
+              slug
+              name
+              count
+            }
+          }
         }
     }
 `
