@@ -86,7 +86,7 @@ render() {
                             <div className="image-wrapper uk-transition-opaque">
                                 <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
                                 <PostAuthor>
-                                    <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" />
+                                    <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
                                 </PostAuthor>
                             </div>
                         </FeaturedImage>

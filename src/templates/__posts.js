@@ -98,24 +98,24 @@ class PostsTemplate extends Component {
 
 export default PostsTemplate
 
-export const postsQuery1 = graphql`
-    query postsQuery1{
-        allWordpressPost{
-            edges{
-                node{
-                    id
-                    title
-                    excerpt
-                    slug
-                    date(formatString: "MMMM DD, YYYY")
-                    categories{
-                        id
-                        name
-                        slug
-                        link
-                    }
-                }
-            }
-        }
-    }
-`
+// export const postsQuery1 = graphql`
+//     query postsQuery1{
+//         allWordpressPost{
+//             edges{
+//                 node{
+//                     id
+//                     title
+//                     excerpt
+//                     slug
+//                     date(formatString: "MMMM DD, YYYY")
+//                     categories{
+//                         id
+//                         name
+//                         slug
+//                         link
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// `

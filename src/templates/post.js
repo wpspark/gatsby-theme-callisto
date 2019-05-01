@@ -10,13 +10,13 @@ import Soical from '../components/Social'
 // import Img from "gatsby-image"
 import '../components/rootStyle.scss'
 
-const Back = styled.a`
-    background:red;
-    color:white;
-    padding:10px 30px;
-    margin-bottom:20px;
-    display:inline-block;
-`
+// const Back = styled.a`
+//     background:red;
+//     color:white;
+//     padding:10px 30px;
+//     margin-bottom:20px;
+//     display:inline-block;
+// `
 
 const SingleArticle = styled.article`
     font-family: 'Roboto', sans-serif;
@@ -25,10 +25,10 @@ const SingleArticle = styled.article`
         object-fit:cover;
     }
 `
-const PostContent = styled.div`
-    display:grid;
-    grid-template-columns:2.5fr .5fr;
-`
+// const PostContent = styled.div`
+//     display:grid;
+//     grid-template-columns:2.5fr .5fr;
+// `
 const PostImage = styled.div`
     img{
         width:100%;
@@ -156,7 +156,7 @@ class PostTemplate extends Component {
 
                                             <PostAuthor className="uk-card uk-card-small uk-margin-top">
                                                 <div className="uk-card-header uk-padding-remove">
-                                                    <img className="uk-border-circle" width="40" height="40" src="https://getuikit.com/docs/images/avatar.jpg" />
+                                                    <img className="uk-border-circle" width="40" height="40" src="https://getuikit.com/docs/images/avatar.jpg" alt=""/>
                                                     <h3 className="uk-card-title uk-margin-remove-top">Jenny Doe</h3>
                                                 </div>
                                                 <div className="uk-card-body uk-padding-remove">

@@ -5,13 +5,13 @@ import styled from 'styled-components'
 import './rootStyle.scss'
 
 
-const NavLink = props => {
-    if (!props.test) {
-      return <Link to={props.url}>{props.text}</Link>
-    } else {
-      return <span>{props.text}</span>
-    }
-}
+// const NavLink = props => {
+//     if (!props.test) {
+//       return <Link to={props.url}>{props.text}</Link>
+//     } else {
+//       return <span>{props.text}</span>
+//     }
+// }
 
 
 const ArticleWrapper = styled.div`
@@ -158,12 +158,13 @@ class BlogList extends Component {
         
     }
   render() {
-    const { group, index, first, last, pageCount } = this.props.pageContext;
+    // const { group, index, first, last, pageCount } = this.props.pageContext;
+    const { group } = this.props.pageContext;
     const firstGroup = group.slice(0, 2);
-    const secondGroup = group.slice(3, -1);
+    const secondGroup = group.slice(3);
 
-    const previousUrl = index - 1 === 1 ? '' : (index - 1).toString();
-    const nextUrl = (index + 1).toString();
+    // const previousUrl = index - 1 === 1 ? '' : (index - 1).toString();
+    // const nextUrl = (index + 1).toString();
     return (
         <div className="articles-page">
             {/* <h1>{pageCount} Pages</h1> */}
@@ -180,7 +181,7 @@ class BlogList extends Component {
                                     <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
                                     <div className="author-img">
                                         <span>
-                                            <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" />
+                                            <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
                                         </span>
                                     </div>
                                     <div className="post-cat">
@@ -213,7 +214,7 @@ class BlogList extends Component {
                             <div className="image-wrapper uk-transition-opaque">
                                 <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
                                 <PostAuthor>
-                                    <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" />
+                                    <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
                                 </PostAuthor>
                             </div>
                         </FeaturedImage>
