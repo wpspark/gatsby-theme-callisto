@@ -17,6 +17,7 @@ const Back = styled.a`
 
 const SingleArticle = styled.article`
     font-family: 'Roboto', sans-serif;
+    padding-top:0px !important;
     img{
         object-fit:cover;
     }
@@ -25,45 +26,70 @@ const PostContent = styled.div`
     display:grid;
     grid-template-columns:2.5fr .5fr;
 `
+const PostImage = styled.div`
+    img{
+        width:100%;
+        max-height:450px;
+    }
+`
+const PostMeta = styled.div`
+    b, span{
+        font-size:16px;
+    }
+    b{
+        color:#333;
+        margin-right:10px;
+    }
+`
+const SideBar = styled.div`
+    .post-categories{
+        a{
+            display:inline-block;
+            background:#717070;
+            color:white;
+            padding:5px 15px;
+            border-radius:15px;
+        }
+    }
+`
 
 
 class PostTemplate extends Component {
     render() {
         const post = this.props.data.wordpressPost
-        console.log(post);
         const featuredMedia = this.props.pageContext.featuredImage;
         return (
             <Layout>
                 <SEO title={post.title}/>
-                <div className="uk-section uk-section-default">
-                    <div className="uk-cover-container">
+                <SingleArticle className="uk-section uk-section-default">
+                    <PostImage className="uk-cover-container">
                         <img src={featuredMedia.localFile.childImageSharp.original.src} alt='' /> 
-                    </div>
+                    </PostImage>
                     <div className="uk-container uk-container-small">
                         <article className="uk-article uk-padding">
                             <div className="uk-grid">
+
                                 <div className="uk-width-expand@m">
-                                    <p className="uk-article-meta">
-                                        <span>April 23, 2019</span> | <span>News</span>
-                                    </p>
+                                    <PostMeta className="uk-article-meta">
+                                        <b>Last Update</b>
+                                        <span>{post.date}</span>
+                                    </PostMeta>
 
                                     <h1 className="uk-article-title">
                                         {post.title}
                                     </h1>  
 
                                     <div dangerouslySetInnerHTML={{ __html: post.content }} />
-
-
                                 </div>
-                                <div className="uk-width-1-3@m">
+
+                                <SideBar className="uk-width-1-3@m">
                                     <div className="uk-article-meta uk-padding">
-                                        <span className="uk-label uk-margin-bottom">Default</span>
-
-                                        <span className="uk-label uk-label-success uk-margin-bottom">Success</span>
-
-                                        <span className="uk-label uk-label-warning uk-margin-bottom">Warning</span>
-
-                                        <span className="uk-label uk-label-danger uk-margin-bottom">Danger</span>
+                                        <div className="post-categories">
+                                            {post.categories && post.categories.map(
+                                                    category => <Link key={category.id} to={'categories/'+ category.slug}><span dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link>
+                                                )
+                                            }
+                                        </div>
 
                                         <div className="uk-card uk-card-small uk-margin-top">
                                             <div className="uk-card-header uk-padding-remove">
@@ -74,23 +100,15 @@ class PostTemplate extends Component {
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                                             </div>
                                         </div>
-
-                                        <hr className="uk-divider-icon"></hr>
-
-                                        <ul className="uk-nav uk-nav-default">
-                                            <li className="uk-active"><a href="#"><span className="uk-margin-small-right uk-icon" uk-icon="icon: table"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="table"><rect x="1" y="3" width="18" height="1"></rect><rect x="1" y="7" width="18" height="1"></rect><rect x="1" y="11" width="18" height="1"></rect><rect x="1" y="15" width="18" height="1"></rect></svg></span> Active</a></li>
-                                            <li><a href="#"> <span className="uk-margin-small-right uk-icon" uk-icon="icon: table"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="table"><rect x="1" y="3" width="18" height="1"></rect><rect x="1" y="7" width="18" height="1"></rect><rect x="1" y="11" width="18" height="1"></rect><rect x="1" y="15" width="18" height="1"></rect></svg></span>Item</a></li>
-                                            <li><a href="#"> <span className="uk-margin-small-right uk-icon" uk-icon="icon: table"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="table"><rect x="1" y="3" width="18" height="1"></rect><rect x="1" y="7" width="18" height="1"></rect><rect x="1" y="11" width="18" height="1"></rect><rect x="1" y="15" width="18" height="1"></rect></svg></span>Item</a></li>
-                                        </ul>
-
                                     </div>
-                                </div>
+                                </SideBar>
+
                             </div>
                         </article>
 
                     </div>
 
-                </div>
+                </SingleArticle>
                 
 
                 {/* <Link to={'/posts'} className="uk-margin uk-margin-remove-left">
@@ -110,10 +128,11 @@ export const pageQuery = graphql`
         wordpressPost(id: { eq: $id }) {
             title
             content
-            date(formatString: "YYYY MMMM DD")
+            date(formatString: "DD MMMM YYYY")
             categories {
                 id
                 name
+                slug
             }
         }
         site {

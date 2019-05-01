@@ -52,7 +52,7 @@ const Layout = ({ children, data }) => (
         {/* <AllCategroy data={data.allWordpressCategory} /> */}
         {/* <Menu menu={data}/> */}
         <div className="app-page">
-          <div className="uk-container" >
+          <div className="uk-container">
             <main>{children}</main>
           </div>
         </div>
