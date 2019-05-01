@@ -3,6 +3,8 @@ import SEO from '../components/seo'
 import Layout from '../components/layout'
 import {Link, graphql } from 'gatsby'
 import styled from 'styled-components'
+import AllCategroy from '../components/AllCategory'
+
 // import PropTypes from "prop-types"
 // import Img from "gatsby-image"
 import '../components/rootStyle.scss'
@@ -45,7 +47,7 @@ const SideBar = styled.div`
     .post-categories{
         a{
             display:inline-block;
-            background:#717070;
+            background:#929292;
             color:white;
             padding:5px 15px;
             border-radius:15px;
@@ -63,6 +65,44 @@ const SideBar = styled.div`
     }
     .uk-article-meta{
         padding:0px 30px;
+    }
+    .important-links{
+        padding-top:30px;
+        margin-top:35px;
+        border-top:solid 2px #e4e4e4;
+        h4{
+            /* margin-bottom:0px; */
+        }
+        ul{
+            display:block;
+            width:100%;
+            a{
+                display:inline-block;
+                text-align:left;
+                min-height:auto;
+                padding:0;
+            }
+        }
+    }
+`
+const PostMainContent = styled.div`
+    
+    p{
+        font-size:18px;
+        a{
+            color:#1abc9c;
+            font-family:'Montserrat', sans-serif;
+        }
+        img{
+            border:solid 1px #e4e4e4;
+            margin-bottom:15px;
+        }
+    }
+`
+const PostAuthor = styled.div`
+    .uk-card-body{
+        font-size:16px;
+        margin:15px 0px 10px;
     }
 `
 
@@ -90,28 +130,36 @@ class PostTemplate extends Component {
                                         </PostMeta>
 
                                         <h1 className="uk-article-title" dangerouslySetInnerHTML={{__html:post.title}} />
+                                        
+                                        <PostMainContent className="post-main-content">
+                                            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                                        </PostMainContent>
 
-                                        <div dangerouslySetInnerHTML={{ __html: post.content }} />
                                     </div>
 
                                     <SideBar className="uk-width-1-3@m">
                                         <div className="uk-article-meta">
+                                            
                                             <ul className="post-categories">
-                                                
                                                 {post.categories && post.categories.map(
                                                         category => <li><Link key={category.id} to={'categories/'+ category.slug} dangerouslySetInnerHTML={{__html:category.name + " "}}/></li>
                                                     )
                                                 }
                                             </ul>
 
-                                            <div className="uk-card uk-card-small uk-margin-top">
+                                            <PostAuthor className="uk-card uk-card-small uk-margin-top">
                                                 <div className="uk-card-header uk-padding-remove">
                                                     <img className="uk-border-circle" width="40" height="40" src="https://getuikit.com/docs/images/avatar.jpg" />
-                                                    <h3 className="uk-card-title uk-margin-remove-top">Title</h3>
+                                                    <h3 className="uk-card-title uk-margin-remove-top">Jenny Doe</h3>
                                                 </div>
                                                 <div className="uk-card-body uk-padding-remove">
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                                                 </div>
+                                            </PostAuthor>
+                                            <div className="important-links">
+                                                <h4>Important Links</h4>
+                                                <span uk-icon="heart"></span>
+                                                <AllCategroy data={this.props.data.allWordpressCategory} />
                                             </div>
                                         </div>
                                     </SideBar>
@@ -152,6 +200,17 @@ export const pageQuery = graphql`
         site {
             siteMetadata {
                 title
+            }
+        }
+        allWordpressCategory{
+            edges{
+              node{
+                id
+                wordpress_id
+                slug
+                name
+                count
+              }
             }
         }
     }
