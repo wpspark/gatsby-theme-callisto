@@ -50,7 +50,12 @@ export default MainIndexPage;
 // export default IndexPage
 export const postsQuery3 = graphql`
     query postsQuery3{
-        allWordpressPost{
+        allWordpressPost(
+          sort: {
+            fields: [date]
+            order: DESC
+          }
+        ){
             edges{
                 node{
                     id

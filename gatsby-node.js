@@ -21,7 +21,12 @@ const createPaginatedPages = require('gatsby-paginate');
 
   const postQuery = `
     {
-      allWordpressPost{
+      allWordpressPost(
+        sort: {
+          fields: [date]
+          order: DESC
+        }
+      ){
         edges {
           node{
             id
