@@ -47,11 +47,31 @@ const FirstGroup = styled.div`
         align-items:center;
         justify-content:space-between;
         padding: 10px;
-        img{
-            width:50px;
-            height:50px;
-            border-radius:50%;
-            margin:0;
+        overflow: hidden;
+        background-image: linear-gradient(0deg,rgba(255,255,255,.2),rgba(255,255,255,.2));
+        >img{
+            position: absolute;
+            bottom: 0;
+            filter: blur(25px);
+            left: -55%;
+            z-index: 0;
+            -webkit-transform: scale(1.5) translate(0);
+            -moz-transform: scale(1.5) translate(0);
+            transform: scale(1.5) translate(0);
+            max-width: none;
+            width: auto;
+            height: auto;
+        }
+        .author-img, .post-cat{
+            z-index:1;
+        }
+        .author-img{
+            img{
+                width:50px;
+                height:50px;
+                border-radius:50%;
+                margin:0;
+            }
         }
     }
 `
@@ -149,12 +169,13 @@ class BlogList extends Component {
                                 <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
                                 <PostAuthor className="post-author-meta">
                                     {/* <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" /> */}
-                                    <div>
+                                    <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                                    <div className="author-img">
                                         <span>
                                             <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" />
                                         </span>
                                     </div>
-                                    <div>
+                                    <div className="post-cat">
                                         <span className="cat">
                                             {node.categories && node.categories.map(
                                                     category => <Link key={category.id} to={'categories/'+ category.slug}><span dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link>

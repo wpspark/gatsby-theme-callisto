@@ -49,6 +49,16 @@ const SideBar = styled.div`
             color:white;
             padding:5px 15px;
             border-radius:15px;
+            &:hover{
+                color:white;
+            }
+        }
+    }
+    ul{
+        padding :0px;
+        margin-bottom:50px;
+        li{
+            list-style:none;
         }
     }
     .uk-article-meta{
@@ -79,21 +89,20 @@ class PostTemplate extends Component {
                                             <span>{post.date}</span>
                                         </PostMeta>
 
-                                        <h1 className="uk-article-title">
-                                            {post.title}
-                                        </h1>  
+                                        <h1 className="uk-article-title" dangerouslySetInnerHTML={{__html:post.title}} />
 
                                         <div dangerouslySetInnerHTML={{ __html: post.content }} />
                                     </div>
 
                                     <SideBar className="uk-width-1-3@m">
                                         <div className="uk-article-meta">
-                                            <div className="post-categories">
+                                            <ul className="post-categories">
+                                                
                                                 {post.categories && post.categories.map(
-                                                        category => <Link key={category.id} to={'categories/'+ category.slug}><span dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link>
+                                                        category => <li><Link key={category.id} to={'categories/'+ category.slug} dangerouslySetInnerHTML={{__html:category.name + " "}}/></li>
                                                     )
                                                 }
-                                            </div>
+                                            </ul>
 
                                             <div className="uk-card uk-card-small uk-margin-top">
                                                 <div className="uk-card-header uk-padding-remove">
