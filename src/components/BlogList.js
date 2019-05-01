@@ -110,9 +110,6 @@ const FeaturedImage = styled.div`
     .image-wrapper{
         margin-bottom:35px;
     }
-    img{
-        /* border:solid 1px #ddd; */
-    }
 `
 const PostAuthor = styled.div`
     position:absolute;

@@ -9,13 +9,66 @@ const ArticleWrapper = styled.div`
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap:20px;
+    .single-article-box{
+        &:hover{
+            .image-wrapper{
+                transform:scale(.98, .98);
+            }
+        }
+    }
+    .image-wrapper{
+        margin-bottom:10px !important;
+        transform:scale(1, 1);
+        transition:all 0.4s ease;
+        >img{
+            border-radius:5px;
+        }
+    }
+    h4{
+        margin-top:20px;
+    }
 `
 const SingleArticleBox = styled.div`
-    background:#eee;
+    a{
+        color:#4c4c4c;
+        &:hover{
+            text-decoration:none;
+            h4{
+                color:#3a3a3a;
+            }
+        }
+    }
+    h4{
+        font-size:20px;
+        transition:all 0.4s ease;
+    }
+    span.cat{
+        a{
+            color:#929292;
+            margin:0px 5px;
+            transition:all 0.4s ease;
+            &:hover{
+                color:#3a3a3a;
+            }
+        }
+        
+    }
 `
 const FeaturedImage = styled.div`
     img{
-        border:solid 1px #ddd;
+        /* border:solid 1px #ddd; */
+    }
+`
+const PostAuthor = styled.div`
+    position:absolute;
+    text-align:center;
+    left:0;
+    right:0;
+    bottom:-25px;
+    img{
+        width:50px;
+        height:50px;
+        border-radius:50%;
     }
 `
 
@@ -26,13 +79,22 @@ render() {
     return (
             <ArticleWrapper className="article-wrapper ">
                 {data.map(({node}) => (                        
-                    <SingleArticleBox key={node.slug} className="single-article-box uk-card uk-card-default uk-card-body">
-                        <FeaturedImage>
-                            <img src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                    
+                    <SingleArticleBox key={node.id} className="single-article-box uk-card">
+                                            
+                        <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
+                            <div className="image-wrapper uk-transition-opaque">
+                                <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                                <PostAuthor>
+                                    <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" />
+                                </PostAuthor>
+                            </div>
                         </FeaturedImage>
+
                         <Link to={'post/' + node.slug}>
-                        <h3 dangerouslySetInnerHTML={{__html:node.title}}/>
+                            <h4 dangerouslySetInnerHTML={{__html:node.title}}/>
                         </Link>
+
                         <div>
                             <span className="cat">
                                 {node.categories && node.categories.map(
@@ -40,8 +102,9 @@ render() {
                                     )
                                 }
                             </span>
-                            {/* <span dangerouslySetInnerHTML={{__html:node.categories[0].name}} /> */}
                         </div>
+
+                        
                     </SingleArticleBox>
                 ))}
             </ArticleWrapper>
