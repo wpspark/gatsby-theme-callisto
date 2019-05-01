@@ -116,7 +116,7 @@ const PostAuthor = styled.div`
     text-align:center;
     left:0;
     right:0;
-    bottom:-25px;
+    bottom:-20px;
     img{
         width:50px;
         height:50px;

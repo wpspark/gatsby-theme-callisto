@@ -5,6 +5,8 @@ import SEO from "../components/seo"
 import Layout from "../components/layout"
 import { graphql } from 'gatsby'
 import CategoryArticles from '../components/CategoryArticles'
+import AllCategroy from '../components/AllCategory'
+import FirstPost from '../components/FirstPost'
 
 const ArticlePage = styled.div`
     h2{
@@ -14,15 +16,17 @@ const ArticlePage = styled.div`
 
 class SingleCategory extends Component {
     render() {
-        const data = this.props.data.allWordpressPost.edges;
+        const data = this.props.data;
         const title = this.props.pageContext.name;
 
         return ( 
             <Layout>
                 <SEO title="all posts"  />
+                <FirstPost data={data.wordpressPost}/>
+                <AllCategroy data={data.allWordpressCategory} />
                 <ArticlePage className="articles-page">
                     <h2 dangerouslySetInnerHTML={{__html:title}} />
-                    <CategoryArticles data={data} />
+                    <CategoryArticles data={data.allWordpressPost.edges} />
                 </ArticlePage>
             </Layout>
         )
@@ -69,10 +73,41 @@ export const categoryQuery = graphql`
                 }
             }
         }
-
         site {
             siteMetadata {
                 title
+            }
+        }
+        allWordpressCategory{
+            edges{
+              node{
+                id
+                wordpress_id
+                slug
+                name
+                count
+              }
+            }
+        }
+        wordpressPost{
+            id
+            title
+            slug
+            categories {
+              id
+              name
+              slug
+            }
+            featured_media{
+              localFile{
+                  childImageSharp{
+                      original {
+                          width
+                          height
+                          src
+                      }
+                  }
+              }
             }
         }
     }

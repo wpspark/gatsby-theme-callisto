@@ -6,6 +6,8 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BlogList from '../components/BlogList'
+import AllCategroy from '../components/AllCategory'
+import FirstPost from '../components/FirstPost'
 // import AllCategroy from '../components/AllCategory'
 
 // import '../components/rootStyle.scss'
@@ -41,9 +43,13 @@ class MainIndexPage extends Component {
   //   }
   // };
   render() {
+    // console.log(this.props);
+    const data = this.props.data;
     return (
       <Layout>
         <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+        <FirstPost data={data.wordpressPost}/>
+        <AllCategroy data={data.allWordpressCategory} />
         {/* <AllCategroy data={this.props.data.allWordpressCategory}/> */}
         <BlogList pageContext={this.props.pageContext}/>
         {/* <Link to="/page-2/">Go to page 2</Link> */}
@@ -81,6 +87,27 @@ export const postsQuery3 = graphql`
               slug
               name
               count
+            }
+          }
+        }
+        wordpressPost{
+          id
+          title
+          slug
+          categories {
+            id
+            name
+            slug
+          }
+          featured_media{
+            localFile{
+                childImageSharp{
+                    original {
+                        width
+                        height
+                        src
+                    }
+                }
             }
           }
         }

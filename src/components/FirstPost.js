@@ -24,7 +24,7 @@ const LatestPost = styled.div`
     }
     img{
         width:100%;
-        max-height:450px;
+        max-height:350px;
         object-fit:cover;
     }
 `
