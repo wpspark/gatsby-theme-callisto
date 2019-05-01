@@ -51,6 +51,9 @@ const SideBar = styled.div`
             border-radius:15px;
         }
     }
+    .uk-article-meta{
+        padding:0px 30px;
+    }
 `
 
 
@@ -61,54 +64,56 @@ class PostTemplate extends Component {
         return (
             <Layout>
                 <SEO title={post.title}/>
-                <SingleArticle className="uk-section uk-section-default">
-                    <PostImage className="uk-cover-container">
-                        <img src={featuredMedia.localFile.childImageSharp.original.src} alt='' /> 
-                    </PostImage>
-                    <div className="uk-container uk-container-small">
-                        <article className="uk-article uk-padding">
-                            <div className="uk-grid">
+                <div className="uk-container uk-container-large">
+                    <SingleArticle className="uk-section uk-section-default">
+                        <PostImage className="uk-cover-container">
+                            <img src={featuredMedia.localFile.childImageSharp.original.src} alt='' /> 
+                        </PostImage>
+                        <div className="uk-container">
+                            <article className="uk-article uk-padding">
+                                <div className="uk-grid">
 
-                                <div className="uk-width-expand@m">
-                                    <PostMeta className="uk-article-meta">
-                                        <b>Last Update</b>
-                                        <span>{post.date}</span>
-                                    </PostMeta>
+                                    <div className="uk-width-expand@m">
+                                        <PostMeta className="uk-article-meta">
+                                            <b>Last Update</b>
+                                            <span>{post.date}</span>
+                                        </PostMeta>
 
-                                    <h1 className="uk-article-title">
-                                        {post.title}
-                                    </h1>  
+                                        <h1 className="uk-article-title">
+                                            {post.title}
+                                        </h1>  
 
-                                    <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                                </div>
-
-                                <SideBar className="uk-width-1-3@m">
-                                    <div className="uk-article-meta uk-padding">
-                                        <div className="post-categories">
-                                            {post.categories && post.categories.map(
-                                                    category => <Link key={category.id} to={'categories/'+ category.slug}><span dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link>
-                                                )
-                                            }
-                                        </div>
-
-                                        <div className="uk-card uk-card-small uk-margin-top">
-                                            <div className="uk-card-header uk-padding-remove">
-                                                <img className="uk-border-circle" width="40" height="40" src="https://getuikit.com/docs/images/avatar.jpg" />
-                                                <h3 className="uk-card-title uk-margin-remove-top">Title</h3>
-                                            </div>
-                                            <div className="uk-card-body uk-padding-remove">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                                            </div>
-                                        </div>
+                                        <div dangerouslySetInnerHTML={{ __html: post.content }} />
                                     </div>
-                                </SideBar>
 
-                            </div>
-                        </article>
+                                    <SideBar className="uk-width-1-3@m">
+                                        <div className="uk-article-meta">
+                                            <div className="post-categories">
+                                                {post.categories && post.categories.map(
+                                                        category => <Link key={category.id} to={'categories/'+ category.slug}><span dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link>
+                                                    )
+                                                }
+                                            </div>
 
-                    </div>
+                                            <div className="uk-card uk-card-small uk-margin-top">
+                                                <div className="uk-card-header uk-padding-remove">
+                                                    <img className="uk-border-circle" width="40" height="40" src="https://getuikit.com/docs/images/avatar.jpg" />
+                                                    <h3 className="uk-card-title uk-margin-remove-top">Title</h3>
+                                                </div>
+                                                <div className="uk-card-body uk-padding-remove">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </SideBar>
 
-                </SingleArticle>
+                                </div>
+                            </article>
+
+                        </div>
+
+                    </SingleArticle>
+                </div>
                 
 
                 {/* <Link to={'/posts'} className="uk-margin uk-margin-remove-left">

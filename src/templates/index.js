@@ -51,7 +51,9 @@ class MainIndexPage extends Component {
         <FirstPost data={data.wordpressPost}/>
         <AllCategroy data={data.allWordpressCategory} />
         {/* <AllCategroy data={this.props.data.allWordpressCategory}/> */}
-        <BlogList pageContext={this.props.pageContext}/>
+        <div className="uk-container">
+          <BlogList pageContext={this.props.pageContext}/>
+        </div>
         {/* <Link to="/page-2/">Go to page 2</Link> */}
       </Layout>
     )

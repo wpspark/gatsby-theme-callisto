@@ -24,10 +24,12 @@ class SingleCategory extends Component {
                 <SEO title="all posts"  />
                 <FirstPost data={data.wordpressPost}/>
                 <AllCategroy data={data.allWordpressCategory} />
-                <ArticlePage className="articles-page">
-                    <h2 dangerouslySetInnerHTML={{__html:title}} />
-                    <CategoryArticles data={data.allWordpressPost.edges} />
-                </ArticlePage>
+                <div className="uk-container">
+                    <ArticlePage className="articles-page">
+                        <h2 dangerouslySetInnerHTML={{__html:title}} />
+                        <CategoryArticles data={data.allWordpressPost.edges} />
+                    </ArticlePage>
+                </div>
             </Layout>
         )
     }

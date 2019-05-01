@@ -51,11 +51,7 @@ const Layout = ({ children, data }) => (
         {/* <FirstPost data={data.wordpressPost}/> */}
         {/* <AllCategroy data={data.allWordpressCategory} /> */}
         {/* <Menu menu={data}/> */}
-        <div className="app-page">
-          <div className="uk-container">
             <main>{children}</main>
-          </div>
-        </div>
         <Footer/>
       </>
     )}
