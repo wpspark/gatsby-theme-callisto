@@ -47,6 +47,13 @@ module.exports = {
           "**/users",
           "/wp-api-menus/**",
         ],
+        excludedRoutes: [
+          "**/oembed/**",
+          "**/akismet/**",
+          "**/rankmath/**",
+          "**/wp-analytify/**",
+          "**/affwp/**",
+        ],
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -121,7 +121,8 @@ class PostTemplate extends Component {
         return (
             <Layout>
                 <SEO title={post.title}/>
-                <div className="uk-container uk-container-large">
+                <div className="uk-background-muted">
+                <div className="uk-container uk-container">
                     <SingleArticle className="uk-section uk-section-default">
                         <PostImage className="uk-cover-container">
                             <img src={featuredMedia.localFile.childImageSharp.original.src} alt='' /> 
@@ -186,6 +187,7 @@ class PostTemplate extends Component {
                 {/* <Link to={'/posts'} className="uk-margin uk-margin-remove-left">
                     <Back>Back</Back>
                 </Link> */}
+                </div>
             </Layout>
             
         )

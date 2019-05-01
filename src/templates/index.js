@@ -11,6 +11,7 @@ import FirstPost from '../components/FirstPost'
 // import AllCategroy from '../components/AllCategory'
 
 import '../components/rootStyle.scss'
+import '../../node_modules/uikit/dist/js/uikit.js';
 
 
 class MainIndexPage extends Component {

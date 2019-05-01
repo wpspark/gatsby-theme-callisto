@@ -171,11 +171,14 @@ class BlogList extends Component {
             <ArticleWrapper className="article-wrapper ">
                 <FirstGroup className="firstGroup">
                 {firstGroup.map(({node}) => (  
-                    <SingleArticleBox key={node.id} className="single-article-box uk-card">
+                    <SingleArticleBox key={node.id} className="single-article-box uk-card  uk-card-default uk-padding-small">
                                             
                         <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
                             <div className="image-wrapper uk-transition-opaque">
-                                <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                                <Link to={'post/' + node.slug}>
+                                    <img className="uk-height-large" src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                                </Link>
+
                                 <PostAuthor className="post-author-meta">
                                     {/* <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" /> */}
                                     <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
@@ -208,11 +211,14 @@ class BlogList extends Component {
 
                 <SecondGroup className="secondGroup">
                 {secondGroup.map(({node}) => (  
-                    <SingleArticleBox key={node.id} className="single-article-box uk-card">
+                    <SingleArticleBox key={node.id} className="single-article-box uk-card  uk-card-default uk-padding-small">
                                             
                         <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
                             <div className="image-wrapper uk-transition-opaque">
-                                <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                                <Link to={'post/' + node.slug}>
+                                    <img className="uk-height-medium" src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                                </Link>
+
                                 <PostAuthor>
                                     <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
                                 </PostAuthor>

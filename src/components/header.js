@@ -5,23 +5,23 @@ import styled from 'styled-components'
 import {Link} from 'gatsby'
 
 const HeaderWrapper = styled.div`
-  background:#eee;
+  // background:#eee;
   h1{
     padding:10px;
-    font-size:20px;
+  //   font-size:20px;
     margin:0;
   }
-  .header-nav {
-    margin-left:30px;
-    a{
-      color:#929292;
-      margin:0px 7px;
-      transition:all 0.4s ease;
-      &:hover{
-          color:#3a3a3a;
-      }
-    }
-  }
+  // .header-nav {
+  //   margin-left:30px;
+  //   a{
+  //     color:#929292;
+  //     margin:0px 7px;
+  //     transition:all 0.4s ease;
+  //     &:hover{
+  //         color:#3a3a3a;
+  //     }
+  //   }
+  // }
   
 `
 const OrderButton = styled.div`
@@ -66,28 +66,19 @@ const Header = ({ siteTitle }) => (
   //   </div>
   // </header>
   <header>
-    <HeaderWrapper className="">
+    <HeaderWrapper className="uk-background-primary uk-light">
       <div className="header-container uk-container">
           <div className="uk-grid uk-flex uk-flex-middle">
             <div className="uk-width-expand@m uk-flex uk-flex-left uk-flex-middle">
               <Link to="/">
-                <h1 className=""> Blog Demo </h1>
+                <h1 className="uk-logo">ThemesGrove Blog</h1>
               </Link>
-              <nav className="header-nav">
-                <Link to="#">
-                  Posts
-                </Link>
-              
-                <Link to="#">
-                  Categories
-                </Link>
-              </nav>
             </div>
             <div>
-              <OrderButton>
-                <Link to="#">
-                  Order Now
-                </Link>
+              <OrderButton className="uk-padding-small">
+                <a href="https://themesgrove.com" target="_blank">
+                  Back to Main site
+                </a>
               </OrderButton>
             </div>
           </div>
