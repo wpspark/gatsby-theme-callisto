@@ -34,6 +34,8 @@ const FirstGroup = styled.div`
     }
     .image-wrapper{
         margin-bottom:0 !important;
+        transform:scale(1, 1);
+        transition:all 0.4s ease;
         >img{
             border-radius:5px;
         }
@@ -57,6 +59,24 @@ const SecondGroup = styled.div`
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap:30px;
+    .single-article-box{
+        &:hover{
+            .image-wrapper{
+                transform:scale(.98, .98);
+            }
+        }
+    }
+    .image-wrapper{
+        margin-bottom:10px !important;
+        transform:scale(1, 1);
+        transition:all 0.4s ease;
+        >img{
+            border-radius:5px;
+        }
+    }
+    h4{
+        margin-top:20px;
+    }
 `
 
 
@@ -158,18 +178,18 @@ class BlogList extends Component {
                     </SingleArticleBox>
                 ))}
                 </FirstGroup>
+
                 <SecondGroup className="secondGroup">
                 {secondGroup.map(({node}) => (  
                     <SingleArticleBox key={node.id} className="single-article-box uk-card">
                                             
                         <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
-                            <div className="image-wrapper uk-transition-scale-down uk-transition-opaque">
+                            <div className="image-wrapper uk-transition-opaque">
                                 <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
                                 <PostAuthor>
                                     <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" />
                                 </PostAuthor>
                             </div>
-                            
                         </FeaturedImage>
 
                         <Link to={'post/' + node.slug}>
