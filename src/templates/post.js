@@ -4,6 +4,7 @@ import Layout from '../components/layout'
 import {Link, graphql } from 'gatsby'
 import styled from 'styled-components'
 import AllCategroy from '../components/AllCategory'
+import Soical from '../components/Social'
 
 // import PropTypes from "prop-types"
 // import Img from "gatsby-image"
@@ -67,7 +68,7 @@ const SideBar = styled.div`
         padding:0px 30px;
     }
     .important-links{
-        padding-top:30px;
+        padding-top:50px;
         margin-top:35px;
         border-top:solid 2px #e4e4e4;
         h4{
@@ -86,7 +87,9 @@ const SideBar = styled.div`
     }
 `
 const PostMainContent = styled.div`
-    
+    .su-button{
+        padding:15px 30px;
+    }
     p{
         font-size:18px;
         a{
@@ -104,6 +107,10 @@ const PostAuthor = styled.div`
         font-size:16px;
         margin:15px 0px 10px;
     }
+`
+const SocialShare = styled.div`
+    padding-top:35px;
+    border-top:solid 2px #e4e4e4;
 `
 
 
@@ -158,9 +165,12 @@ class PostTemplate extends Component {
                                             </PostAuthor>
                                             <div className="important-links">
                                                 <h4>Important Links</h4>
-                                                <span uk-icon="heart"></span>
+                                                
                                                 <AllCategroy data={this.props.data.allWordpressCategory} />
                                             </div>
+                                            <SocialShare className="social-share">
+                                                <Soical />
+                                            </SocialShare>
                                         </div>
                                     </SideBar>
 
