@@ -24,8 +24,18 @@ const HeaderWrapper = styled.div`
   }
   
 `
-const OrderButton = styled.button`
-  padding:5px 15px;
+const OrderButton = styled.div`
+  a{
+    padding:2px 15px;
+    background:#1abc9c;
+    display:inline-block;
+    color:white;
+    border-radius:5px;
+    transition:all 0.3s ease;
+    &:hover{
+      color:white;
+    }
+  }
 `
 
 const Header = ({ siteTitle }) => (
@@ -74,7 +84,11 @@ const Header = ({ siteTitle }) => (
               </nav>
             </div>
             <div>
-              <OrderButton className="uk-button">Order Now</OrderButton>
+              <OrderButton>
+                <Link to="#">
+                  Order Now
+                </Link>
+              </OrderButton>
             </div>
           </div>
           
