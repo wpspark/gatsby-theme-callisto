@@ -65,6 +65,14 @@ const FirstGroup = styled.div`
         .author-img, .post-cat{
             z-index:1;
         }
+        .post-cat{
+            a{
+                color:white;
+                &:hover{
+                    color:white;
+                }
+            }
+        }
         .author-img{
             img{
                 width:50px;

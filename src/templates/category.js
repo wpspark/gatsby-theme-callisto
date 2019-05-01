@@ -24,7 +24,7 @@ class SingleCategory extends Component {
                 <SEO title="all posts"  />
                 <FirstPost data={data.wordpressPost}/>
                 <AllCategroy data={data.allWordpressCategory} />
-                <div className="post-lists">
+                <div className="post-lists post-list-of-category">
                     <div className="uk-container">
                         <ArticlePage className="articles-page">
                             <h2 dangerouslySetInnerHTML={{__html:title}} />

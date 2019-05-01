@@ -11,7 +11,21 @@ const HeaderWrapper = styled.div`
     font-size:20px;
     margin:0;
   }
+  .header-nav {
+    margin-left:30px;
+    a{
+      color:#929292;
+      margin:0px 7px;
+      transition:all 0.4s ease;
+      &:hover{
+          color:#3a3a3a;
+      }
+    }
+  }
   
+`
+const OrderButton = styled.button`
+  padding:5px 15px;
 `
 
 const Header = ({ siteTitle }) => (
@@ -43,35 +57,27 @@ const Header = ({ siteTitle }) => (
   // </header>
   <header>
     <HeaderWrapper className="">
-      <div className="uk-container">
-          <Link to="/">
-            <h1 className=""> Blog Demo </h1>
-          </Link>
-          {/* <nav className="uk-navbar uk-align-center"> */}
-
-          {/* <div className="uk-navbar-right">
-            <ul className="uk-navbar-nav uk-visible@m">
-              <li className="uk-active">
-                <Link to="/">
-                  Home
-                </Link>
-              </li>
-              
-              <li className="uk-active">
-                <Link to="/posts">
+      <div className="header-container uk-container">
+          <div className="uk-grid uk-flex uk-flex-middle">
+            <div className="uk-width-expand@m uk-flex uk-flex-left uk-flex-middle">
+              <Link to="/">
+                <h1 className=""> Blog Demo </h1>
+              </Link>
+              <nav className="header-nav">
+                <Link to="#">
                   Posts
                 </Link>
-              </li>
               
-              <li className="uk-active">
-                <Link to="/categories">
+                <Link to="#">
                   Categories
                 </Link>
-              </li>
-            </ul>
-          </div> */}
-
-          {/* </nav> */}
+              </nav>
+            </div>
+            <div>
+              <OrderButton className="uk-button">Order Now</OrderButton>
+            </div>
+          </div>
+          
 
       </div>
     </HeaderWrapper>
