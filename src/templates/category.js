@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import { graphql } from 'gatsby'
 import CategoryArticles from '../components/CategoryArticles'
 import AllCategroy from '../components/AllCategory'
-import FirstPost from '../components/FirstPost'
+// import FirstPost from '../components/FirstPost'
 
 const ArticlePage = styled.div`
     h2{

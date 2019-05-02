@@ -22,11 +22,11 @@ const LatestPost = styled.div`
             }
         }
     }
-    img{
-        width:100%;
-        max-height:350px;
-        object-fit:cover;
-    }
+    // img{
+    //     width:100%;
+    //     max-height:350px;
+    //     object-fit:cover;
+    // }
 `
 
 export default class FirstPost extends Component {
@@ -34,7 +34,7 @@ export default class FirstPost extends Component {
         const data = this.props.data;
     return (
       <LatestPost>
-        <div class="uk-container">
+        <div className="uk-container">
             <Link to={'post/' + data.slug}>
                 <h1>{data.title}</h1>
             </Link>
@@ -44,7 +44,11 @@ export default class FirstPost extends Component {
                     )
                 }
             </div>
-            <img src={data.featured_media.localFile.childImageSharp.original.src} alt=''/>
+            <Link to={'post/' + data.slug}>
+            <div class="uk-cover-container uk-height-medium">
+                <img src={data.featured_media.localFile.childImageSharp.original.src} alt='' uk-cover="" />
+            </div>            
+            </Link>            
         </div>
       </LatestPost>
     )

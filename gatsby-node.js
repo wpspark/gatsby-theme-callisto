@@ -65,8 +65,7 @@ const createPaginatedPages = require('gatsby-paginate');
           wordpress_id
           slug
           name
-          count
-          
+          count          
         }
       }
     }

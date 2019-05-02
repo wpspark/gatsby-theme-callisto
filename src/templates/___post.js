@@ -16,7 +16,7 @@ const Back = styled.a`
 `
 
 const SingleArticle = styled.article`
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     img{
         object-fit:cover;
     }

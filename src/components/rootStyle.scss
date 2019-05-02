@@ -2,8 +2,8 @@ $global-muted-background: #eceff4;
 //$global-primary-background: #ec595a;
 $global-secondary-background: #ec595a;
 //$navbar-background: $global-primary-background;
-$roboto: 'Roboto', sans-serif;
-$montserrat: 'Montserrat', sans-serif;
+$bodyFonts: "Noto Sans JP", sans-serif;
+$titleFonts: "Noto Serif TC", serif;
 $black-primary:#333;
 $black-secondary:#929292;
 
@@ -14,7 +14,7 @@ $black-secondary:#929292;
 
 
 body { 
-  font-family: $roboto;
+  font-family: $bodyFonts;
 }
 .header, .all-category{
   // background:#eee;
@@ -32,12 +32,12 @@ a{
 .uk-navbar-nav{
   li{
     a{
-      font-family: $montserrat;
+      font-family: $titleFonts;
     }
   }
 }
 
-h1, h2, h3, h4, h5 {font-family: $montserrat}
+h1, h2, h3, h4, h5 {font-family: $titleFonts}
 
 .temperature {
   font-family: 'barometer', sans-serif;
@@ -56,4 +56,7 @@ h1, h2, h3, h4, h5 {font-family: $montserrat}
 }
 .post-list-of-category{
   padding:50px 0px 100px;
+}
+.uk-logo{
+  font-family: $titleFonts;
 }

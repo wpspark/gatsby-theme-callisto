@@ -19,7 +19,7 @@ import '../components/rootStyle.scss'
 // `
 
 const SingleArticle = styled.article`
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     padding-top:0px !important;
     img{
         object-fit:cover;
@@ -32,7 +32,7 @@ const SingleArticle = styled.article`
 const PostImage = styled.div`
     img{
         width:100%;
-        max-height:450px;
+        // max-height:450px;
     }
 `
 const PostMeta = styled.div`
@@ -71,9 +71,9 @@ const SideBar = styled.div`
         padding-top:50px;
         margin-top:35px;
         border-top:solid 2px #e4e4e4;
-        h4{
+        // h4{
             /* margin-bottom:0px; */
-        }
+        // }
         ul{
             display:block;
             width:100%;
@@ -121,12 +121,16 @@ class PostTemplate extends Component {
         return (
             <Layout>
                 <SEO title={post.title}/>
+
+                <AllCategroy data={this.props.data.allWordpressCategory} />
+                
                 <div className="uk-background-muted">
                 <div className="uk-container uk-container">
                     <SingleArticle className="uk-section uk-section-default">
-                        <PostImage className="uk-cover-container">
-                            <img src={featuredMedia.localFile.childImageSharp.original.src} alt='' /> 
+                        <PostImage className="uk-position-relative uk-text-center">
+                            <img src={featuredMedia.localFile.childImageSharp.original.src} alt='' uk-img=""/> 
                         </PostImage>
+
                         <div className="uk-container">
                             <article className="uk-article uk-padding">
                                 <div className="uk-grid">
@@ -146,29 +150,28 @@ class PostTemplate extends Component {
                                     </div>
 
                                     <SideBar className="uk-width-1-3@m">
-                                        <div className="uk-article-meta">
+
+                                        <div className="uk-article-meta" uk-sticky="offset: 100;">
                                             
                                             <ul className="post-categories">
                                                 {post.categories && post.categories.map(
-                                                        category => <li><Link key={category.id} to={'categories/'+ category.slug} dangerouslySetInnerHTML={{__html:category.name + " "}}/></li>
+                                                        category => <li className="uk-margin"><Link key={category.id} to={'categories/'+ category.slug} dangerouslySetInnerHTML={{__html:category.name + " "}}/></li>
                                                     )
                                                 }
                                             </ul>
 
                                             <PostAuthor className="uk-card uk-card-small uk-margin-top">
                                                 <div className="uk-card-header uk-padding-remove">
-                                                    <img className="uk-border-circle" width="40" height="40" src="https://getuikit.com/docs/images/avatar.jpg" alt=""/>
-                                                    <h3 className="uk-card-title uk-margin-remove-top">Jenny Doe</h3>
+                                                    <img className="uk-border-circle" width="40" height="40" src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
+                                                    <h3 className="uk-card-title uk-margin-remove-top">Anam Hossain</h3>
                                                 </div>
                                                 <div className="uk-card-body uk-padding-remove">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                                    <p>
+                                                    Web developer
+                                                    </p>
                                                 </div>
                                             </PostAuthor>
-                                            <div className="important-links">
-                                                <h4>Important Links</h4>
-                                                
-                                                <AllCategroy data={this.props.data.allWordpressCategory} />
-                                            </div>
+                                            
                                             <SocialShare className="social-share">
                                                 <Soical />
                                             </SocialShare>
@@ -207,7 +210,7 @@ export const pageQuery = graphql`
                 id
                 name
                 slug
-            }
+            }            
         }
         site {
             siteMetadata {

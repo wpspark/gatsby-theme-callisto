@@ -24,9 +24,7 @@ const ArticleWrapper = styled.div`
             border-radius:5px;
         }
     }
-    h4{
-        margin-top:20px;
-    }
+    
 `
 const SingleArticleBox = styled.div`
     a{
@@ -77,14 +75,14 @@ class CategoryArticles extends Component {
 render() {
     const data = this.props.data;
     return (
-            <ArticleWrapper className="article-wrapper ">
+            <ArticleWrapper className="article-wrapper uk-grid uk-child-width-1-1@s uk-child-width-1-3@m">
                 {data.map(({node}) => (                        
-                    
-                    <SingleArticleBox key={node.id} className="single-article-box uk-card">
-                                            
+                    <SingleArticleBox key={node.id} className="single-article-box uk-card uk-margin-bottom">
                         <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
                             <div className="image-wrapper uk-transition-opaque">
-                                <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                                <Link to={'post/' + node.slug}>
+                                    <img  src={node.featured_media.localFile.childImageSharp.original.src} alt="" />
+                                </Link>
                                 <PostAuthor>
                                     <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
                                 </PostAuthor>

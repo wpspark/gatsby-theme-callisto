@@ -8,7 +8,7 @@ export default class AllCategroy extends Component {
       <div className="all-category uk-background-muted" uk-sticky="">
         <nav className="uk-container">
           <div className="uk-navbar-left">
-            <ul className="uk-navbar-nav">
+            <ul className="uk-navbar-nav uk-overflow-auto">
               <li> 
                 <Link to='/'>
                   <span>All</span>

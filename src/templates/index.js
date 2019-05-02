@@ -33,8 +33,11 @@ class MainIndexPage extends Component {
     return (
       <Layout>
         <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+        
         <FirstPost data={data.wordpressPost}/>
+
         <AllCategroy data={data.allWordpressCategory} />
+        
         {/* <AllCategroy data={this.props.data.allWordpressCategory}/> */}
         <div className="post-lists">
           <div className="uk-container">

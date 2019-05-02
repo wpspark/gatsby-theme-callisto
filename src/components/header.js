@@ -76,7 +76,7 @@ const Header = ({ siteTitle }) => (
             </div>
             <div>
               <OrderButton className="uk-padding-small">
-                <a href="https://themesgrove.com" target="_blank">
+                <a href="https://themesgrove.com" target="_blank" rel="noopener noreferrer">
                   Back to Main site
                 </a>
               </OrderButton>

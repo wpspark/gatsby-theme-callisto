@@ -102,9 +102,6 @@ const SecondGroup = styled.div`
             border-radius:5px;
         }
     }
-    h4{
-        margin-top:20px;
-    }
 `
 
 
@@ -167,21 +164,23 @@ class BlogList extends Component {
     // const nextUrl = (index + 1).toString();
     return (
         <div className="articles-page">
+
             {/* <h1>{pageCount} Pages</h1> */}
             <ArticleWrapper className="article-wrapper ">
-                <FirstGroup className="firstGroup">
+                
+                <FirstGroup className="firstGroup uk-grid uk-child-width-1-1@s uk-child-width-1-2@m">
+
                 {firstGroup.map(({node}) => (  
-                    <SingleArticleBox key={node.id} className="single-article-box uk-card  uk-card-default uk-padding-small">
+                    <SingleArticleBox key={node.id} className="single-article-box uk-card uk-margin-bottom">
                                             
-                        <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
+                        <FeaturedImage className="uk-transition-toggle" tabindex="0">
                             <div className="image-wrapper uk-transition-opaque">
                                 <Link to={'post/' + node.slug}>
-                                    <img className="uk-height-large" src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                                    <img className="uk-height-medium uk-width-expand" src={node.featured_media.localFile.childImageSharp.original.src} alt="" />
                                 </Link>
 
                                 <PostAuthor className="post-author-meta">
-                                    {/* <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" /> */}
-                                    <img  src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                                    
                                     <div className="author-img">
                                         <span>
                                             <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
@@ -209,14 +208,15 @@ class BlogList extends Component {
                 ))}
                 </FirstGroup>
 
-                <SecondGroup className="secondGroup">
+                <SecondGroup className="secondGroup uk-grid uk-child-width-1-1@s uk-child-width-1-3@m">
+                
                 {secondGroup.map(({node}) => (  
-                    <SingleArticleBox key={node.id} className="single-article-box uk-card  uk-card-default uk-padding-small">
+                    <SingleArticleBox key={node.id} className="single-article-box uk-margin-bottom">
                                             
                         <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
                             <div className="image-wrapper uk-transition-opaque">
                                 <Link to={'post/' + node.slug}>
-                                    <img className="uk-height-medium" src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+                                    <img className="uk-height uk-width-expand" src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
                                 </Link>
 
                                 <PostAuthor>
