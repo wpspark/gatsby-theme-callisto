@@ -40,17 +40,17 @@ const SingleArticleBox = styled.div`
         font-size:20px;
         transition:all 0.4s ease;
     }
-    span.cat{
-        a{
-            color:#929292;
-            margin:0px 5px;
-            transition:all 0.4s ease;
-            &:hover{
-                color:#3a3a3a;
-            }
-        }
+    // span.cat{
+    //     a{
+    //         color:#929292;
+    //         margin:0px 5px;
+    //         transition:all 0.4s ease;
+    //         &:hover{
+    //             color:#3a3a3a;
+    //         }
+    //     }
         
-    }
+    // }
 `
 const FeaturedImage = styled.div`
     img{
@@ -88,20 +88,19 @@ render() {
                                 </PostAuthor>
                             </div>
                         </FeaturedImage>
+                        
+                        <div className="uk-margin">
+                            <ul className="uk-iconnav">
+                                {node.categories && node.categories.map(
+                                        category => <li><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
+                                    )
+                                }
+                            </ul>
+                        </div>
 
                         <Link to={'post/' + node.slug}>
                             <h4 dangerouslySetInnerHTML={{__html:node.title}}/>
                         </Link>
-
-                        <div>
-                            <span className="cat">
-                                {node.categories && node.categories.map(
-                                        category => <Link key={category.id} to={'categories/'+ category.slug}><span dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link>
-                                    )
-                                }
-                            </span>
-                        </div>
-
                         
                     </SingleArticleBox>
                 ))}

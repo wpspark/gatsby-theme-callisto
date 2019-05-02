@@ -199,6 +199,15 @@ class BlogList extends Component {
                             
                         </FeaturedImage>
 
+                        <div className="uk-margin">
+                            <ul className="uk-iconnav">
+                                {node.categories && node.categories.map(
+                                        category => <li><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
+                                    )
+                                }
+                            </ul>
+                        </div>
+
                         <Link to={'post/' + node.slug}>
                             <h4 dangerouslySetInnerHTML={{__html:node.title}}/>
                         </Link>
@@ -225,6 +234,15 @@ class BlogList extends Component {
                             </div>
                         </FeaturedImage>
 
+                        <div className="uk-margin">
+                            <ul className="uk-iconnav">
+                                {node.categories && node.categories.map(
+                                        category => <li><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
+                                    )
+                                }
+                            </ul>
+                        </div>
+                        
                         <Link to={'post/' + node.slug}>
                             <h4 dangerouslySetInnerHTML={{__html:node.title}}/>
                         </Link>
