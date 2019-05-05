@@ -15,7 +15,12 @@ $black-secondary:#929292;
 
 body { 
   font-family: $bodyFonts;
+  line-height: 1.8;
 }
+.all-category{
+  background:#fff;
+}
+
 .header, .all-category{
   // background:#eee;
 }
@@ -37,7 +42,7 @@ a{
   }
 }
 
-h1, h2, h3, h4, h5 {font-family: $titleFonts}
+h1, h2, h3, h4, h5 {font-family: $titleFonts;font-weight: 900;}
 
 .temperature {
   font-family: 'barometer', sans-serif;

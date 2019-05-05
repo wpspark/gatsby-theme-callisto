@@ -19,7 +19,6 @@ import '../components/rootStyle.scss'
 // `
 
 const SingleArticle = styled.article`
-    font-family: 'Noto Sans JP', sans-serif;
     padding-top:0px !important;
     img{
         object-fit:cover;
@@ -32,12 +31,11 @@ const SingleArticle = styled.article`
 const PostImage = styled.div`
     img{
         width:100%;
-        // max-height:450px;
     }
 `
 const PostMeta = styled.div`
     b, span{
-        font-size:16px;
+        font-size:92%;
     }
     b{
         color:#333;
@@ -89,17 +87,6 @@ const SideBar = styled.div`
 const PostMainContent = styled.div`
     .su-button{
         padding:15px 30px;
-    }
-    p{
-        font-size:18px;
-        a{
-            color:#1abc9c;
-            font-family:'Montserrat', sans-serif;
-        }
-        img{
-            border:solid 1px #e4e4e4;
-            margin-bottom:15px;
-        }
     }
 `
 const PostAuthor = styled.div`
