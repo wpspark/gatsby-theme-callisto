@@ -42,13 +42,13 @@ const FirstGroup = styled.div`
     }
     
     .post-author-meta{
-        bottom:23px;
+        bottom:0px;
         display:flex;
         align-items:center;
         justify-content:space-between;
         padding: 10px;
         overflow: hidden;
-        background-image: linear-gradient(0deg,rgba(255,255,255,.2),rgba(255,255,255,.2));
+        background-image: linear-gradient(0deg,rgb(0, 0, 0),rgba(0, 0, 0, 0.32));
         >img{
             position: absolute;
             bottom: 0;
@@ -106,6 +106,7 @@ const SecondGroup = styled.div`
 
 
 const SingleArticleBox = styled.div`
+
     a{
         color:#4c4c4c;
         &:hover{
@@ -157,11 +158,46 @@ class BlogList extends Component {
   render() {
     // const { group, index, first, last, pageCount } = this.props.pageContext;
     const { group } = this.props.pageContext;
-    const firstGroup = group.slice(0, 2);
-    const secondGroup = group.slice(3);
+
+    // const firstGroup = group.slice(0, 2);
+    // const secondGroup = group.slice(3);
 
     // const previousUrl = index - 1 === 1 ? '' : (index - 1).toString();
     // const nextUrl = (index + 1).toString();
+
+    // <SecondGroup className="secondGroup uk-grid uk-child-width-1-1@s uk-child-width-1-3@m">
+                    
+    //     {secondGroup.map(({node}) => (  
+    //         <SingleArticleBox key={node.id} className="single-article-box uk-margin-bottom">
+                                    
+    //             <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
+    //                 <div className="image-wrapper uk-transition-opaque">
+    //                     <Link to={'post/' + node.slug}>
+    //                         <img className="uk-height-medium uk-width-expand" src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
+    //                     </Link>
+
+    //                     <PostAuthor>
+    //                         <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
+    //                     </PostAuthor>
+    //                 </div>
+    //             </FeaturedImage>
+
+    //             <div className="uk-margin">
+    //                 <ul className="uk-iconnav">
+    //                     {node.categories && node.categories.map(
+    //                             category => <li key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
+    //                         )
+    //                     }
+    //                 </ul>
+    //             </div>
+                
+    //             <Link to={'post/' + node.slug}>
+    //                 <h4 dangerouslySetInnerHTML={{__html:node.title}}/>
+    //             </Link>
+
+    //         </SingleArticleBox>
+    //     ))}
+    //     </SecondGroup>
     return (
         <div className="articles-page">
             
@@ -170,13 +206,15 @@ class BlogList extends Component {
                 
                 <FirstGroup className="firstGroup uk-grid uk-child-width-1-1@s uk-child-width-1-2@m">
 
-                {firstGroup.map(({node}) => (  
-                    <SingleArticleBox key={node.id} className="single-article-box uk-card uk-margin-bottom">
+                {group.map(({node}) => (  
+                    <SingleArticleBox key={node.id} className="single-article-box uk-card uk-margin-large-bottom">
                                             
                         <FeaturedImage className="uk-transition-toggle uk-margin" tabindex="0">
                             <div className="image-wrapper uk-transition-opaque">
-                                <Link to={'post/' + node.slug}>
-                                    <img className="uk-height-medium uk-width-expand" src={node.featured_media.localFile.childImageSharp.original.src} alt="" />
+                                <Link to={'post/' + node.slug} className="uk-display-block">
+                                    <div className="uk-cover-container uk-height-medium">
+                                        <img className="uk-cover" src={node.featured_media.localFile.childImageSharp.original.src} alt="" uk-img="" uk-cover=""/>
+                                    </div>
                                 </Link>
 
                                 <PostAuthor className="post-author-meta">
@@ -200,7 +238,7 @@ class BlogList extends Component {
                         </FeaturedImage>
 
                         <Link to={'post/' + node.slug}>
-                            <h3 dangerouslySetInnerHTML={{__html:node.title}}/>
+                            <h3 className="uk-margin-remove-bottom" dangerouslySetInnerHTML={{__html:node.title}}/>
                         </Link>
 
                         
@@ -208,39 +246,9 @@ class BlogList extends Component {
                 ))}
                 </FirstGroup>
 
-                <SecondGroup className="secondGroup uk-grid uk-child-width-1-1@s uk-child-width-1-3@m">
+                <hr className="uk-margin-medium" />
+
                 
-                {secondGroup.map(({node}) => (  
-                    <SingleArticleBox key={node.id} className="single-article-box uk-margin-bottom">
-                                            
-                        <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
-                            <div className="image-wrapper uk-transition-opaque">
-                                <Link to={'post/' + node.slug}>
-                                    <img className="uk-height uk-width-expand" src={node.featured_media.localFile.childImageSharp.original.src} alt=""/>
-                                </Link>
-
-                                <PostAuthor>
-                                    <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
-                                </PostAuthor>
-                            </div>
-                        </FeaturedImage>
-
-                        <div className="uk-margin">
-                            <ul className="uk-iconnav">
-                                {node.categories && node.categories.map(
-                                        category => <li key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
-                                    )
-                                }
-                            </ul>
-                        </div>
-                        
-                        <Link to={'post/' + node.slug}>
-                            <h4 dangerouslySetInnerHTML={{__html:node.title}}/>
-                        </Link>
-
-                    </SingleArticleBox>
-                ))}
-                </SecondGroup>
             </ArticleWrapper>
 
             {/* <div className="previousLink">
@@ -254,3 +262,6 @@ class BlogList extends Component {
   }
 }
 export default BlogList;
+
+
+
