@@ -19,10 +19,11 @@ class SingleCategory extends Component {
         const data = this.props.data;
         const title = this.props.pageContext.name;
         // <FirstPost data={data.wordpressPost}/>
+        
         return ( 
             <Layout>
                 <SEO title={title}/>
-                <AllCategroy data={data.allWordpressCategory} />
+                <AllCategroy data={data.allWordpressCategory} active={this.props.pageContext.slug} />
                 
                 <div className="post-lists post-list-of-category">
                     <div className="uk-container">
