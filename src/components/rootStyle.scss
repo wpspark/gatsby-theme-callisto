@@ -65,3 +65,9 @@ h1, h2, h3, h4, h5 {font-family: $titleFonts;font-weight: 900;}
 .uk-logo{
   font-family: $titleFonts;
 }
+
+.post-main-content p:first-child {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #333;
+}

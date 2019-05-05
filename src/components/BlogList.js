@@ -173,7 +173,7 @@ class BlogList extends Component {
                 {firstGroup.map(({node}) => (  
                     <SingleArticleBox key={node.id} className="single-article-box uk-card uk-margin-bottom">
                                             
-                        <FeaturedImage className="uk-transition-toggle" tabindex="0">
+                        <FeaturedImage className="uk-transition-toggle uk-margin" tabindex="0">
                             <div className="image-wrapper uk-transition-opaque">
                                 <Link to={'post/' + node.slug}>
                                     <img className="uk-height-medium uk-width-expand" src={node.featured_media.localFile.childImageSharp.original.src} alt="" />
@@ -199,17 +199,8 @@ class BlogList extends Component {
                             
                         </FeaturedImage>
 
-                        <div className="uk-margin">
-                            <ul className="uk-iconnav">
-                                {node.categories && node.categories.map(
-                                        category => <li key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
-                                    )
-                                }
-                            </ul>
-                        </div>
-
                         <Link to={'post/' + node.slug}>
-                            <h4 dangerouslySetInnerHTML={{__html:node.title}}/>
+                            <h3 dangerouslySetInnerHTML={{__html:node.title}}/>
                         </Link>
 
                         
