@@ -21,8 +21,7 @@ class SingleCategory extends Component {
         // <FirstPost data={data.wordpressPost}/>
         return ( 
             <Layout>
-                <SEO title="all posts"  />
-                
+                <SEO title={title}/>
                 <AllCategroy data={data.allWordpressCategory} />
                 
                 <div className="post-lists post-list-of-category">

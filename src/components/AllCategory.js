@@ -5,12 +5,13 @@ export default class AllCategroy extends Component {
   render() {
     const allCat = this.props.data;
     return (
-      <div className="all-category uk-background-muted" uk-sticky="">
+      <div className="all-category" uk-sticky="">
         <nav className="uk-container">
           <div className="uk-navbar-left">
             <ul className="uk-navbar-nav uk-overflow-auto">
               <li> 
                 <Link to='/'>
+                  <span className="uk-margin-small-right" uk-icon="grid"></span>
                   <span>All</span>
                 </Link>
               </li>

@@ -9,7 +9,6 @@ class IndexPage extends Component {
   render() {
     return (
         <Layout>
-            <SEO title="all posts"  />
             <BlogList pageContext={this.props.pageContext}/>
         </Layout>
     )

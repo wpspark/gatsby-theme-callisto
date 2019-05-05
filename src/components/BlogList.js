@@ -164,7 +164,7 @@ class BlogList extends Component {
     // const nextUrl = (index + 1).toString();
     return (
         <div className="articles-page">
-
+            
             {/* <h1>{pageCount} Pages</h1> */}
             <ArticleWrapper className="article-wrapper ">
                 
@@ -202,7 +202,7 @@ class BlogList extends Component {
                         <div className="uk-margin">
                             <ul className="uk-iconnav">
                                 {node.categories && node.categories.map(
-                                        category => <li><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
+                                        category => <li key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
                                     )
                                 }
                             </ul>

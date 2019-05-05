@@ -13,7 +13,8 @@ class CategoryTemplate extends Component {
 
         return ( 
             <Layout>
-                <SEO title="title" />
+                <SEO title="All Categories" />
+                
                 {data.allWordpressCategory.edges.map(({node}) => (                        
                     <div key={node.slug} className="single-article-box uk-card uk-card-default uk-card-body">
                         <Link to={'categories/' + node.slug}>

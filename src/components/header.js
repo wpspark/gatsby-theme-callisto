@@ -1,93 +1,68 @@
 // import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import {Link} from 'gatsby'
+import logo from "../images/tg-logo.png"
+import '../../node_modules/uikit/dist/js/uikit.js';
 
 const HeaderWrapper = styled.div`
-  // background:#eee;
-  h1{
-    padding:10px;
-  //   font-size:20px;
-    margin:0;
-  }
-  // .header-nav {
-  //   margin-left:30px;
-  //   a{
-  //     color:#929292;
-  //     margin:0px 7px;
-  //     transition:all 0.4s ease;
-  //     &:hover{
-  //         color:#3a3a3a;
-  //     }
-  //   }
-  // }
+  background:#ffffff;
+  box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.15);
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  z-index: 99;
   
 `
 const OrderButton = styled.div`
   a{
-    padding:2px 15px;
-    background:#1abc9c;
-    display:inline-block;
-    color:white;
-    border-radius:5px;
     transition:all 0.3s ease;
-    &:hover{
-      color:white;
-    }
   }
 `
 
-const Header = ({ siteTitle }) => (
-  // <header
-  //   style={{
-  //     background: `rebeccapurple`,
-  //     marginBottom: `1.45rem`,
-  //   }}
-  // >
-  //   <div
-  //     style={{
-  //       margin: `0 auto`,
-  //       maxWidth: 960,
-  //       padding: `1.45rem 1.0875rem`,
-  //     }}
-  //   >
-  //     <h1 style={{ margin: 0 }}>
-  //       <Link
-  //         to="/"
-  //         style={{
-  //           color: `white`,
-  //           textDecoration: `none`,
-  //         }}
-  //       >
-  //         {siteTitle}
-  //       </Link>
-  //     </h1>
-  //   </div>
-  // </header>
-  <header>
-    <HeaderWrapper className="uk-background-primary uk-light">
-      <div className="header-container uk-container">
-          <div className="uk-grid uk-flex uk-flex-middle">
-            <div className="uk-width-expand@m uk-flex uk-flex-left uk-flex-middle">
-              <Link to="/">
-                <h1 className="uk-logo">ThemesGrove Blog</h1>
-              </Link>
-            </div>
-            <div>
-              <OrderButton className="uk-padding-small">
-                <a href="https://themesgrove.com" target="_blank" rel="noopener noreferrer">
-                  Back to Main site
-                </a>
-              </OrderButton>
-            </div>
-          </div>
-          
+export default class Header extends Component {
+    state = { ready: false };
+    componentWillMount = () => {
+        if (typeof window !== 'undefined') 
+        {
+            const Uikit = require('uikit');
+            const UikitIcons = require('uikit/dist/js/uikit-icons.min');
+            Uikit.use(UikitIcons);
 
-      </div>
-    </HeaderWrapper>
-  </header>
-)
+            this.setState({ ready: true });
+        }
+    };
+    render() {
+        let {siteTitle} = this.props;
+
+        return (
+
+          this.state.ready ? 
+            <header>
+              <HeaderWrapper>
+                <div className="header-container uk-container">
+                    <div className="uk-grid uk-flex uk-flex-middle">
+                      <div className="uk-width-expand@m uk-flex uk-flex-left uk-flex-middle">
+                        <Link to="/">
+                          <img className="uk-logo" src={logo} alt="ThemesGrove Logo" width="200" uk-img="" alt={siteTitle} />
+                        </Link>
+                      </div>
+                      <div>
+                        <OrderButton className="uk-padding-small">
+                          <a className="uk-button uk-button-default uk-border-rounded" href="https://themesgrove.com" target="_blank" rel="noopener noreferrer">
+                            <span className="uk-margin-small-right" uk-icon="reply"></span> Back to Main site
+                          </a>
+                        </OrderButton>
+                      </div>
+                    </div>
+                </div>
+              </HeaderWrapper>
+            </header>
+          : 
+          null
+        )
+    }
+}
+
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
@@ -96,5 +71,3 @@ Header.propTypes = {
 Header.defaultProps = {
   siteTitle: ``,
 }
-
-export default Header

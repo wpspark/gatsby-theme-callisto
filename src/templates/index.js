@@ -11,40 +11,26 @@ import FirstPost from '../components/FirstPost'
 // import AllCategroy from '../components/AllCategory'
 
 import '../components/rootStyle.scss'
-import '../../node_modules/uikit/dist/js/uikit.js';
-
 
 class MainIndexPage extends Component {
-  // state = { ready: false };
-  // componentDidMount = () => {
-  //   console.log("hellow component");
-  //   if (typeof window !== 'undefined') {
-  //     const uikit = require('uikit');
-  //     console.log(uikit);
-  //     const icons = require('uikit/dist/js/uikit-icons.min');
-  //     console.log(icons);
-  //     uikit.use(icons);
-  //     this.setState({ ready: true });
-  //   }
-  // };
+
   render() {
     // console.log(this.props);
     const data = this.props.data;
     return (
       <Layout>
-        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+        <SEO title="Home" />
         
         <FirstPost data={data.wordpressPost}/>
 
         <AllCategroy data={data.allWordpressCategory} />
         
-        {/* <AllCategroy data={this.props.data.allWordpressCategory}/> */}
         <div className="post-lists">
           <div className="uk-container">
             <BlogList pageContext={this.props.pageContext}/>
           </div>
         </div>
-        {/* <Link to="/page-2/">Go to page 2</Link> */}
+        
       </Layout>
     )
   }

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const LatestPost = styled.div`
     text-align:center;
-    margin:70px 0px 30px;
+    // margin:70px 0px 30px;
     h1{
         // width:80%;
         // margin:0px auto 0px;
@@ -22,23 +22,18 @@ const LatestPost = styled.div`
             }
         }
     }
-    // img{
-    //     width:100%;
-    //     max-height:350px;
-    //     object-fit:cover;
-    // }
 `
 
 export default class FirstPost extends Component {
     render() {
         const data = this.props.data;
     return (
-      <LatestPost>
+      <LatestPost className="uk-padding" uk-height-viewport="offset-top:70px;offset-bottom:80px;">
         <div className="uk-container uk-container-small">
             <div className="uk-margin">
                 <ul className="uk-iconnav uk-flex-center">
                     {data.categories && data.categories.map(
-                            category => <li><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
+                            category => <li key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
                         )
                     }
                 </ul>
@@ -48,9 +43,9 @@ export default class FirstPost extends Component {
             </Link>
             
             <Link to={'post/' + data.slug}>
-            <div class="uk-cover-container uk-height-medium">
-                <img src={data.featured_media.localFile.childImageSharp.original.src} alt='' uk-cover="" />
-            </div>            
+                <div class="uk-cover-container uk-height-medium">
+                    <img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} uk-img=""/>
+                </div>            
             </Link>            
         </div>
       </LatestPost>
