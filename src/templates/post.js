@@ -18,8 +18,9 @@ import '../components/rootStyle.scss'
 //     display:inline-block;
 // `
 
-const SingleArticle = styled.article`
+const SingleArticle = styled.section`
     padding-top:0px !important;
+    background: #fff;
     img{
         object-fit:cover;
     }
@@ -112,13 +113,13 @@ class PostTemplate extends Component {
                 
                 <div className="uk-background-muted">
                 <div className="uk-container uk-container">
-                    <SingleArticle className="uk-section uk-section-default">
+                    <SingleArticle className="">
                         <PostImage className="uk-position-relative uk-text-center">
                             <img src={featuredMedia.localFile.childImageSharp.original.src} alt={post.title} uk-img="" /> 
                         </PostImage>
 
                         <div className="uk-container">
-                            <article className="uk-article uk-padding">
+                            <article className="uk-article uk-padding uk-box-shadow-small">
                                 <div className="uk-grid">
 
                                     <div className="uk-width-expand@m">
@@ -137,7 +138,7 @@ class PostTemplate extends Component {
 
                                     <SideBar className="uk-width-1-3@m">
 
-                                        <div className="uk-article-meta" uk-sticky="offset: 100;">
+                                        <div className="uk-article-meta" uk-sticky="offset:100;bottom: #footer">
                                             
                                             <ul className="post-categories">
                                                 {post.categories && post.categories.map(

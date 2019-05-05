@@ -43,7 +43,7 @@ export default class Header extends Component {
                     <div className="uk-grid uk-flex uk-flex-middle">
                       <div className="uk-width-expand@m uk-flex uk-flex-left uk-flex-middle">
                         <Link to="/">
-                          <img className="uk-logo" src={logo} alt="ThemesGrove Logo" width="200" uk-img="" alt={siteTitle} />
+                          <img className="uk-logo" src={logo} width="200" uk-img="" alt={siteTitle} />
                         </Link>
                       </div>
                       <div>

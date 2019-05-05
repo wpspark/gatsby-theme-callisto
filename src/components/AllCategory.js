@@ -8,12 +8,12 @@ export default class AllCategroy extends Component {
 
     console.log(active);
     return (
-      <div className="all-category" uk-sticky="">
+      <div className="all-category uk-box-shadow-small" uk-sticky="">
         
         <nav className="uk-container">
           <div className="uk-navbar-left">
             <ul className="uk-navbar-nav uk-overflow-auto">
-              <li className={ typeof(active) == 'undefined' ? 'uk-active' : ''}> 
+              <li className={ typeof(active) === 'undefined' ? 'uk-active' : ''}> 
                 <Link to='/'>
                   <span className="uk-margin-small-right" uk-icon="grid"></span>
                   <span>All</span>
@@ -22,7 +22,7 @@ export default class AllCategroy extends Component {
               {
                 allCat.edges.map( ({node}) => (
                   node.count>0 && 
-                  <li key={node.id} className={ active == node.slug ? 'uk-active' : ''}> 
+                  <li key={node.id} className={ active === node.slug ? 'uk-active' : ''}> 
                     <Link to={'categories/' + node.slug}>
                       <span dangerouslySetInnerHTML={{__html:node.name}} />
                     </Link>
