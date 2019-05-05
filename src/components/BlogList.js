@@ -48,7 +48,7 @@ const FirstGroup = styled.div`
         justify-content:space-between;
         padding: 10px;
         overflow: hidden;
-        background-image: linear-gradient(0deg,rgb(0, 0, 0),rgba(0, 0, 0, 0.32));
+        background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.2));
         >img{
             position: absolute;
             bottom: 0;
