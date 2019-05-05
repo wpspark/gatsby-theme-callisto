@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import {Link} from 'gatsby'
 import logo from "../images/tg-logo.png"
-import '../../node_modules/uikit/dist/js/uikit.js';
 
 const HeaderWrapper = styled.div`
   background:#ffffff;
@@ -22,14 +21,11 @@ const OrderButton = styled.div`
 export default class Header extends Component {
     state = { ready: false };
     componentWillMount = () => {
-        if (typeof window !== 'undefined') 
-        {
-            const Uikit = require('uikit');
-            const UikitIcons = require('uikit/dist/js/uikit-icons.min');
-            Uikit.use(UikitIcons);
-
-            this.setState({ ready: true });
-        }
+        const Uikit = require('uikit');
+        const UikitIcons = require('uikit/dist/js/uikit-icons.min');
+        Uikit.use(UikitIcons);
+        
+        this.setState({ ready: true });
     };
     render() {
         let {siteTitle} = this.props;

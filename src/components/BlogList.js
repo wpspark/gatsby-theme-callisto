@@ -228,7 +228,7 @@ class BlogList extends Component {
                         <div className="uk-margin">
                             <ul className="uk-iconnav">
                                 {node.categories && node.categories.map(
-                                        category => <li><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
+                                        category => <li key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
                                     )
                                 }
                             </ul>
@@ -238,14 +238,6 @@ class BlogList extends Component {
                             <h4 dangerouslySetInnerHTML={{__html:node.title}}/>
                         </Link>
 
-                        <div>
-                            <span className="cat">
-                                {node.categories && node.categories.map(
-                                        category => <Link key={category.id} to={'categories/'+ category.slug}><span dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link>
-                                    )
-                                }
-                            </span>
-                        </div>
                     </SingleArticleBox>
                 ))}
                 </SecondGroup>

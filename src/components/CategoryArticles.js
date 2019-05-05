@@ -4,7 +4,6 @@ import Link from 'gatsby-link'
 import styled from 'styled-components'
 import './rootStyle.scss'
 
-
 const ArticleWrapper = styled.div`
     display:grid;
     grid-template-columns: repeat(3, 1fr);
@@ -75,7 +74,9 @@ class CategoryArticles extends Component {
 render() {
     const data = this.props.data;
     return (
-            <ArticleWrapper className="article-wrapper uk-grid uk-child-width-1-1@s uk-child-width-1-3@m">
+            <ArticleWrapper className="article-wrapper uk-grid uk-child-width-1-1@s uk-child-width-1-3@m"
+                uk-scrollspy="cls: uk-animation-fade; target: .single-article-box; delay: 500; repeat: true"
+            >
                 {data.map(({node}) => (                        
                     <SingleArticleBox key={node.id} className="single-article-box uk-card uk-margin-bottom">
                         <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
@@ -92,7 +93,7 @@ render() {
                         <div className="uk-margin">
                             <ul className="uk-iconnav">
                                 {node.categories && node.categories.map(
-                                        category => <li><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
+                                        category => <li key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
                                     )
                                 }
                             </ul>

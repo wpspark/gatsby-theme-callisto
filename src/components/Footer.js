@@ -27,7 +27,7 @@ export default class Footer extends Component {
                           <img className="uk-logo" src={logo} alt="ThemesGrove Logo" width="200" uk-img="" />
                         </Link>
                         <p>
-                            This site is powered by <a href="https://wpspark.io" target="_blank">WpSpark</a>
+                            This site is powered by <a rel="noopener noreferrer" href="https://wpspark.io" target="_blank">WpSpark</a>
                         </p>
                     </div>
                 </div>
