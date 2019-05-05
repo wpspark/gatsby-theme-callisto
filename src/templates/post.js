@@ -21,9 +21,6 @@ import '../components/rootStyle.scss'
 const SingleArticle = styled.section`
     padding-top:0px !important;
     background: #fff;
-    img{
-        object-fit:cover;
-    }
 `
 // const PostContent = styled.div`
 //     display:grid;
@@ -31,7 +28,9 @@ const SingleArticle = styled.section`
 // `
 const PostImage = styled.div`
     img{
-        width:100%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 `
 const PostMeta = styled.div`
@@ -114,8 +113,8 @@ class PostTemplate extends Component {
                 <div className="uk-background-muted">
                 <div className="uk-container uk-container">
                     <SingleArticle className="">
-                        <PostImage className="uk-position-relative uk-text-center">
-                            <img src={featuredMedia.localFile.childImageSharp.original.src} alt={post.title} uk-img="" /> 
+                        <PostImage id="postImage" className="uk-text-center uk-cover-container uk-height-large">
+                            <img className="uk-cover" src={featuredMedia.localFile.childImageSharp.original.src} alt={post.title} uk-img="" uk-cover/> 
                         </PostImage>
 
                         <div className="uk-container">
@@ -138,7 +137,7 @@ class PostTemplate extends Component {
 
                                     <SideBar className="uk-width-1-3@m">
 
-                                        <div className="uk-article-meta" uk-sticky="offset:100;bottom: #footer">
+                                        <div className="uk-article-meta" uk-sticky="offset:100;top: #postImage; bottom: #footer">
                                             
                                             <ul className="post-categories">
                                                 {post.categories && post.categories.map(

@@ -4,11 +4,6 @@ import styled from 'styled-components'
 
 const LatestPost = styled.div`
     text-align:center;
-    // margin:70px 0px 30px;
-    h1{
-        // width:80%;
-        // margin:0px auto 0px;
-    }
     .category{
         margin:35px 0px 50px;
         a{
@@ -21,6 +16,11 @@ const LatestPost = styled.div`
                 text-decoration:none;
             }
         }
+    }
+    #firstPostCover img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 `
 
@@ -38,13 +38,13 @@ export default class FirstPost extends Component {
                     }
                 </ul>
             </div>
-            <Link to={'post/' + data.slug}>
+            <Link to={'post/' + data.slug} className="uk-display-block">
                 <h1 className="uk-margin">{data.title}</h1>
             </Link>
             
-            <Link to={'post/' + data.slug}>
-                <div className="uk-cover-container">
-                    <img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} uk-img="" className="uk-height-medium"/>
+            <Link to={'post/' + data.slug} className="uk-display-block">
+                <div id="firstPostCover" className="uk-cover-container uk-height-medium">
+                    <img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} uk-img="" className="uk-cover" uk-cover/>
                 </div>            
             </Link>            
         </div>
