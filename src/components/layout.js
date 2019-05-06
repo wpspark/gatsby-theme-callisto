@@ -16,6 +16,7 @@ import "./layout.css"
 import './rootStyle.scss'
 
 const Layout = ({ children, data }) => (
+  
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -48,10 +49,12 @@ const Layout = ({ children, data }) => (
     render={data => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
+
         {/* <FirstPost data={data.wordpressPost}/> */}
         {/* <AllCategroy data={data.allWordpressCategory} /> */}
         {/* <Menu menu={data}/> */}
-            <main>{children}</main>
+        
+        <main>{children}</main>
         <Footer/>
       </>
     )}

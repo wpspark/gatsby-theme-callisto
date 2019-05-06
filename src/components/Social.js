@@ -8,15 +8,6 @@ const SocialMenu = styled.div`
 `
 
 export default class Social extends Component {
-    state = { ready: false };
-    componentDidMount = () => {
-        if (typeof window !== 'undefined') {
-            const uikit = require('uikit');
-            const icons = require('uikit/dist/js/uikit-icons.min');
-            uikit.use(icons);
-            this.setState({ ready: true });
-        }
-    };
     render() {
         return (
         <SocialMenu className="social-icons">

@@ -20,12 +20,24 @@ const OrderButton = styled.div`
 
 export default class Header extends Component {
     state = { ready: false };
-    componentWillMount = () => {
-        const Uikit = require('uikit');
-        const UikitIcons = require('uikit/dist/js/uikit-icons.min');
-        Uikit.use(UikitIcons);
-        
-        this.setState({ ready: true });
+    
+    // componentDidMount() {
+    //   try {
+    //     this.UIkit = require('uikit/dist/js/uikit')
+    //     this.Icons = require('uikit/dist/js/uikit-icons')
+    //     this.UIkit.use(this.Icons)
+    //   } catch (e) {
+    //     console.error(e)
+    //   }
+    // }
+    
+    componentDidMount = () => {
+        if (typeof window !== 'undefined') {
+          const uikit = require('uikit');
+          const icons = require('uikit/dist/js/uikit-icons.min');
+          uikit.use(icons);
+          this.setState({ ready: true });
+        }
     };
     render() {
         let {siteTitle} = this.props;
