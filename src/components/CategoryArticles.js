@@ -54,6 +54,7 @@ const SingleArticleBox = styled.div`
 const FeaturedImage = styled.div`
     img{
         /* border:solid 1px #ddd; */
+        object-fit: cover;
     }
 `
 const PostAuthor = styled.div`
@@ -71,10 +72,14 @@ const PostAuthor = styled.div`
 
 class CategoryArticles extends Component {
 
+    // <PostAuthor>
+    //                                 <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
+    //                             </PostAuthor>
+
 render() {
     const data = this.props.data;
     return (
-            <ArticleWrapper className="article-wrapper uk-grid uk-child-width-1-1@s uk-child-width-1-3@m"
+            <ArticleWrapper className="article-wrapper uk-grid uk-child-width-1-1@s uk-child-width-1-2@m"
                 uk-scrollspy="cls: uk-animation-fade; target: .single-article-box; delay: 500; repeat: true"
             >
                 {data.map(({node}) => (                        
@@ -82,11 +87,10 @@ render() {
                         <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
                             <div className="image-wrapper uk-transition-opaque">
                                 <Link to={'post/' + node.slug}>
-                                    <img  src={node.featured_media.localFile.childImageSharp.original.src} alt="" />
+                                    <img className="uk-height-medium uk-width-xlarge"  
+                                        src={node.featured_media.localFile.childImageSharp.original.src} alt="" />
                                 </Link>
-                                <PostAuthor>
-                                    <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
-                                </PostAuthor>
+                                
                             </div>
                         </FeaturedImage>
                         
