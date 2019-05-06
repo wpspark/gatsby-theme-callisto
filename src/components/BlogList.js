@@ -83,26 +83,26 @@ const FirstGroup = styled.div`
         }
     }
 `
-const SecondGroup = styled.div`
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap:30px;
-    .single-article-box{
-        &:hover{
-            .image-wrapper{
-                transform:scale(.98, .98);
-            }
-        }
-    }
-    .image-wrapper{
-        margin-bottom:10px !important;
-        transform:scale(1, 1);
-        transition:all 0.4s ease;
-        >img{
-            border-radius:5px;
-        }
-    }
-`
+// const SecondGroup = styled.div`
+//     display:grid;
+//     grid-template-columns: repeat(3, 1fr);
+//     grid-gap:30px;
+//     .single-article-box{
+//         &:hover{
+//             .image-wrapper{
+//                 transform:scale(.98, .98);
+//             }
+//         }
+//     }
+//     .image-wrapper{
+//         margin-bottom:10px !important;
+//         transform:scale(1, 1);
+//         transition:all 0.4s ease;
+//         >img{
+//             border-radius:5px;
+//         }
+//     }
+// `
 
 
 const SingleArticleBox = styled.div`

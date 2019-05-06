@@ -57,18 +57,18 @@ const FeaturedImage = styled.div`
         object-fit: cover;
     }
 `
-const PostAuthor = styled.div`
-    position:absolute;
-    text-align:center;
-    left:0;
-    right:0;
-    bottom:-20px;
-    img{
-        width:50px;
-        height:50px;
-        border-radius:50%;
-    }
-`
+// const PostAuthor = styled.div`
+//     position:absolute;
+//     text-align:center;
+//     left:0;
+//     right:0;
+//     bottom:-20px;
+//     img{
+//         width:50px;
+//         height:50px;
+//         border-radius:50%;
+//     }
+// `
 
 class CategoryArticles extends Component {
 
