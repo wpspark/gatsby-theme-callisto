@@ -59,6 +59,13 @@ export const postsQuery3 = graphql`
                         slug
                         link
                     }
+                    author {
+                      id
+                      name
+                      avatar_urls{
+                        wordpress_96
+                      }
+                    }
                 }
             }
         }
@@ -92,6 +99,16 @@ export const postsQuery3 = graphql`
                     }
                 }
             }
+          }
+          author {
+            id
+            name
+            avatar_urls{
+              wordpress_96
+            }
+          }
+          tags {
+            id
           }
         }
     }

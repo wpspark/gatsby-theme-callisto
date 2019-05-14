@@ -87,8 +87,10 @@ render() {
                         <FeaturedImage className="uk-inline-clip uk-transition-toggle" tabindex="0">
                             <div className="image-wrapper uk-transition-opaque">
                                 <Link to={'post/' + node.slug}>
-                                    <img className="uk-height-medium uk-width-xlarge"  
+                                    { node.featured_media === null ? null : 
+                                        <img className="uk-height-medium uk-width-xlarge"  
                                         src={node.featured_media.localFile.childImageSharp.original.src} alt="" />
+                                    }
                                 </Link>
                                 
                             </div>

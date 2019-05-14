@@ -105,7 +105,7 @@ const SocialShare = styled.div`
 class PostTemplate extends Component {
     render() {
         const post = this.props.data.wordpressPost
-        const featuredMedia = this.props.pageContext.featuredImage;
+        const featuredMedia = this.props.pageContext.featuredImage
         
         const disqusShortname = "themesgrove-blog";
         const disqusConfig = {
@@ -122,9 +122,12 @@ class PostTemplate extends Component {
                 <div className="uk-background-muted">
                     <div className="uk-container uk-container">
                         <SingleArticle className="uk-box-shadow-small">
-                            <PostImage id="postImage" className="uk-text-center uk-cover-container uk-height-large">
-                                <img className="uk-cover" src={featuredMedia.localFile.childImageSharp.original.src} alt={post.title} uk-img="" uk-cover="true"/> 
-                            </PostImage>
+                            {
+                                featuredMedia === null ? null : 
+                                <PostImage id="postImage" className="uk-text-center uk-cover-container uk-height-large">
+                                    <img className="uk-cover" src={featuredMedia.localFile.childImageSharp.original.src} alt={post.title} uk-img="" uk-cover="true"/> 
+                                </PostImage>
+                            }
 
                             <div className="uk-container">
                                 <article className="uk-article uk-padding">
@@ -157,16 +160,14 @@ class PostTemplate extends Component {
 
                                                 <PostAuthor className="uk-card uk-card-small uk-margin-top">
                                                     <div className="uk-card-header uk-padding-remove">
-                                                        <img className="uk-border-circle" width="40" height="40" 
-                                                            src="https://lh3.googleusercontent.com/-5DBS2IYgKXw/AAAAAAAAAAI/AAAAAAAADeU/jHkWiEAk4d0/s50/photo.jpg" 
+                                                        <img className="uk-border-circle" width="96" height="96" 
+                                                            src={ post.author.avatar_urls.wordpress_96 } 
                                                             alt="Abu Huraira"
                                                         />
-                                                        <h3 className="uk-card-title uk-margin-remove-top">Anam Hossain</h3>
+                                                        <h3 className="uk-card-title uk-margin-remove-top">{post.author.name}</h3>
                                                     </div>
                                                     <div className="uk-card-body uk-padding-remove">
-                                                        <p>
-                                                        Web developer
-                                                        </p>
+                                                        <p>{post.author.description}</p>
                                                     </div>
                                                 </PostAuthor>
                                                 
@@ -218,7 +219,14 @@ export const pageQuery = graphql`
                 id
                 name
                 slug
-            }            
+            }
+            author{
+                name
+                avatar_urls{
+                    wordpress_96
+                }
+                description
+            }
         }
         site {
             siteMetadata {

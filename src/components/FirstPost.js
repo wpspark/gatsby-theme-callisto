@@ -26,29 +26,31 @@ const LatestPost = styled.div`
 
 export default class FirstPost extends Component {
     render() {
+        
         const data = this.props.data;
-    return (
-      <LatestPost className="uk-padding" uk-height-viewport="offset-top:70px;offset-bottom:80px;">
-        <div className="uk-container uk-container-small">
-            <div className="uk-margin">
-                <ul className="uk-iconnav uk-flex-center">
-                    {data.categories && data.categories.map(
-                            category => <li key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
-                        )
-                    }
-                </ul>
+
+        return (
+          <LatestPost className="uk-padding" uk-height-viewport="offset-top:70px;offset-bottom:80px;">
+            <div className="uk-container uk-container-small">
+                <div className="uk-margin">
+                    <ul className="uk-iconnav uk-flex-center">
+                        {data.categories && data.categories.map(
+                                category => <li key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></li>
+                            )
+                        }
+                    </ul>
+                </div>
+                <Link to={'post/' + data.slug} className="uk-display-block">
+                    <h1 className="uk-margin">{data.title}</h1>
+                </Link>
+                
+                <Link to={'post/' + data.slug} className="uk-display-block">
+                    <div id="firstPostCover" className="uk-cover-container uk-height-medium">
+                        <img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} uk-img="" className="uk-cover" uk-cover="true"/>
+                    </div>            
+                </Link>            
             </div>
-            <Link to={'post/' + data.slug} className="uk-display-block">
-                <h1 className="uk-margin">{data.title}</h1>
-            </Link>
-            
-            <Link to={'post/' + data.slug} className="uk-display-block">
-                <div id="firstPostCover" className="uk-cover-container uk-height-medium">
-                    <img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} uk-img="" className="uk-cover" uk-cover="true"/>
-                </div>            
-            </Link>            
-        </div>
-      </LatestPost>
-    )
-  }
+          </LatestPost>
+        )
+    }
 }

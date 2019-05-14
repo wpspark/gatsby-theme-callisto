@@ -70,6 +70,13 @@ export const postsQuery2 = graphql`
                         slug
                         link
                     }
+                    author{
+                      name
+                      avatar_urls{
+                        wordpress_96
+                      }
+                      description
+                    }
                 }
             }
         }

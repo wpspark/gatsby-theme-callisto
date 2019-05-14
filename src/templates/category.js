@@ -52,29 +52,35 @@ export const categoryQuery = graphql`
             }) {
             edges {
                 node {
-                id
-                title
-                excerpt
-                slug
-                date(formatString: "MMMM DD, YYYY")
-                categories{
                     id
-                    name
+                    title
+                    excerpt
                     slug
-                    link
-                }
-                featured_media{
-                    localFile{
-                        childImageSharp{
-                            original {
-                                width
-                                height
-                                src
+                    date(formatString: "MMMM DD, YYYY")
+                    categories{
+                        id
+                        name
+                        slug
+                        link
+                    }
+                    featured_media{
+                        localFile{
+                            childImageSharp{
+                                original {
+                                    width
+                                    height
+                                    src
+                                }
                             }
                         }
                     }
-                }
-                
+                    author{
+                      name
+                      avatar_urls{
+                        wordpress_96
+                      }
+                      description
+                    }
                 }
             }
         }
@@ -113,6 +119,13 @@ export const categoryQuery = graphql`
                       }
                   }
               }
+            }
+            author{
+              name
+              avatar_urls{
+                wordpress_96
+              }
+              description
             }
         }
     }
