@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import Menu from "./Menu"
+// import Menu from "./Menu"
 import Footer from './Footer'
 
 import "../utils/typography"
