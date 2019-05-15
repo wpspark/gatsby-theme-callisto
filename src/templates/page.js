@@ -1,42 +1,33 @@
-// import React, {Component} from "react"
+import React, { Component } from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/layout"
+import SEO from '../components/seo'
+import { rhythm } from "../utils/typography"
 
-// class PageTemplate extends Component {
-//     render() {
-//         const siteMetadata = this.props.data.site.siteMetadata
-//         const currentPage = this.props.data.wordpressPage
+class PageTemplate extends Component {
+  render() {
+    const currentPage = this.props.data.wordpressPage
 
-//         console.log(currentPage)
-//         console.log(siteMetadata);
+    return (
+      <Layout>
+      	<SEO title={currentPage.title}/>
 
-//         return (
-//             <div>
-//                 <h1>Helllllllow world</h1>
-//                 <h1 dangerouslySetInnerHTML={{__html: currentPage.title}}/>
-//                 <div dangerouslySetInnerHTML={{__html: currentPage.content}}/>
+        <h1 dangerouslySetInnerHTML={{ __html: currentPage.title }} />
+        
+        <div dangerouslySetInnerHTML={{ __html: currentPage.content }} />
+      </Layout>
+    )
+  }
+}
 
-//                 <p dangerouslySetInnerHTML={{__html: currentPage.date}} />
-//                 <p dangerouslySetInnerHTML={{__html: currentPage.slug}} />
-//             </div>
-//         )
-//     }
-// }
+export default PageTemplate
 
-// export default PageTemplate
-
-// export const pageQuery = graphql`
-//     query currentPageQuery($id: String!) {
-//         wordpressPage(id: { eq: $id }) {
-//             title
-//             content
-//             slug
-//             id
-//             date(formatString: "MMMM DD, YYYY")
-//         }
-//         site {
-//             id
-//             siteMetadata {
-//                 title
-//             }
-//         }
-//     }
-// `
+export const pageQuery = graphql`
+  query($id: String!) {
+    wordpressPage(id: { eq: $id }) {
+      title
+      content
+      date(formatString: "MMMM DD, YYYY")
+    }
+  }
+`

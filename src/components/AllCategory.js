@@ -6,7 +6,7 @@ export default class AllCategroy extends Component {
     const allCat = this.props.data;
     const active = this.props.active;
 
-    console.log(active);
+    // console.log(active);
     return (
       <div className="all-category uk-box-shadow-small" uk-sticky="">
         

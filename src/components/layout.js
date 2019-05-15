@@ -8,11 +8,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-import { rhythm, scale } from "../utils/typography"
 
 import Header from "./header"
-// import Menu from "./Menu"
+import Menu from "./Menu"
 import Footer from './Footer'
+
+import "../utils/typography"
+
 import "./layout.css"
 import './rootStyle.scss'
 
@@ -53,7 +55,7 @@ const Layout = ({ children, data }) => (
 
         {/* <FirstPost data={data.wordpressPost}/> */}
         {/* <AllCategroy data={data.allWordpressCategory} /> */}
-        {/* <Menu menu={data}/> */}
+        <Menu menu={data}/>
         
         <main>{children}</main>
         <Footer/>

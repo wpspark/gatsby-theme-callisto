@@ -155,7 +155,7 @@ class BlogList extends Component {
   render() {
     // const { group, index, first, last, pageCount } = this.props.pageContext;
     const { group } = this.props.pageContext;
-    console.log(group);
+    // console.log(group);
 
     // const firstGroup = group.slice(0, 2);
     // const secondGroup = group.slice(3);
