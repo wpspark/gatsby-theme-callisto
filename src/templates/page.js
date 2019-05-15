@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from '../components/seo'
-import { rhythm } from "../utils/typography"
+import "../utils/typography"
 
 class PageTemplate extends Component {
   render() {
@@ -12,9 +12,15 @@ class PageTemplate extends Component {
       <Layout>
       	<SEO title={currentPage.title}/>
 
-        <h1 dangerouslySetInnerHTML={{ __html: currentPage.title }} />
-        
-        <div dangerouslySetInnerHTML={{ __html: currentPage.content }} />
+        <section className="uk-section ">
+          <div className="uk-container">
+            <div className="uk-padding uk-box-shadow-small uk-background-muted">
+              <h1 dangerouslySetInnerHTML={{ __html: currentPage.title }} />
+              
+              <div dangerouslySetInnerHTML={{ __html: currentPage.content }} />
+            </div>
+          </div>
+        </section>
       </Layout>
     )
   }

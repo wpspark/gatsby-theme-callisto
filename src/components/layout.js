@@ -42,20 +42,27 @@ const Layout = ({ children, data }) => (
               }
           }
         }
+        wordpressSiteMetadata{
+          name
+          description
+          url
+          home
+        }
         site {
           siteMetadata {
             title
+            description
           }
         }
       }
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header meta={data.wordpressSiteMetadata} menu={data}/>
 
         {/* <FirstPost data={data.wordpressPost}/> */}
         {/* <AllCategroy data={data.allWordpressCategory} /> */}
-        <Menu menu={data}/>
+        {/*<Menu menu={data}/>*/}
         
         <main>{children}</main>
         <Footer/>

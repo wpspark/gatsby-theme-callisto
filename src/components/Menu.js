@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 // import PropTypes from "prop-types"
 import './rootStyle.scss'
 
@@ -18,9 +18,6 @@ class Menu extends Component {
                         {
                             data.map( (node, index) => (
                                 <li key={index} className="uk-active">
-                                    {
-                                        console.log(node.url.replace(originalDomain, ""))
-                                    }
                                     <Link to={node.url.replace(originalDomain, "")}>
                                         {node.title}
                                     </Link>
