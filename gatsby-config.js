@@ -19,12 +19,9 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: "dev.wp",
-        auth: {
-          wpcom_user: "admin",
-          wpcom_pass: "pioneer",
-        },
-        protocol: "http",
+        baseUrl: `themesgrove.com`,
+        auth: {},
+        protocol: "https",
         hostingWPCOM: false,
         useACF: false,
         perPage: 100,
@@ -38,6 +35,15 @@ module.exports = {
           "**/users",
           "**/wp-api-menus/v2/menus",
         ],
+        excludedRoutes: [
+          "**/wp-content/uploads/edd/**",
+          "**/**/*.zip",
+        ],
+        verboseOutput: true,
+        // use a custom normalizer which is applied after the built-in ones.
+        normalizer: function({ entities }) {
+          return entities
+        },
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
