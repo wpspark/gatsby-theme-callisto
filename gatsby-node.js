@@ -51,13 +51,7 @@ const createPaginatedPages = require('gatsby-paginate');
                   }
               }
             }
-            author{
-              name
-              avatar_urls{
-                wordpress_96
-              }
-              description
-            }
+            
           }
         }
       }

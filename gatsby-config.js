@@ -16,17 +16,15 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`, 
+    
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: "dev.wp",
-        auth: {
-          wpcom_user: "admin",
-          wpcom_pass: "pioneer",
-        },
-        protocol: "http",
+        baseUrl: "themesgrove.com",
+        protocol: "https",
         hostingWPCOM: false,
         useACF: true,
+        verboseOutput: true,
         perPage: 100,
         includedRoutes: [
           "**/posts",
@@ -38,25 +36,24 @@ module.exports = {
           "**/users",
           "/wp-api-menus/**",
         ],
-        excludedRoutes: [
-          "**/acf/**",
-          "**/wc/**",
-          "**/oembed/**",
-          "**/akismet/**",
-          "**/rankmath/**",
-          "**/wp-analytify/**",
-          "**/affwp/**",
-          "**/wp-content/uploads/edd/",
-        ],
-        verboseOutput: true,
+        // excludedRoutes: [
+        //   "**/acf/**",
+        //   "**/wc/**",
+        //   "**/oembed/**",
+        //   "**/akismet/**",
+        //   "**/rankmath/**",
+        //   "**/wp-analytify/**",
+        //   "**/affwp/**",
+        //   "**/wp-content/uploads/edd/",
+        // ],
         // use a custom normalizer which is applied after the built-in ones.
-        normalizer: function({ entities }) {
-          return entities
-        },
+        // normalizer: function({ entities }) {
+        //   return entities
+        // },
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
   ],
 }
