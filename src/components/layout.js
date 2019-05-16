@@ -18,30 +18,32 @@ import "../utils/typography"
 import "./layout.css"
 import './rootStyle.scss'
 
+// allWordpressWpApiMenusMenusItems(filter: {
+//                   slug: {
+//                       eq: "main-menu"
+//                   }
+//           }){
+//           edges{
+//               node{
+//                   id
+//                   name
+//                   items {
+//                       wordpress_id
+//                       order
+//                       wordpress_parent
+//                       title
+//                       url          
+//                   }
+//               }
+//           }
+//         }
+
 const Layout = ({ children, data }) => (
   
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
-        allWordpressWpApiMenusMenusItems(filter: {
-                  slug: {
-                      eq: "main-menu"
-                  }
-          }){
-          edges{
-              node{
-                  id
-                  name
-                  items {
-                      wordpress_id
-                      order
-                      wordpress_parent
-                      title
-                      url          
-                  }
-              }
-          }
-        }
+        
         wordpressSiteMetadata{
           name
           description

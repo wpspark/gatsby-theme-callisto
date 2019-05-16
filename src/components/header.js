@@ -36,7 +36,7 @@ export default class Header extends Component {
         let siteTitle = meta.name;
         let siteDescription = meta.description;
         const originalDomain = meta.url; // get it from config
-        const data = this.props.menu.allWordpressWpApiMenusMenusItems.edges[0].node['items'];
+        // const data = this.props.menu.allWordpressWpApiMenusMenusItems.edges[0].node['items'];
         return (
 
           this.state.ready ? 
@@ -50,7 +50,7 @@ export default class Header extends Component {
                           {/*<img className="uk-logo" src={logo} width="200" uk-img="" alt={siteTitle} />*/}
                         </Link>
                       </div>
-                      <div>
+                      {/* <div>
                         <div className="uk-navbar-container tm-navbar-container uk-navbar-transparent">
                           <nav className="uk-container" uk-navbar="true">
                               <div className="uk-navbar-left">
@@ -71,8 +71,9 @@ export default class Header extends Component {
                           </nav>
                         </div>
                       </div>
+                      */}
                       <OrderButton className="uk-padding-small">
-                        <a className="uk-button uk-button-default uk-border-rounded" href={meta.url} target="_blank" rel="noopener noreferrer">
+                        <a className="uk-button uk-button-default uk-border-rounded" href={originalDomain} target="_blank" rel="noopener noreferrer">
                           <span className="uk-margin-small-right" uk-icon="reply"></span>
                         </a>
                       </OrderButton>

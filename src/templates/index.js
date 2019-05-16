@@ -59,13 +59,7 @@ export const postsQuery3 = graphql`
                         slug
                         link
                     }
-                    author {
-                      id
-                      name
-                      avatar_urls{
-                        wordpress_96
-                      }
-                    }
+                    
                 }
             }
         }
@@ -88,24 +82,6 @@ export const postsQuery3 = graphql`
             id
             name
             slug
-          }
-          featured_media{
-            localFile{
-                childImageSharp{
-                    original {
-                        width
-                        height
-                        src
-                    }
-                }
-            }
-          }
-          author {
-            id
-            name
-            avatar_urls{
-              wordpress_96
-            }
           }
           tags {
             id

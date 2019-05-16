@@ -123,7 +123,7 @@ class PostTemplate extends Component {
                     <div className="uk-container uk-container">
                         <SingleArticle className="uk-box-shadow-small">
                             {
-                                featuredMedia === null ? null : 
+                                featuredMedia === undefined ? null : 
                                 <PostImage id="postImage" className="uk-text-center uk-cover-container uk-height-large">
                                     <img className="uk-cover" src={featuredMedia.localFile.childImageSharp.original.src} alt={post.title} uk-img="" uk-cover="true"/> 
                                 </PostImage>
@@ -158,18 +158,22 @@ class PostTemplate extends Component {
                                                     }
                                                 </ul>
 
-                                                <PostAuthor className="uk-card uk-card-small uk-margin-top">
-                                                    <div className="uk-card-header uk-padding-remove">
-                                                        <img className="uk-border-circle" width="96" height="96" 
-                                                            src={ post.author.avatar_urls.wordpress_96 } 
-                                                            alt="Abu Huraira"
-                                                        />
-                                                        <h3 className="uk-card-title uk-margin-remove-top">{post.author.name}</h3>
-                                                    </div>
-                                                    <div className="uk-card-body uk-padding-remove">
-                                                        <p>{post.author.description}</p>
-                                                    </div>
-                                                </PostAuthor>
+                                                {
+                                                    post.author === undefined ? null : 
+                                                        <PostAuthor className="uk-card uk-card-small uk-margin-top">
+                                                            <div className="uk-card-header uk-padding-remove">
+                                                                <img className="uk-border-circle" width="96" height="96" 
+                                                                    src={ post.author.avatar_urls.wordpress_96 } 
+                                                                    alt={ post.author.name }
+                                                                />
+                                                                <h3 className="uk-card-title uk-margin-remove-top">{post.author.name}</h3>
+                                                        
+                                                            </div>
+                                                            <div className="uk-card-body uk-padding-remove">
+                                                                <p>{post.author.description}</p>
+                                                            </div>
+                                                        </PostAuthor>
+                                                }
                                                 
                                                 <SocialShare className="social-share">
                                                     <Soical />
@@ -227,6 +231,7 @@ export const pageQuery = graphql`
                 }
                 description
             }
+            
         }
         site {
             siteMetadata {
@@ -244,5 +249,6 @@ export const pageQuery = graphql`
               }
             }
         }
+        
     }
 `

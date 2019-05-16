@@ -63,24 +63,6 @@ export const categoryQuery = graphql`
                         slug
                         link
                     }
-                    featured_media{
-                        localFile{
-                            childImageSharp{
-                                original {
-                                    width
-                                    height
-                                    src
-                                }
-                            }
-                        }
-                    }
-                    author{
-                      name
-                      avatar_urls{
-                        wordpress_96
-                      }
-                      description
-                    }
                 }
             }
         }
@@ -108,24 +90,6 @@ export const categoryQuery = graphql`
               id
               name
               slug
-            }
-            featured_media{
-              localFile{
-                  childImageSharp{
-                      original {
-                          width
-                          height
-                          src
-                      }
-                  }
-              }
-            }
-            author{
-              name
-              avatar_urls{
-                wordpress_96
-              }
-              description
             }
         }
     }

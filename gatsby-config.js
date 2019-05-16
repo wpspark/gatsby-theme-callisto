@@ -20,11 +20,19 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
+<<<<<<< HEAD
         baseUrl: "themesgrove.com",
         protocol: "https",
         hostingWPCOM: false,
         useACF: true,
         verboseOutput: true,
+=======
+        baseUrl: `themesgrove.com`,
+        auth: {},
+        protocol: "https",
+        hostingWPCOM: false,
+        useACF: false,
+>>>>>>> fc72ea2a481938754489d14129cb8e0e8978f6f0
         perPage: 100,
         includedRoutes: [
           "**/posts",
@@ -34,8 +42,9 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
-          "/wp-api-menus/**",
+          "**/wp-api-menus/v2/menus",
         ],
+<<<<<<< HEAD
         // excludedRoutes: [
         //   "**/acf/**",
         //   "**/wc/**",
@@ -46,6 +55,13 @@ module.exports = {
         //   "**/affwp/**",
         //   "**/wp-content/uploads/edd/",
         // ],
+=======
+        excludedRoutes: [
+          "**/wp-content/uploads/edd/**",
+          "**/**/*.zip",
+        ],
+        verboseOutput: true,
+>>>>>>> fc72ea2a481938754489d14129cb8e0e8978f6f0
         // use a custom normalizer which is applied after the built-in ones.
         // normalizer: function({ entities }) {
         //   return entities
