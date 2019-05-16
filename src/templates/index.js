@@ -83,6 +83,17 @@ export const postsQuery3 = graphql`
             name
             slug
           }
+          featured_media{
+            localFile{
+                childImageSharp{
+                    original {
+                        width
+                        height
+                        src
+                    }
+                }
+            }
+        }
           tags {
             id
           }

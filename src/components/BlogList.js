@@ -223,10 +223,10 @@ class BlogList extends Component {
                                     
                                     <div className="author-img">
                                         <span>
-                                            {
+                                            {/* {
                                                 node.author.avatar_urls === undefined ? null : 
                                                 <img src={node.author.avatar_urls.wordpress_96} alt={node.author.name}/>
-                                            }
+                                            } */}
                                         </span>
                                     </div>
                                     <div className="post-cat">

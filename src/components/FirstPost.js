@@ -46,8 +46,8 @@ export default class FirstPost extends Component {
                 
                 <Link to={'post/' + data.slug} className="uk-display-block">
                     <div id="firstPostCover" className="uk-cover-container uk-height-medium">
-                        {/*data.featured_media.localFile.childImageSharp.original.src*/}
-                        <img src="" alt={data.title} uk-img="" className="uk-cover" uk-cover="true"/>
+                        
+                        <img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} uk-img="" className="uk-cover" uk-cover="true"/>
                     </div>            
                 </Link>            
             </div>

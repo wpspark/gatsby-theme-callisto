@@ -63,6 +63,18 @@ export const categoryQuery = graphql`
                         slug
                         link
                     }
+
+                    featured_media{
+                        localFile{
+                            childImageSharp{
+                                original {
+                                    width
+                                    height
+                                    src
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
