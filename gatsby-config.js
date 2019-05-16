@@ -26,7 +26,7 @@ module.exports = {
         },
         protocol: "http",
         hostingWPCOM: false,
-        useACF: true,
+        useACF: false,
         perPage: 100,
         includedRoutes: [
           "**/posts",
@@ -36,27 +36,12 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
-          "/wp-api-menus/**",
+          "**/wp-api-menus/v2/menus",
         ],
-        excludedRoutes: [
-          "**/acf/**",
-          "**/wc/**",
-          "**/oembed/**",
-          "**/akismet/**",
-          "**/rankmath/**",
-          "**/wp-analytify/**",
-          "**/affwp/**",
-          "**/wp-content/uploads/edd/",
-        ],
-        verboseOutput: true,
-        // use a custom normalizer which is applied after the built-in ones.
-        normalizer: function({ entities }) {
-          return entities
-        },
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
   ],
 }

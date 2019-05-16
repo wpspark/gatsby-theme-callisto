@@ -155,7 +155,7 @@ class BlogList extends Component {
   render() {
     // const { group, index, first, last, pageCount } = this.props.pageContext;
     const { group } = this.props.pageContext;
-    // console.log(group);
+    console.log(group);
 
     // const firstGroup = group.slice(0, 2);
     // const secondGroup = group.slice(3);
@@ -213,7 +213,7 @@ class BlogList extends Component {
                                 <Link to={'post/' + node.slug} className="uk-display-block">
                                     <div className="uk-cover-container uk-height-medium">
                                         {
-                                            node.featured_media === null ? null : 
+                                            node.featured_media === undefined ? null : 
                                             <img className="uk-cover" src={node.featured_media.localFile.childImageSharp.original.src} alt="" uk-img="" uk-cover="" />
                                         }
                                     </div>
@@ -223,7 +223,10 @@ class BlogList extends Component {
                                     
                                     <div className="author-img">
                                         <span>
-                                            <img src={node.author.avatar_urls.wordpress_96} alt={node.author.name}/>
+                                            {
+                                                node.author.avatar_urls === undefined ? null : 
+                                                <img src={node.author.avatar_urls.wordpress_96} alt={node.author.name}/>
+                                            }
                                         </span>
                                     </div>
                                     <div className="post-cat">
