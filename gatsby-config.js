@@ -19,9 +19,9 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `themesgrove.com`,
+        baseUrl: `dev.wp`,
         auth: {},
-        protocol: "https",
+        protocol: "http",
         hostingWPCOM: false,
         useACF: false,
         perPage: 100,
@@ -33,13 +33,8 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
-          // "**/wp-api-menus/v2/menus",
           "/wp-api-menus/**",
         ],
-        // excludedRoutes: [
-        //   "**/wp-content/uploads/edd/**",
-        //   "**/**/*.zip",
-        // ],
         verboseOutput: true,
         // use a custom normalizer which is applied after the built-in ones.
         normalizer: function({ entities }) {

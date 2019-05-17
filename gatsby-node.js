@@ -40,19 +40,6 @@ const createPaginatedPages = require('gatsby-paginate');
                 slug
                 link
             }
-            
-            featured_media{
-              localFile{
-                  childImageSharp{
-                      original {
-                          width
-                          height
-                          src
-                      }
-                  }
-              }
-            }
-            
           }
         }
       }
