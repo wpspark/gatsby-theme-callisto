@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `ThemesGrove`,
-    description: `ThemesGrove specializes in WordPress creates awesome themes and plugins. Choose the perfect WordPress Themes and Plugins from our vast collection.`,
-    author: `@themexpert`,
+    title: `WpSpark`,
+    description: `WpSpark specializes in WordPress creates awesome themes and plugins. Choose the perfect WordPress Themes and Plugins from our vast collection.`,
+    author: `@wpspark`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
