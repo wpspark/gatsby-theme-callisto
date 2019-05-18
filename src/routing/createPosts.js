@@ -51,7 +51,7 @@ module.exports = async ({ actions, graphql }) => {
         edges: result.data.allWordpressPost.edges,
         createPage: createPage,
         pageTemplate: './src/templates/blog.js',
-        pageLength: 3,
+        pageLength: 12,
         pathPrefix: '/',
       });
 

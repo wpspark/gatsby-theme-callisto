@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link, StaticQuery, graphql } from "gatsby"
 import Menu from "../siteMenu"
+import CategoryMenu from "../category-menu"
 import logo from "../../images/wpspark-logo.png"
 
 export default class Header extends Component {
@@ -11,7 +12,8 @@ export default class Header extends Component {
     }
 
     render() {
-
+      const active = this.props.active;
+      const pageContext = this.props.pageContext;
       return (
         <StaticQuery
           query={graphql`
@@ -40,7 +42,9 @@ export default class Header extends Component {
               <div id="MainsiteNav" className="navbar-menu">
                 <div className="navbar-start">
                   
-                  <Menu />
+                  {/*<Menu data={this.props.pageContext}/>*/}
+
+                  <CategoryMenu pageContext={this.props.pageContext}/>
 
                 </div>
 
