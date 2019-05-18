@@ -4,7 +4,7 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, keywords, title }) {
-  const { site } = useStaticQuery(
+  const { site,  wordpressSiteMetadata } = useStaticQuery(
     graphql`
       query {
         site {
@@ -14,11 +14,17 @@ function SEO({ description, lang, meta, keywords, title }) {
             author
           }
         }
+        wordpressSiteMetadata{
+          name
+          description
+          url
+          home
+        }
       }
     `
   )
-
-  const metaDescription = description || site.siteMetadata.description
+  
+  const metaDescription = description || wordpressSiteMetadata.description
 
   return (
     <Helmet
@@ -26,7 +32,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${wordpressSiteMetadata.name}`}
       meta={[
         {
           name: `description`,
@@ -50,7 +56,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: wordpressSiteMetadata.name,
         },
         {
           name: `twitter:title`,
@@ -70,9 +76,7 @@ function SEO({ description, lang, meta, keywords, title }) {
             : []
         )
         .concat(meta)}
-    >
-    
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Noto+Serif+TC" rel="stylesheet" />
+    >    
     </Helmet>
   )
 }

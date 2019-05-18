@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import Layout from "../layouts"
+import SEO from "../utils/seo"
 
 class BlogPage extends Component {
     
   render() {
     return (
         <Layout>
+        	<SEO title="Home" />
         	<h1>Blog Page - Index</h1>
         </Layout>
     )
