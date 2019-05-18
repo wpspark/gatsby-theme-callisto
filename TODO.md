@@ -14,6 +14,9 @@ Components
 //Images
 	Gatsby
 Pages
+	404
+
+Templates
 	Index
 	
 	blog
@@ -29,4 +32,3 @@ Pages
 
 	User
 
-	404

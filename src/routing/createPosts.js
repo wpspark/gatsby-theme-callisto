@@ -1,85 +1,81 @@
-const path = require(`path`)
-module.exports = async ({ actions, graphql }) => {
-  const GET_POSTS = `
-  {
-    allWordpressPost(
-      sort: {
-          fields: [date]
-          order: DESC
-        }
-      ){
-      edges {
-          node{
+const _ = require(`lodash`);
+const Promise = require(`bluebird`);
+const path = require(`path`);
+const slash = require(`slash`);
+const createPaginatedPages = require('gatsby-paginate');
+
+const postQuery = `
+{
+  allWordpressPost(
+    sort: {
+      fields: [date]
+      order: DESC
+    }
+  ){
+    edges {
+      node{
+        id
+        title
+        excerpt
+        slug
+        date(formatString: "MMMM DD, YYYY")
+        categories{
             id
-            title
-            excerpt
+            name
             slug
-            date(formatString: "MMMM DD, YYYY")
-            categories{
-                id
-                name
-                slug
-                link
-            }
-          }
+            link
         }
       }
     }
-  `
-  const { createPage } = actions
-  const allPosts = []
-  const blogPages = []
-  let pageNumber = 0
-  const fetchPosts = async variables =>
-    await graphql(GET_POSTS, variables).then(({ data }) => {
-      const {
-        wpgraphql: {
-          posts: {
-            nodes,
-            pageInfo: { hasNextPage, endCursor },
-          },
-        },
-      } = data
+  }
+}`
 
-      const nodeIds = nodes.map(node => node.postId)
-      const blogTemplate = path.resolve(`./src/pages/blog.js`)
-      const blogPagePath = !variables.after ? `/` : `/page/${pageNumber}`
+module.exports = async ({ actions, graphql }) => {
 
-      blogPages[pageNumber] = {
-        path: blogPagePath,
-        component: blogTemplate,
-        context: {
-          ids: nodeIds,
-          pageNumber: pageNumber,
-          hasNextPage: hasNextPage,
-        },
-        ids: nodeIds,
+  const { createPage } = actions;
+
+  return new Promise((resolve, reject) => {
+    graphql(postQuery)
+    .then(result => {
+
+      if(result.errors) {
+        console.log(result.errors);
+        reject(result.errors);
       }
-      nodes.map(post => {
-        allPosts.push(post)
-      })
-      if (hasNextPage) {
-        pageNumber++
-        return fetchPosts({ first: 12, after: endCursor })
-      }
-      return allPosts
-    })
 
-  await fetchPosts({ first: 12, after: null }).then(allPosts => {
-    const postTemplate = path.resolve(`./src/pages/post.js`)
+      const postTemplate = path.resolve("./src/templates/post.js");
+      const postsTemplate = path.resolve("./src/templates/blog.js");
 
-    blogPages.map(blogPage => {
-      console.log(`createBlogPage ${blogPage.context.pageNumber}`)
-      createPage(blogPage)
-    })
+    
+      createPaginatedPages({
+        edges: result.data.allWordpressPost.edges,
+        createPage: createPage,
+        pageTemplate: './src/templates/blog.js',
+        pageLength: 3,
+        pathPrefix: '/',
+      });
 
-    allPosts.map(post => {
-      console.log(`create post: ${post.uri}`)
-      createPage({
-        path: `/blog/${post.uri}/`,
-        component: postTemplate,
-        context: post,
-      })
-    })
-  })
+      // createPaginatedPages({
+      //   edges: result.data.allWordpressPost.edges,
+      //   createPage: createPage,
+      //   pageTemplate: './src/templates/index.js',
+      //   pageLength: 50,
+      //   pathPrefix: '',
+      //   context:{}
+      // });
+
+      _.each(result.data.allWordpressPost.edges, edge => {
+          createPage({
+              path: `/post/${edge.node.slug}/`,
+              component: slash(postTemplate),
+              context: {
+                  id: edge.node.id
+              },
+          });
+      });
+      resolve();
+
+    });
+  });
 }
+

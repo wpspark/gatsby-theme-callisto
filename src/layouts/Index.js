@@ -1,81 +1,27 @@
-/**
- * Layout component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
+import React, { Component } from 'react'
 
-import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import Header from "../components/siteHeader"
+import Footer from "../components/siteFooter"
 
-import Header from "./header"
-// import Menu from "./Menu"
-import Footer from './Footer'
+import "../utils/Typography"
 
-import "../utils/typography"
-
-import "./layout.css"
-import './rootStyle.scss'
-
-
-
-const Layout = ({ children, data }) => (
-  
-  <StaticQuery
-    query={graphql`
-      query SiteMenuQuery {
-        allWordpressWpApiMenusMenusItems(filter: {
-          slug: {
-              eq: "main-menu"
-          }
-  }){
-  edges{
-      node{
-          id
-          name
-          items {
-              wordpress_id
-              order
-              wordpress_parent
-              title
-              url          
-          }
-      }
-  }
-}
-        wordpressSiteMetadata{
-          name
-          description
-          url
-          home
-        }
-        site {
-          siteMetadata {
-            title
-            description
-          }
-        }
-      }
-    `}
-    render={data => (
+class Layout extends Component {
+    
+  render() {
+    return (
       <>
-        <Header meta={data.wordpressSiteMetadata} menu={data}/>
+        <Header />
 
-        {/* <FirstPost data={data.wordpressPost}/> */}
-        {/* <AllCategroy data={data.allWordpressCategory} /> */}
-        {/*<Menu menu={data}/>*/}
-        
-        <main>{children}</main>
-        <Footer/>
+      	<main>
+	        <div className="container is-fluid common-spacing">
+            {this.props.children}
+          </div>
+        </main>
+
+        <Footer />
       </>
-    )}
-  />
-)
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+    )
+  }
 }
 
 export default Layout
-
