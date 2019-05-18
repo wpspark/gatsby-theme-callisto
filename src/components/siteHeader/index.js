@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'gatsby'
+import { Link, StaticQuery, graphql } from "gatsby"
 import Menu from "../siteMenu"
 import logo from "../../images/wpspark-logo.png"
 
@@ -13,45 +13,52 @@ export default class Header extends Component {
     render() {
 
       return (
-        <nav className="navbar is-transparent has-shadow is-spaced" role="navigation">
-          <div className="navbar-item">
-            
-            <Link to="/" className="navbar-item">
-              <img src={logo} alt="" width="112" height="28" />
-            </Link>
-
-            <a className="navbar-burger burger" data-target="MainsiteNav"
-            onClick={this.toggleDropdownMenu}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </a>
-          </div>
-
-          <div id="MainsiteNav" className="navbar-menu">
-            <div className="navbar-start">
-              
-              <Link to="/" className="navbar-item">
-                Home
-              </Link>
+        <StaticQuery
+          query={graphql`
+            query siteHeader {
+              wordpressSiteMetadata{
+                name
+                description
+                url
+                home
+              }
+            }
+          `}
+          render={data => (
+            <nav className="navbar is-transparent has-shadow is-spaced" role="navigation">
+              <div className="navbar-brand">
                 
-              <Menu />
+                <Link to="/" className="navbar-item">
+                  <img src={logo} alt="" width="112" height="28" />
+                </Link>
 
-            </div>
+                <button className="navbar-burger burger" data-target="MainsiteNav" onClick={this.toggleDropdownMenu}>
+                  <span/><span/><span/>
+                </button>
+              </div>
 
-            <div className="navbar-end">
-              <div className="navbar-item">
-                <div className="field is-grouped">
-                  <p className="control">
-                    <a className="button is-primary" href="">
-                      <span>Mainsite</span>
-                    </a>
-                  </p>
+              <div id="MainsiteNav" className="navbar-menu">
+                <div className="navbar-start">
+                  
+                  <Menu />
+
+                </div>
+
+                <div className="navbar-end">
+                  <div className="navbar-item">
+                    <div className="field is-grouped">
+                      <p className="control">
+                        <a className="button is-primary" href={data.wordpressSiteMetadata.url} target="_blank" rel="noopener noreferrer">
+                            <span>Mainsite</span>
+                        </a>
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </nav>
+            </nav>
+          )}
+        />
       )
     }
 }

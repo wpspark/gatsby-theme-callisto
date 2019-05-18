@@ -9,7 +9,7 @@ class Layout extends Component {
     
   render() {
     return (
-      <>
+      <div className="wp-spark-app">
         <Header />
 
       	<main>
@@ -19,7 +19,7 @@ class Layout extends Component {
         </main>
 
         <Footer />
-      </>
+      </div>
     )
   }
 }

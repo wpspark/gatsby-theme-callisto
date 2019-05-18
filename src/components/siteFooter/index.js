@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'gatsby'
-import logo from "../../images/wpspark-logo.png"
-
+  
 export default class Footer extends Component {
     
     render() {

@@ -1,11 +1,15 @@
-import React from "react"
+import React, { Component } from 'react'
+import Layout from "../layouts"
 
-const NotFoundPage = () => (
-  <layout>
+class NotFoundPage extends Component {
     
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </layout>
-)
+  render() {
+    return (
+        <Layout>
+        	<h1>404 - Page not found</h1>
+        </Layout>
+    )
+  }
+}
 
 export default NotFoundPage

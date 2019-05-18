@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'gatsby'
+import { Link, StaticQuery, graphql } from "gatsby"
 
 export default class Menu extends Component {
     state = { ready: false };
@@ -7,35 +7,48 @@ export default class Menu extends Component {
     render() {
 
       return (
-        <div className="navbar-item has-dropdown is-hoverable">
-          <a className="navbar-link" href="https://bulma.io/documentation/overview/start/">
-            Docs
-          </a>
-          <div className="navbar-dropdown is-boxed">
-            <a className="navbar-item" href="https://bulma.io/documentation/overview/start/">
-              Overview
-            </a>
-            <a className="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-              Modifiers
-            </a>
-            <a className="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-              Columns
-            </a>
-            <a className="navbar-item" href="https://bulma.io/documentation/layout/container/">
-              Layout
-            </a>
-            <a className="navbar-item" href="https://bulma.io/documentation/form/general/">
-              Form
-            </a>
-            <hr className="navbar-divider" />
-            <a className="navbar-item" href="https://bulma.io/documentation/elements/box/">
-              Elements
-            </a>
-            <a className="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-              Components
-            </a>
-          </div>
-        </div>
+        <StaticQuery
+          query={graphql`
+            query SiteMenu {
+              allWordpressWpApiMenusMenusItems(filter: {
+                slug: {
+                  eq: "main-menu"
+                }
+              }){
+                edges{
+                  node{
+                    id
+                    name
+                    items {
+                      wordpress_id
+                      order
+                      wordpress_parent
+                      title
+                      url          
+                    }
+                  }
+                }
+              }
+              wordpressSiteMetadata{
+                name
+                description
+                url
+                home
+              }
+            }
+          `}
+          render={data => (
+            <div className="navbar-item is-hoverable">              
+              {
+                data.allWordpressWpApiMenusMenusItems.edges[0].node['items'].map( (item, index) => (
+                  <Link key={index} className="navbar-item" to={item.url.replace(data.wordpressSiteMetadata.url, "")}>
+                    {item.title}
+                  </Link>
+                ))
+              }
+            </div>
+          )}
+        />
       )
     }
 }
