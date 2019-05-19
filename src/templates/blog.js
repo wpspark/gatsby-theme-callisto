@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Layout from "../layouts"
 import LatestPost from "../components/latest-post"
 import AllPost from "../components/all-post"
+import AllPostPagination from "../components/all-post/pagination"
 import SEO from "../utils/seo"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -14,13 +15,15 @@ class BlogPage extends Component {
 
     return (
         <Layout pageContext={this.props.pageContext}>
-        	<SEO title="Home" />
+        	
+          <SEO title="Home" />
 
         	<LatestPost />
 
         	<AllPost data={data.allWordpressPost} />
 
-        	<h1>Blog Page - Index</h1>
+          <AllPostPagination />
+
         </Layout>
     )
   }

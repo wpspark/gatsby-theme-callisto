@@ -19,9 +19,9 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `dev.wp`,
+        baseUrl: `themesgrove.com`,
         auth: {},
-        protocol: "http",
+        protocol: "https",
         hostingWPCOM: false,
         useACF: false,
         perPage: 100,

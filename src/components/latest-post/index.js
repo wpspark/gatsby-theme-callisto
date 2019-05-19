@@ -39,13 +39,8 @@ export default class LatestPost extends Component {
                       }
                   </div>
                   <h1 className="title">
-                    <Link to={'post/' + data.wordpressPost.slug}>
-                      {data.wordpressPost.title}
-                    </Link>
+                    <Link to={'post/' + data.wordpressPost.slug} dangerouslySetInnerHTML={{__html:data.wordpressPost.title + " "}} />
                   </h1>
-                  <h2 className="subtitle">
-                      {data.wordpressPost.excerpt}
-                  </h2>
                   {
                     data.featured_media === undefined ? null :
                       <figure className="image is-3by1">

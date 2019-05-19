@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link, StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
 
 export default class AllPost extends Component {
     state = { ready: false };
@@ -11,14 +10,16 @@ export default class AllPost extends Component {
         <div className="columns is-multiline is-1-mobile ">
           {
             data.edges.map((node, index) => {
-              console.log(node.node)
               return <div key={index} className={'column is-one-third' }>
-                <article className="card">
-                  <div className="card-image">
-                    <figure className="image is-4by3">
-                      
-                    </figure>
-                  </div>
+                <article className="card"> 
+                  {
+                    data.featured_media === undefined ? null :
+                    <div className="card-image">
+                      <figure className="image is-4by3">
+                        <img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
+                      </figure>
+                    </div>
+                  }
                   <div className="card-content">
                     <div className="media">
                       <div className="media-left">
@@ -28,11 +29,9 @@ export default class AllPost extends Component {
                       </div>
                       <div className="media-content">
                       <h3 className="title is-4">
-                          <Link to={'post/' + node.node.slug}>
-                            {node.node.title}
-                          </Link>
+                          <Link to={'post/' + node.node.slug} dangerouslySetInnerHTML={{__html:node.node.title + " "}} />
                         </h3>
-                        <p className="subtitle is-6">@{node.node.author.name}</p>
+                        <p className="subtitle is-6" dangerouslySetInnerHTML={{__html:"@" + node.node.author.name + " "}} />
                       </div>
                     </div>
 
@@ -55,28 +54,3 @@ export default class AllPost extends Component {
       )
     }
 }
-
-
-// <div className="tile is-ancestor">
-//                 <div className="tile is-parent">
-//                   <article className="tile is-child box">
-//                     <p className="title">Hello World</p>
-//                     <p className="subtitle">What is up?</p>
-//                   </article>
-//                 </div>
-//                 <div className="tile is-parent">
-//                   <article className="tile is-child box">
-//                     <p className="title">Foo</p>
-//                     <p className="subtitle">Bar</p>
-//                   </article>
-//                 </div>
-//                 <div className="tile is-parent">
-//                   <article className="tile is-child box">
-//                     <p className="title">Third column</p>
-//                     <p className="subtitle">With some content</p>
-//                     <div className="content">
-//                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-//                     </div>
-//                   </article>
-//                 </div>
-//               </div>
