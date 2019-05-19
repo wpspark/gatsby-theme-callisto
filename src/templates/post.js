@@ -66,7 +66,7 @@ class PostTemplate extends Component {
 													<h1 className="title">{data.wordpressPost.author.name}</h1>
 													
 													<div className="is-inline-block">
-														<figure className="image is-128x128 image-objectfit-contain">
+														<figure className="image is-96x96 image-objectfit-contain">
 															<img className="is-rounded" width="96" height="96" 
 																src={ data.wordpressPost.author.avatar_urls.wordpress_96 } 
 																alt={ data.wordpressPost.author.name }
