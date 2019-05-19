@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Layout from "../layouts"
+import SEO from "../utils/seo"
 
 class CategoriesArchivePage extends Component {
     
