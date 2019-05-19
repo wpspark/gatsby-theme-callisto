@@ -8,10 +8,10 @@ import "../utils/Typography"
 class Layout extends Component {
     
   render() {
-    // console.log(this.props.pageContext)
+    
     return (
       <div className="wp-spark-app">
-        <Header pageContext={this.props.pageContext}/>
+        <Header slug={this.props.slug}/>
 
       	<main>
 	        <div className="container is-fluid common-spacing">

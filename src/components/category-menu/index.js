@@ -5,9 +5,8 @@ export default class CategoryMenu extends Component {
     state = { ready: false };
     
     render() {
-      const active = '';
-      // console.log(this.props.pageContext)
-
+      const active = this.props.slug;
+      
       return (
         <StaticQuery
           query={graphql`
@@ -27,7 +26,7 @@ export default class CategoryMenu extends Component {
           `}
           render={data => (
             <div className="navbar-item is-hoverable">              
-              <Link className={ active === '' ? 'navbar-item is-active' : 'navbar-item'} to="/">
+              <Link className={ active === 'undefined' ? 'navbar-item is-active' : 'navbar-item'} to="/">
                 Home
               </Link>
               {

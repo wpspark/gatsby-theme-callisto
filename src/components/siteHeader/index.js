@@ -5,8 +5,6 @@ import CategoryMenu from "../category-menu"
 import logo from "../../images/wpspark-logo.png"
 
 export default class Header extends Component {
-    state = { ready: false };
-    
     toggleDropdownMenu = () => {
       document.getElementById('MainsiteNav').classList.toggle('is-active');
     }
@@ -43,7 +41,7 @@ export default class Header extends Component {
                   
                   {/*<Menu data={this.props.pageContext}/>*/}
 
-                  <CategoryMenu pageContext={this.props.pageContext}/>
+                  <CategoryMenu slug={this.props.slug}/>
 
                 </div>
 

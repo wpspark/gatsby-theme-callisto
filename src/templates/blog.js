@@ -13,7 +13,7 @@ class BlogPage extends Component {
     const data = this.props.data;
 
     return (
-        <Layout pageContext={this.props.pageContext}>
+        <Layout>
         	
           <SEO title="Home" />
 

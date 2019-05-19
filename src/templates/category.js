@@ -10,10 +10,10 @@ class CategoryPage extends Component {
   render() {
   	const data = this.props.data;
   	const category = data.wordpressCategory;
-  	console.log(this.props)
 
     return (
-        <Layout>
+        <Layout slug={category.slug}>
+        
         	<SEO title="Category Page" />
         	
         	<PageTitle title={category.name} subtitle={category.description} />
