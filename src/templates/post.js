@@ -5,12 +5,19 @@ import AllPost from "../components/all-post"
 import AllPostPagination from "../components/all-post/pagination"
 import SEO from "../utils/seo"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import { DiscussionEmbed } from "disqus-react";
 
 class PostTemplate extends Component {
   
   render() {
   	
     const data = this.props.data;
+
+    const disqusShortname = "themesgrove-blog";
+    const disqusConfig = {
+		identifier: data.wordpressPost.id,
+		title: data.wordpressPost.title,
+    };
 
     return (
         <Layout pageContext={this.props.pageContext}>
@@ -48,7 +55,8 @@ class PostTemplate extends Component {
 				            	<div className="column is-offset-2 is-8">
 				              		<div className="post content is-medium" dangerouslySetInnerHTML={{__html:data.wordpressPost.content}} />
 				              		
-				              		<hr/>
+
+				              		<br/><hr /><br/>
 									
 									{
 										data.wordpressPost.author === undefined ? null : 
@@ -72,6 +80,10 @@ class PostTemplate extends Component {
 											</div>
 										</section>
 									}
+
+									<br/><hr /><br/>
+									
+									<DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
 
 			    				</div>
 		    				</div>
