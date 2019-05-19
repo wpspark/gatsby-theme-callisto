@@ -1,6 +1,10 @@
 .common-spacing {
-  padding: 1rem 1.5rem;
+	padding: 1rem 1.5rem;
 }
 .image-objectfit-contain img{
 	object-fit: contain;
+}
+html.has-navbar-fixed-top,
+body.has-navbar-fixed-top {
+	padding-top: 5.5rem;
 }
