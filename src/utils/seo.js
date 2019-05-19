@@ -31,6 +31,9 @@ function SEO({ description, lang, meta, keywords, title }) {
       htmlAttributes={{
         lang,
       }}
+      bodyAttributes={{
+        class: 'has-navbar-fixed-top'
+      }}
       title={title}
       titleTemplate={`%s | ${wordpressSiteMetadata.name}`}
       meta={[

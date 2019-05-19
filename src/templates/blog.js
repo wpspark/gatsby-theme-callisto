@@ -98,6 +98,8 @@ export const BlogPageQuery = graphql`
           }
           tags {
             id
+            name
+            slug
           }
           featured_media{
             localFile{
