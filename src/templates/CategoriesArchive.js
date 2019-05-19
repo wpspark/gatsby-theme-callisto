@@ -4,7 +4,10 @@ class CategoriesArchivePage extends Component {
     
   render() {
     return (
-        <h1>Page Found</h1>
+        <Layout>
+        	<SEO title="CategoriesArchivePage" />
+        	<h1>CategoriesArchivePage - Index</h1>
+        </Layout>
     )
   }
 }

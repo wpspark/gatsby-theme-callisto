@@ -4,16 +4,9 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, keywords, title }) {
-  const { site,  wordpressSiteMetadata } = useStaticQuery(
+  const { wordpressSiteMetadata } = useStaticQuery(
     graphql`
       query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
         wordpressSiteMetadata{
           name
           description

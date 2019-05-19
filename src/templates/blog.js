@@ -4,7 +4,7 @@ import LatestPost from "../components/latest-post"
 import AllPost from "../components/all-post"
 import AllPostPagination from "../components/all-post/pagination"
 import SEO from "../utils/seo"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 class BlogPage extends Component {
   

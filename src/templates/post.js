@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import Layout from "../layouts"
-import LatestPost from "../components/latest-post"
-import AllPost from "../components/all-post"
-import AllPostPagination from "../components/all-post/pagination"
 import SEO from "../utils/seo"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import { DiscussionEmbed } from "disqus-react";
 
 class PostTemplate extends Component {
