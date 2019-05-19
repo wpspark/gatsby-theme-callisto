@@ -8,7 +8,7 @@ import "../utils/Typography"
 class Layout extends Component {
     
   render() {
-    console.log(this.props.pageContext)
+    // console.log(this.props.pageContext)
     return (
       <div className="wp-spark-app">
         <Header pageContext={this.props.pageContext}/>

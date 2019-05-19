@@ -34,9 +34,9 @@ export default class Header extends Component {
                   <img src={logo} alt="" width="112" height="28" />
                 </Link>
 
-                <button className="navbar-burger burger" data-target="MainsiteNav" onClick={this.toggleDropdownMenu}>
+                <span className="navbar-burger burger" data-target="MainsiteNav" onClick={this.toggleDropdownMenu}>
                   <span/><span/><span/>
-                </button>
+                </span>
               </div>
 
               <div id="MainsiteNav" className="navbar-menu">

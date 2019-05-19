@@ -6,7 +6,7 @@ export default class CategoryMenu extends Component {
     
     render() {
       const active = '';
-      console.log(this.props.pageContext)
+      // console.log(this.props.pageContext)
 
       return (
         <StaticQuery
