@@ -21,7 +21,7 @@ export default class LatestPost extends Component {
               </h1>
               {
                 data.featured_media === undefined ? null :
-                  <figure className="image is-3by1">
+                  <figure className="image is-3by1 image-objectfit-contain">
                     <img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
                   </figure>
               }

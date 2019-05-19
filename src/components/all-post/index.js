@@ -17,7 +17,7 @@ export default class AllPost extends Component {
                       {
                         node.node.featured_media === undefined ? null :
                         <div className="card-image">
-                          <figure className="image is-4by3">
+                          <figure className="image">
                             <img src={node.node.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
                           </figure>
                         </div>
@@ -30,7 +30,7 @@ export default class AllPost extends Component {
                             </figure>
                           </div>
                           <div className="media-content">
-                          <h3 className="title is-4">
+                            <h3 className="title is-4">
                               <Link to={'post/' + node.node.slug} dangerouslySetInnerHTML={{__html:node.node.title + " "}} />
                             </h3>
                             <p className="subtitle is-6" dangerouslySetInnerHTML={{__html:"@" + node.node.author.name + " "}} />
@@ -39,12 +39,11 @@ export default class AllPost extends Component {
 
                         <div className="content">
                           
-                          <div className="tags are-medium">
+                          <div className="tags ">
+                            <time className="tag is-white" datetime={new Date(node.node.date).toLocaleDateString("en-US")}>{node.node.date}</time>
                             {node.node.categories && node.node.categories.map(
                               category => <span className="tag" key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></span>
                             )}
-                            
-                            <time className="tag is-white" datetime={new Date(node.node.date).toLocaleDateString("en-US")}>{node.node.date}</time>
                           </div>
                         </div>
                       </div>

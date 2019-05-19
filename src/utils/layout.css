@@ -1,3 +1,6 @@
 .common-spacing {
   padding: 1rem 1.5rem;
 }
+.image-objectfit-contain img{
+	object-fit: contain;
+}
