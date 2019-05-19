@@ -27,7 +27,7 @@ export default class Header extends Component {
             }
           `}
           render={data => (
-            <nav className="navbar is-transparent has-shadow is-spaced" role="navigation">
+            <nav className="navbar is-transparent has-shadow is-spaced is-fixed-top" role="navigation">
               <div className="navbar-brand">
                 
                 <Link to="/" className="navbar-item">

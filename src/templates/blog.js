@@ -11,14 +11,15 @@ class BlogPage extends Component {
   render() {
   	
     const data = this.props.data;
-  	console.log(data);
 
     return (
         <Layout pageContext={this.props.pageContext}>
         	
           <SEO title="Home" />
 
-        	<LatestPost />
+        	<LatestPost data={data.wordpressPost} />
+
+          <hr />
 
         	<AllPost data={data.allWordpressPost} />
 
@@ -61,6 +62,17 @@ export const BlogPageQuery = graphql`
                         wordpress_96
                       }
                     }
+                    featured_media{
+                      localFile{
+                          childImageSharp{
+                              original {
+                                  width
+                                  height
+                                  src
+                              }
+                          }
+                      }
+                    }
                 }
             }
         }
@@ -86,6 +98,17 @@ export const BlogPageQuery = graphql`
           }
           tags {
             id
+          }
+          featured_media{
+            localFile{
+                childImageSharp{
+                    original {
+                        width
+                        height
+                        src
+                    }
+                }
+            }
           }
         }
       }
