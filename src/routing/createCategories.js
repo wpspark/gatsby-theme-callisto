@@ -35,9 +35,21 @@ module.exports = async ({ actions, graphql }) => {
       const categoryTemplate = path.resolve("./src/templates/category.js");
       const categoriesTemplate = path.resolve("./src/templates/categoriesarchive.js");
       
-      createPage({
-          path: `categories/`,
-          component: slash(categoriesTemplate)
+      // createPage({
+      //     path: `categories/`,
+      //     component: slash(categoriesTemplate)
+      // });
+
+      createPaginatedPages({
+        edges: result.data.allWordpressCategory.edges,
+        createPage: createPage,
+        pageTemplate: slash(categoriesTemplate),
+        pageLength: 3,
+        pathPrefix: '/categories/',
+        // pathPrefix: 'your_page_name',
+        buildPath: (index, pathPrefix) =>
+          index > 1 ? `${pathPrefix}/${index}` : `/${pathPrefix}`, // This is optional and this is the default
+        context: {},
       });
 
       _.each(result.data.allWordpressCategory.edges, edge => {

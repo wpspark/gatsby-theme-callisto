@@ -12,7 +12,7 @@ export default class AllPost extends Component {
           <div className="hero-body">
             <div className="columns is-multiline is-1-mobile">
               {
-                data.edges.map((node, index) => {
+                data.map((node, index) => {
                   return (ignorefirst && index === 0) ? null : 
                   <div key={index} className={'column is-one-third' }>
                     <article className="card"> 

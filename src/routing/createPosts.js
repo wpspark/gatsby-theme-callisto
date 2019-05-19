@@ -25,6 +25,25 @@ const postQuery = `
             slug
             link
         }
+        author {
+          id
+          name
+          slug
+          avatar_urls{
+            wordpress_96
+          }
+        }
+        featured_media{
+          localFile{
+              childImageSharp{
+                  original {
+                      width
+                      height
+                      src
+                  }
+              }
+          }
+        }
       }
     }
   }
@@ -50,9 +69,13 @@ module.exports = async ({ actions, graphql }) => {
       createPaginatedPages({
         edges: result.data.allWordpressPost.edges,
         createPage: createPage,
-        pageTemplate: './src/templates/blog.js',
-        pageLength: 12,
+        pageTemplate: slash(postsTemplate),
+        pageLength: 4,
         pathPrefix: '/',
+        // pathPrefix: 'your_page_name',
+        buildPath: (index, pathPrefix) =>
+          index > 1 ? `${pathPrefix}/${index}` : `/${pathPrefix}`, // This is optional and this is the default
+        context: {},
       });
 
       // createPaginatedPages({
@@ -69,7 +92,7 @@ module.exports = async ({ actions, graphql }) => {
               path: `/post/${edge.node.slug}/`,
               component: slash(postTemplate),
               context: {
-                  id: edge.node.id
+                id: edge.node.id
               },
           });
       });

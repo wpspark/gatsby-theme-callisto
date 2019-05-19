@@ -3,13 +3,29 @@ import Layout from "../layouts"
 import SEO from "../utils/seo"
 import AllPost from "../components/all-post"
 import PageTitle from "../components/page-title"
+import { Link } from "gatsby"
 
+const NavLink = props => {
+  if (!props.test) {
+    return <Link to={props.url}>{props.text}</Link>
+  } else {
+    return <span>{props.text}</span>
+  }
+}
 
 class CategoryPage extends Component {
     
   render() {
   	const data = this.props.data;
+
+    const { group, index, first, last } = this.props.pageContext; //pageCount
+    console.log(group);
+    
+    const previousUrl = index - 1 === 1 ? '' : (index - 1).toString()
+    const nextUrl = (index + 1).toString()
+
   	const category = data.wordpressCategory;
+
 
     return (
         <Layout slug={category.slug}>
@@ -18,7 +34,14 @@ class CategoryPage extends Component {
         	
         	<PageTitle title={category.name} subtitle={category.description} />
 
-        	<AllPost data={data.allWordpressPost} />
+        	<AllPost data={group} />
+
+          <div className="previousLink">
+            <NavLink test={first} url={previousUrl} text="Go to Previous Page" />
+          </div>
+          <div className="nextLink">
+            <NavLink test={last} url={nextUrl} text="Go to Next Page" />
+          </div>
 
         </Layout>
     )

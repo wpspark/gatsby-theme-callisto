@@ -6,12 +6,12 @@ class NotFoundPage extends Component {
   render() {
     return (
         <Layout>
-        	<section class="hero is-warning">
-			  <div class="hero-body">
-			      <h1 class="title">
+        	<section className="hero is-warning">
+			  <div className="hero-body">
+			      <h1 className="title">
 			        404
 			      </h1>
-			      <h2 class="subtitle">
+			      <h2 className="subtitle">
 			        Page not found!
 			      </h2>
 			  </div>
