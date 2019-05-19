@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Layout from "../layouts"
 import SEO from "../utils/seo"
+import PostAuthor from "../components/post-author"
 import { Link, graphql } from "gatsby"
 import { DiscussionEmbed } from "disqus-react";
 
@@ -52,33 +53,7 @@ class PostTemplate extends Component {
 				            	<div className="column is-offset-2 is-8">
 				              		<div className="post content is-medium" dangerouslySetInnerHTML={{__html:data.wordpressPost.content}} />
 				              		
-
-				              		<br/><hr /><br/>
-									
-									{
-										data.wordpressPost.author === undefined ? null : 
-										<section className="hero is-light">
-											<div className="hero-body">
-												<div className="container-fluid has-text-centered">
-													<h1 className="title">{data.wordpressPost.author.name}</h1>
-													
-													<div className="is-inline-block">
-														<figure className="image is-96x96 image-objectfit-contain">
-															<img className="is-rounded" width="96" height="96" 
-																src={ data.wordpressPost.author.avatar_urls.wordpress_96 } 
-																alt={ data.wordpressPost.author.name }
-															/>
-														</figure>
-													</div>
-
-													<h2 className="subtitle">{data.wordpressPost.author.description}</h2>
-
-												</div>
-											</div>
-										</section>
-									}
-
-									<br/><hr /><br/>
+				              		<PostAuthor data={data.wordpressPost.author}/>
 									
 									<DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
 
