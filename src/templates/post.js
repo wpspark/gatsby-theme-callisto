@@ -27,8 +27,8 @@ class PostTemplate extends Component {
 			    	<div className="container">
 			    		<div className="section has-text-centered header">
 				      		<h1 className="title" dangerouslySetInnerHTML={{__html:data.wordpressPost.title}} />
-				      		<p className="subtitle is-4">
-				      			<time datetime={new Date(data.wordpressPost.date).toLocaleDateString("en-US")}>{data.wordpressPost.date}</time>
+				      		<div className="subtitle is-4">
+				      			<time dateTime={new Date(data.wordpressPost.date).toLocaleDateString("en-US")}>{data.wordpressPost.date}</time>
 				      			
 				      			<div className="tags is-centered are-medium"
 					      			style={{
@@ -36,10 +36,10 @@ class PostTemplate extends Component {
 					      			}}
 				      			>
 		                            {data.wordpressPost.categories && data.wordpressPost.categories.map(
-		                              category => <span className="tag" key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></span>
+		                              category => <span className="tag" key={category.id}><Link key={category.id} to={'/categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></span>
 		                            )}
 		                        </div>
-				      		</p>
+				      		</div>
 			    		</div>
 
 			      		{

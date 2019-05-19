@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, StaticQuery, graphql } from "gatsby"
-// import Menu from "../siteMenu"
+import Menu from "../siteMenu"
 import CategoryMenu from "../category-menu"
 import logo from "../../images/wpspark-logo.png"
 
@@ -39,13 +39,13 @@ export default class Header extends Component {
               <div id="MainsiteNav" className="navbar-menu">
                 <div className="navbar-start">
                   
-                  {/*<Menu data={this.props.pageContext}/>*/}
-
                   <CategoryMenu slug={this.props.slug}/>
 
                 </div>
 
                 <div className="navbar-end">
+                  <Menu data={this.props.pageContext} />
+                  
                   <div className="navbar-item">
                     <div className="field is-grouped">
                       <p className="control">

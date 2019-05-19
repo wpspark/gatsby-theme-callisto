@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from "gatsby"
 
 export default class PostAuthor extends Component {
     
     render() {
       let data = this.props.data;
-      console.log(data);
+      
       return (
         
           data === undefined ? null : 

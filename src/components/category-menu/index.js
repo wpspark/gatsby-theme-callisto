@@ -26,13 +26,10 @@ export default class CategoryMenu extends Component {
           `}
           render={data => (
             <div className="navbar-item is-hoverable">              
-              <Link className={ active === 'undefined' ? 'navbar-item is-active' : 'navbar-item'} to="/">
-                Home
-              </Link>
               {
                  data.allWordpressCategory.edges.map( ({node}) => (
-                  node.count != 0 ? 
-                    <Link key={node.id} className={ active === node.slug ? 'navbar-item is-active' : 'navbar-item'} to={'categories/' + node.slug} dangerouslySetInnerHTML={{__html:node.name}} />
+                  node.count !== 0 ? 
+                    <Link key={node.id} className={ active === node.slug ? 'navbar-item is-active' : 'navbar-item'} to={'/categories/' + node.slug} dangerouslySetInnerHTML={{__html:node.name}} />
                   : null 
                 ))
               }
