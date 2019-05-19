@@ -32,8 +32,9 @@ export default class CategoryMenu extends Component {
               </Link>
               {
                  data.allWordpressCategory.edges.map( ({node}) => (
-                  <Link key={node.id} className={ active === node.slug ? 'navbar-item is-active' : 'navbar-item'} to={'categories/' + node.slug} 
-                  dangerouslySetInnerHTML={{__html:node.name}} />
+                  node.count != 0 ? 
+                    <Link key={node.id} className={ active === node.slug ? 'navbar-item is-active' : 'navbar-item'} to={'categories/' + node.slug} dangerouslySetInnerHTML={{__html:node.name}} />
+                  : null 
                 ))
               }
             </div>
