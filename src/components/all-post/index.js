@@ -5,6 +5,7 @@ export default class AllPost extends Component {
     
     render() {
       let data = this.props.data;
+      let ignorefirst = this.props.ignorefirst;
 
       return (
         <section className="hero">
@@ -12,7 +13,8 @@ export default class AllPost extends Component {
             <div className="columns is-multiline is-1-mobile">
               {
                 data.edges.map((node, index) => {
-                  return <div key={index} className={'column is-one-third' }>
+                  return (ignorefirst && index == 0) ? null : 
+                  <div key={index} className={'column is-one-third' }>
                     <article className="card"> 
                       {
                         node.node.featured_media === undefined ? null :

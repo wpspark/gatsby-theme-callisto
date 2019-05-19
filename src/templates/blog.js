@@ -21,7 +21,7 @@ class BlogPage extends Component {
 
           <hr />
 
-        	<AllPost data={data.allWordpressPost} />
+        	<AllPost data={data.allWordpressPost} ignorefirst="true"/>
 
           <AllPostPagination />
 
