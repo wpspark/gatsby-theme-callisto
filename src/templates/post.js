@@ -8,7 +8,7 @@ import { DiscussionEmbed } from "disqus-react";
 class PostTemplate extends Component {
   
   render() {
-  	console.log(this.props);
+  	// console.log(this.props);
     const data = this.props.data;
 
     const disqusShortname = "themesgrove-blog";
