@@ -6,7 +6,7 @@ export default class LatestPost extends Component {
     
     render() {
       let data = this.props.data;
-      console.log(data);
+      // console.log(data);
       return (
         <section className="hero">
           <div className="hero-body">

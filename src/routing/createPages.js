@@ -6,6 +6,12 @@ const createPaginatedPages = require('gatsby-paginate');
 
 const pageQuery = `
 {
+  wordpressSiteMetadata{
+    name
+    description
+    url
+    home
+  }
   allWordpressPage {
     edges {
       node {
@@ -37,7 +43,8 @@ module.exports = async ({ actions, graphql }) => {
               path: `/${edge.node.slug}/`,
               component: slash(singlePage),
               context: {
-                  id: edge.node.id
+                  id: edge.node.id,
+                  wordpressSiteMetadata: result.data.wordpressSiteMetadata
               },
           });
       });

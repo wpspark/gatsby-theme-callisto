@@ -8,7 +8,7 @@ import { DiscussionEmbed } from "disqus-react";
 class PostTemplate extends Component {
   
   render() {
-  	
+  	console.log(this.props);
     const data = this.props.data;
 
     const disqusShortname = "themesgrove-blog";
@@ -18,7 +18,7 @@ class PostTemplate extends Component {
     };
 
     return (
-        <Layout pageContext={this.props.pageContext}>
+        <Layout wordpressSiteMetadata={this.props.pageContext.wordpressSiteMetadata}>
         	
           	<SEO title={data.wordpressPost.title} />
 

@@ -6,6 +6,12 @@ const createPaginatedPages = require('gatsby-paginate');
 
 const categoryQuery = `
 {
+  wordpressSiteMetadata{
+    name
+    description
+    url
+    home
+  }
   allWordpressCategory{
     edges{
       node{
@@ -49,14 +55,20 @@ module.exports = async ({ actions, graphql }) => {
         // pathPrefix: 'your_page_name',
         buildPath: (index, pathPrefix) =>
           index > 1 ? `${pathPrefix}/${index}` : `/${pathPrefix}`, // This is optional and this is the default
-        context: {},
+        context: {
+          wordpressSiteMetadata: result.data.wordpressSiteMetadata
+        },
       });
 
       _.each(result.data.allWordpressCategory.edges, edge => {
           createPage({
               path: `/categories/${edge.node.slug}/`,
               component: slash(categoryTemplate),
-              context: edge.node,
+              context: {
+                id: edge.node.id,
+                slug: edge.node.slug,
+                wordpressSiteMetadata: result.data.wordpressSiteMetadata
+              },
           });
       });
       resolve();

@@ -6,6 +6,12 @@ const createPaginatedPages = require('gatsby-paginate');
 
 const postQuery = `
 {
+  wordpressSiteMetadata{
+    name
+    description
+    url
+    home
+  }
   allWordpressPost(
     sort: {
       fields: [date]
@@ -75,7 +81,9 @@ module.exports = async ({ actions, graphql }) => {
         // pathPrefix: 'your_page_name',
         buildPath: (index, pathPrefix) =>
           index > 1 ? `${pathPrefix}/${index}` : `/${pathPrefix}`, // This is optional and this is the default
-        context: {},
+        context: {
+          wordpressSiteMetadata: result.data.wordpressSiteMetadata
+        },
       });
 
       // createPaginatedPages({
@@ -92,7 +100,8 @@ module.exports = async ({ actions, graphql }) => {
               path: `/post/${edge.node.slug}/`,
               component: slash(postTemplate),
               context: {
-                id: edge.node.id
+                id: edge.node.id,
+                wordpressSiteMetadata: result.data.wordpressSiteMetadata
               },
           });
       });

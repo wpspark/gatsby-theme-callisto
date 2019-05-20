@@ -16,6 +16,7 @@ const NavLink = props => {
 class CategoryPage extends Component {
     
   render() {
+    console.log(this.props);
   	const data = this.props.data;
 
     const { group, index, first, last } = this.props.pageContext; //pageCount
@@ -28,7 +29,7 @@ class CategoryPage extends Component {
 
 
     return (
-        <Layout slug={category.slug}>
+        <Layout wordpressSiteMetadata={this.props.pageContext.wordpressSiteMetadata}>
         
         	<SEO title="Category Page" />
         	

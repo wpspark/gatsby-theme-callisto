@@ -6,11 +6,10 @@ import { graphql } from "gatsby"
 class PageTemplate extends Component {
   
   render() {
-  	
     const data = this.props.data.wordpressPage;
 
     return (
-        <Layout pageContext={this.props.pageContext}>
+        <Layout wordpressSiteMetadata={this.props.pageContext.wordpressSiteMetadata}>
         	
           	<SEO title={data.title} />
 

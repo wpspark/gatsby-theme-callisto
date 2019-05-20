@@ -18,14 +18,13 @@ class BlogPage extends Component {
 
   render() {
 
-    console.log(this.props.pageContext);
     // const data = this.props.data;
     const { group, index, first, last } = this.props.pageContext; //pageCount
     const previousUrl = index - 1 === 1 ? '' : (index - 1).toString()
     const nextUrl = (index + 1).toString()
 
     return (
-        <Layout>
+        <Layout wordpressSiteMetadata={this.props.pageContext.additionalContext.wordpressSiteMetadata}>
         	
           <SEO title="Home" />
 
