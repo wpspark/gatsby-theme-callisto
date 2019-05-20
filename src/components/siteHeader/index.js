@@ -22,6 +22,8 @@ export default class Header extends Component {
     }
 
     featchWpSparkData(){
+      if(this.props.wordpressSiteMetadata === undefined) return true;
+      
       let url = this.props.wordpressSiteMetadata.url;
       // this.setState({ loading: true })
         axios
@@ -45,6 +47,7 @@ export default class Header extends Component {
 
     render() {
       let wordpressSiteMetadata = this.props.wordpressSiteMetadata;
+
       return (
         <nav className="navbar is-transparent has-shadow is-spaced is-fixed-top" role="navigation">
           <Helmet

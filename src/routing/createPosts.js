@@ -101,6 +101,7 @@ module.exports = async ({ actions, graphql }) => {
               component: slash(postTemplate),
               context: {
                 id: edge.node.id,
+                slug: edge.node.slug,
                 wordpressSiteMetadata: result.data.wordpressSiteMetadata
               },
           });
