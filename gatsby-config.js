@@ -1,3 +1,10 @@
+let token = process.argv[process.argv.length-1]
+require("dotenv").config({
+  path: `env/.env.${token}`,
+})
+
+
+
 module.exports = {
   siteMetadata: {
     title: `WpSpark`,
@@ -19,9 +26,9 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `themesgrove.com`,
+        baseUrl: process.env.baseUrl,
         auth: {},
-        protocol: "https",
+        protocol: process.env.protocol,
         hostingWPCOM: false,
         useACF: false,
         perPage: 100,
