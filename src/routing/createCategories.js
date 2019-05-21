@@ -6,6 +6,14 @@ const createPaginatedPages = require('gatsby-paginate');
 
 const categoryQuery = `
 {
+  site{
+    siteMetadata{
+      title
+      description
+      author
+      disqusShortname
+    }
+  }
   wordpressSiteMetadata{
     name
     description
