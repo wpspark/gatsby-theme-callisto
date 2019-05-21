@@ -13,12 +13,12 @@ export default class LatestPost extends Component {
             <div className="container-fluid has-text-centered">
               <div className="tags are-medium is-centered">
                   {data.categories && data.categories.map(
-                          category => <span className="tag" key={category.id}><Link key={category.id} to={'categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></span>
+                          category => <span className="tag" key={category.id}><Link key={category.id} to={'/categories/'+ category.slug}><small className="uk-badge uk-light" dangerouslySetInnerHTML={{__html:category.name + " "}} /> </Link></span>
                       )
                   }
               </div>
               <h1 className="title">
-                <Link to={'post/' + data.slug} dangerouslySetInnerHTML={{__html:data.title + " "}} />
+                <Link to={'/post/' + data.slug} dangerouslySetInnerHTML={{__html:data.title + " "}} />
               </h1>
               {
                 data.featured_media === undefined ? null :

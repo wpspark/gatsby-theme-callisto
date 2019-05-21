@@ -1,14 +1,30 @@
 import React, { Component } from 'react'
 import Layout from "../layouts"
 import SEO from "../utils/seo"
+import PageTitle from "../components/page-title"
+import { Link } from "gatsby"
 
 class CategoriesArchivePage extends Component {
     
   render() {
+    const allWordpressCategory = this.props.pageContext.allWordpressCategory;
+    
     return (
-        <Layout>
-        	<SEO title="CategoriesArchivePage" />
-        	<h1>CategoriesArchivePage - Index</h1>
+      <Layout wordpressSiteMetadata={this.props.pageContext.wordpressSiteMetadata}>
+
+        	<SEO title="Categories" />
+          <PageTitle title="Categories" subtitle="Categories listing page" />
+
+        	<section className="section columns">
+            <nav className="panel column is-offset-4 is-4">
+                {
+                  allWordpressCategory.edges.map((node, index) => { 
+                    return <Link key={index} className="panel-block" to={"/categories/" + node.node.slug} dangerouslySetInnerHTML={{__html:node.node.name + ' (' + node.node.count + ')'}} />
+                  })
+                }
+            </nav>
+          </section>
+
         </Layout>
     )
   }

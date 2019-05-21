@@ -14,16 +14,19 @@ export default class AllPostPagination extends Component {
     createTable = (pageCount) => {
       let children = []
       // Outer loop to create parent
+      children.push(<li><Link className="pagination-link" aria-label={'Start'} to={'/'}>Start</Link></li>)
       for (let i = 1; i <= pageCount; i++) {
-        children.push(<li key={i}><Link className="pagination-link" aria-label={'Goto page' + i} to={'/' + (i === 1 ? '' : i)}>{i}</Link></li>)
+        if(i > 5) break;
+        children.push(<li key={i}><Link className="pagination-link" aria-label={'Goto page' + i} to={'/' + (i > 1 ? 'page/'+i : '')}>{i}</Link></li>)
       }
+      children.push(<li><Link className="pagination-link" aria-label={'End'} to={'/page/' + (pageCount)}>End</Link></li>)
       return children
     }
 
     render() {
       const { index, first, last, pageCount } = this.props;
-      const previousUrl = index - 1 === 1 ? '' : (index - 1).toString()
-      const nextUrl = (index + 1).toString()
+      const previousUrl = index - 1 === 1 ? '' : 'page/' + (index - 1).toString()
+      const nextUrl = 'page/' + (index + 1).toString()
 
       return (
         <section className="section columns is-centered">
@@ -40,21 +43,3 @@ export default class AllPostPagination extends Component {
       )
     }
 }
-
-// <li>
-//               <a href="/" className="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
-//             </li>
-//             <li>
-//               <a href="/" className="pagination-link" aria-label="Goto page 2">2</a>
-//             </li>
-//             <li>
-//               <a href="/" className="pagination-link" aria-label="Goto page 3">3</a>
-//             </li>
-// <a href="/" className="" title="This is the first page" disabled>Previous</a>
-
-// <div className="previousLink">
-//   <NavLink test={first} url={previousUrl} text="Go to Previous Page" />
-// </div>
-// <div className="nextLink">
-//   <NavLink test={last} url={nextUrl} text="Go to Next Page" />
-// </div>

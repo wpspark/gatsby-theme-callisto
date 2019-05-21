@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "gatsby"
 import axios from "axios"
-import Menu from "../siteMenu"
+// import Menu from "../siteMenu"
 import CategoryMenu from "../category-menu"
 // import logo from "../../images/wpspark-logo.png"
 import Helmet from "react-helmet"
@@ -83,7 +83,7 @@ export default class Header extends Component {
             </div>
 
             <div className="navbar-end">
-              <Menu data={this.props.pageContext} />
+              {/* <Menu data={this.props.pageContext} /> */}
               
               <div className="navbar-item">
                 <div className="field is-grouped">

@@ -41,36 +41,27 @@ module.exports = async ({ actions, graphql }) => {
       const categoryTemplate = path.resolve("./src/templates/category.js");
       const categoriesTemplate = path.resolve("./src/templates/categoriesarchive.js");
       
-      // createPage({
-      //     path: `categories/`,
-      //     component: slash(categoriesTemplate)
-      // });
-
-      createPaginatedPages({
-        edges: result.data.allWordpressCategory.edges,
-        createPage: createPage,
-        pageTemplate: slash(categoriesTemplate),
-        pageLength: 3,
-        pathPrefix: '/categories/',
-        // pathPrefix: 'your_page_name',
-        buildPath: (index, pathPrefix) =>
-          index > 1 ? `${pathPrefix}/${index}` : `/${pathPrefix}`, // This is optional and this is the default
+      createPage({
+        path: `categories/`,
+        component: slash(categoriesTemplate),
         context: {
+          allWordpressCategory: result.data.allWordpressCategory,
           wordpressSiteMetadata: result.data.wordpressSiteMetadata
         },
-      });
-
+    });
       _.each(result.data.allWordpressCategory.edges, edge => {
           createPage({
-              path: `/categories/${edge.node.slug}/`,
+              path: `/categories/${edge.node.slug}`,
               component: slash(categoryTemplate),
               context: {
                 id: edge.node.id,
                 slug: edge.node.slug,
-                wordpressSiteMetadata: result.data.wordpressSiteMetadata
+                wordpressCategory: edge.node,
+                wordpressSiteMetadata: result.data.wordpressSiteMetadata,
               },
           });
       });
+
       resolve();
 
     });

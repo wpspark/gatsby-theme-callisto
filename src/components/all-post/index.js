@@ -6,7 +6,7 @@ export default class AllPost extends Component {
     render() {
       let data = this.props.data;
       let ignorefirst = this.props.ignorefirst;
-
+      
       return (
         <section className="hero">
           <div className="hero-body">

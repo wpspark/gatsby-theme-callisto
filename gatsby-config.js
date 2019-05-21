@@ -3,13 +3,12 @@ require("dotenv").config({
   path: `env/.env.${token}`,
 })
 
-
-
-module.exports = {
+module.exports = { 
   siteMetadata: {
     title: `WpSpark`,
-    description: `WpSpark specializes in WordPress creates awesome themes and plugins. Choose the perfect WordPress Themes and Plugins from our vast collection.`,
-    author: `@wpspark`,
+    description : `WpSpark specializes in WordPress creates awesome themes and plugins. Choose the perfect WordPress Themes and Plugins from our vast collection.`,
+    author : `@wpspark`,
+    disqusShortname: process.env.disqusShortname
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -42,7 +42,7 @@ export default class Menu extends Component {
               {
                 data.allWordpressWpApiMenusMenusItems.edges[0].node['items'].map( (item, index) => (
                   <Link key={index} className="navbar-item" 
-                    to={ item.url === '#' ? '/' : item.url.replace(data.wordpressSiteMetadata.url, "")}
+                    to={ item.url === '#' ? '/' : '/'+item.url.replace(data.wordpressSiteMetadata.url, "")}
                   >
                     {item.title}
                   </Link>

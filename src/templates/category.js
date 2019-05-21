@@ -3,31 +3,15 @@ import Layout from "../layouts"
 import SEO from "../utils/seo"
 import AllPost from "../components/all-post"
 import PageTitle from "../components/page-title"
-import { Link } from "gatsby"
-
-const NavLink = props => {
-  if (!props.test) {
-    return <Link to={props.url}>{props.text}</Link>
-  } else {
-    return <span>{props.text}</span>
-  }
-}
+import { graphql } from "gatsby"
 
 class CategoryPage extends Component {
     
   render() {
-    console.log(this.props);
-  	const data = this.props.data;
-
-    const { group, index, first, last } = this.props.pageContext; //pageCount
-    console.log(group);
     
-    const previousUrl = index - 1 === 1 ? '' : (index - 1).toString()
-    const nextUrl = (index + 1).toString()
-
-  	const category = data.wordpressCategory;
-
-
+    const category = this.props.pageContext.wordpressCategory;
+    const currentCategoryPosts = this.props.data.allWordpressPost;
+    
     return (
         <Layout wordpressSiteMetadata={this.props.pageContext.wordpressSiteMetadata}>
         
@@ -35,14 +19,7 @@ class CategoryPage extends Component {
         	
         	<PageTitle title={category.name} subtitle={category.description} />
 
-        	<AllPost data={group} />
-
-          <div className="previousLink">
-            <NavLink test={first} url={previousUrl} text="Go to Previous Page" />
-          </div>
-          <div className="nextLink">
-            <NavLink test={last} url={nextUrl} text="Go to Next Page" />
-          </div>
+        	<AllPost data={currentCategoryPosts.edges} />
 
         </Layout>
     )
@@ -52,57 +29,49 @@ class CategoryPage extends Component {
 export default CategoryPage
 
 export const categoryQuery = graphql`
-    query currentCategoryQuery($slug: String!) {
+  query currentCategoryQuery($slug: String!) {
 
-    	wordpressCategory(slug: { eq: $slug }){
-		    id
-		    name
-            slug
-            count
-            description
-	  	}
-
-        allWordpressPost(filter: {
-            categories: {
-                elemMatch: {
-                    slug: { eq: $slug }
-                }
+    allWordpressPost(filter: {
+        categories: {
+            elemMatch: {
+                slug: { eq: $slug }
             }
-        }) {
-            edges{
-                node{
+        }
+    }) {
+        edges{
+            node{
+                id
+                title
+                excerpt
+                slug
+                date(formatString: "MMMM DD, YYYY")
+                categories{
                     id
-                    title
-                    excerpt
+                    name
                     slug
-                    date(formatString: "MMMM DD, YYYY")
-                    categories{
-                        id
-                        name
-                        slug
-                        link
-                    }
-                    author {
-                      id
-                      name
-                      slug
-                      avatar_urls{
-                        wordpress_96
-                      }
-                    }
-                    featured_media{
-                      localFile{
-                          childImageSharp{
-                              original {
-                                  width
-                                  height
-                                  src
-                              }
+                    link
+                }
+                author {
+                  id
+                  name
+                  slug
+                  avatar_urls{
+                    wordpress_96
+                  }
+                }
+                featured_media{
+                  localFile{
+                      childImageSharp{
+                          original {
+                              width
+                              height
+                              src
                           }
                       }
-                    }
+                  }
                 }
             }
         }
     }
+  }
 `

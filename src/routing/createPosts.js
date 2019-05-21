@@ -6,6 +6,14 @@ const createPaginatedPages = require('gatsby-paginate');
 
 const postQuery = `
 {
+  site{
+    siteMetadata{
+      title
+      description
+      author
+      disqusShortname
+    }
+  } 
   wordpressSiteMetadata{
     name
     description
@@ -23,6 +31,7 @@ const postQuery = `
         id
         title
         excerpt
+        content
         slug
         date(formatString: "MMMM DD, YYYY")
         categories{
@@ -39,6 +48,7 @@ const postQuery = `
             wordpress_96
           }
         }
+
         featured_media{
           localFile{
               childImageSharp{
@@ -50,11 +60,16 @@ const postQuery = `
               }
           }
         }
+
+        tags {
+          id
+          name
+          slug
+        }
       }
     }
   }
 }`
-
 module.exports = async ({ actions, graphql }) => {
 
   const { createPage } = actions;
@@ -76,25 +91,16 @@ module.exports = async ({ actions, graphql }) => {
         edges: result.data.allWordpressPost.edges,
         createPage: createPage,
         pageTemplate: slash(postsTemplate),
-        pageLength: 4,
+        pageLength: 7,
         pathPrefix: '/',
         // pathPrefix: 'your_page_name',
         buildPath: (index, pathPrefix) =>
-          index > 1 ? `${pathPrefix}/${index}` : `/${pathPrefix}`, // This is optional and this is the default
+          index > 1 ? `${pathPrefix}/page/${index}` : `/${pathPrefix}`, // This is optional and this is the default
         context: {
           wordpressSiteMetadata: result.data.wordpressSiteMetadata
         },
       });
-
-      // createPaginatedPages({
-      //   edges: result.data.allWordpressPost.edges,
-      //   createPage: createPage,
-      //   pageTemplate: './src/templates/index.js',
-      //   pageLength: 50,
-      //   pathPrefix: '',
-      //   context:{}
-      // });
-
+      
       _.each(result.data.allWordpressPost.edges, edge => {
           createPage({
               path: `/post/${edge.node.slug}/`,
@@ -102,6 +108,8 @@ module.exports = async ({ actions, graphql }) => {
               context: {
                 id: edge.node.id,
                 slug: edge.node.slug,
+                wordpressPost: edge.node,
+                site: result.data.site,
                 wordpressSiteMetadata: result.data.wordpressSiteMetadata
               },
           });
