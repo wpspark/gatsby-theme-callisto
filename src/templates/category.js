@@ -1,57 +1,45 @@
-import React, {Component} from "react"
-// import graphql from 'graphql'
-import styled from 'styled-components'
-import SEO from "../components/seo"
-import Layout from "../components/layout"
-import { graphql } from 'gatsby'
-import CategoryArticles from '../components/CategoryArticles'
-import AllCategroy from '../components/AllCategory'
-// import FirstPost from '../components/FirstPost'
+import React, { Component } from 'react'
+import Layout from "../layouts"
+import SEO from "../utils/seo"
+import AllPost from "../components/all-post"
+import PageTitle from "../components/page-title"
+import { graphql } from "gatsby"
 
-const ArticlePage = styled.div`
-    h2{
-        margin:30px 0px;
-    }
-`
-
-class SingleCategory extends Component {
-    render() {
-        const data = this.props.data;
-        const title = this.props.pageContext.name;
-        // <FirstPost data={data.wordpressPost}/>
+class CategoryPage extends Component {
+    
+  render() {
+    
+    const category = this.props.pageContext.wordpressCategory;
+    const currentCategoryPosts = this.props.data.allWordpressPost;
+    
+    return (
+        <Layout wordpressSiteMetadata={this.props.pageContext.wordpressSiteMetadata}>
         
-        return ( 
-            <Layout>
-                <SEO title={title}/>
-                <AllCategroy data={data.allWordpressCategory} active={this.props.pageContext.slug} />
-                
-                <div className="post-lists post-list-of-category">
-                    <div className="uk-container">
-                        <ArticlePage className="articles-page">
-                            <h2 dangerouslySetInnerHTML={{__html:title}} />
-                            <CategoryArticles data={data.allWordpressPost.edges} />
-                        </ArticlePage>
-                    </div>
-                </div>
-            </Layout>
-        )
-    }
+        	<SEO title="Category Page" />
+        	
+        	<PageTitle title={category.name} subtitle={category.description} />
+
+        	<AllPost data={currentCategoryPosts.edges} />
+
+        </Layout>
+    )
+  }
 }
 
-export default SingleCategory
+export default CategoryPage
 
 export const categoryQuery = graphql`
-    query currentCategoryQuery($slug: String!) {
+  query currentCategoryQuery($slug: String!) {
 
-        allWordpressPost(filter: {
-            categories: {
-                elemMatch: {
-                    slug: { eq: $slug }
-                }
+    allWordpressPost(filter: {
+        categories: {
+            elemMatch: {
+                slug: { eq: $slug }
             }
-            }) {
-            edges {
-                node {
+        }
+    }) {
+        edges{
+            node{
                 id
                 title
                 excerpt
@@ -63,57 +51,27 @@ export const categoryQuery = graphql`
                     slug
                     link
                 }
+                author {
+                  id
+                  name
+                  slug
+                  avatar_urls{
+                    wordpress_96
+                  }
+                }
                 featured_media{
-                    localFile{
-                        childImageSharp{
-                            original {
-                                width
-                                height
-                                src
-                            }
-                        }
-                    }
-                }
-                
-                }
-            }
-        }
-        site {
-            siteMetadata {
-                title
-            }
-        }
-        allWordpressCategory{
-            edges{
-              node{
-                id
-                wordpress_id
-                slug
-                name
-                count
-              }
-            }
-        }
-        wordpressPost{
-            id
-            title
-            slug
-            categories {
-              id
-              name
-              slug
-            }
-            featured_media{
-              localFile{
-                  childImageSharp{
-                      original {
-                          width
-                          height
-                          src
+                  localFile{
+                      childImageSharp{
+                          original {
+                              width
+                              height
+                              src
+                          }
                       }
                   }
-              }
+                }
             }
         }
     }
+  }
 `

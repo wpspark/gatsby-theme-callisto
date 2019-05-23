@@ -70,6 +70,7 @@ export const postsQuery2 = graphql`
                         slug
                         link
                     }
+                    
                 }
             }
         }

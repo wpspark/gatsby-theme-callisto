@@ -1,14 +1,8 @@
-let token = process.argv[process.argv.length-1]
-require("dotenv").config({
-  path: `env/.env.${token}`,
-})
-
-module.exports = { 
+module.exports = {
   siteMetadata: {
-    title: `WpSpark`,
-    description : `WpSpark specializes in WordPress creates awesome themes and plugins. Choose the perfect WordPress Themes and Plugins from our vast collection.`,
-    author : `@wpspark`,
-    disqusShortname: process.env.disqusShortname
+    title: `ThemesGrove`,
+    description: `ThemesGrove specializes in WordPress creates awesome themes and plugins. Choose the perfect WordPress Themes and Plugins from our vast collection.`,
+    author: `@themexpert`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -21,26 +15,35 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-image`,
     `gatsby-plugin-sharp`, 
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: process.env.baseUrl,
+        baseUrl: `themesgrove.com`,
         auth: {},
-        protocol: process.env.protocol,
+        protocol: `https`,
         hostingWPCOM: false,
-        useACF: false,
+        useACF: true,
         perPage: 100,
         includedRoutes: [
           "**/posts",
           "**/pages",
-          "**/media",
           "**/categories",
+          "**/users",
           "**/tags",
           "**/taxonomies",
-          "**/users",
-          "/wp-api-menus/**",
+          "**/wp-api-menus",
+          "**/media",
+        ],
+        excludedRoutes: [
+          "**/wc",
+          "**/oembed",
+          "**/akismet",
+          "**/rankmath",
+          "**/wp-analytify",
+          "**/affwp",
+          "**/wp-content/uploads/edd",
+          "**/acf",
         ],
         verboseOutput: true,
         // use a custom normalizer which is applied after the built-in ones.
@@ -51,6 +54,6 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }

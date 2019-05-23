@@ -5,3 +5,6 @@
  */
 
 // You can delete this file if you're not using it
+exports.onRouteUpdateDelayed = () => {
+  console.log("We can show loading indicator now")
+}

@@ -1,42 +1,52 @@
-// import React, {Component} from "react"
+// import React, { Component } from 'react'
+// import Layout from "../layouts"
+// import SEO from "../utils/seo"
+// import { graphql } from "gatsby"
 
 // class PageTemplate extends Component {
-//     render() {
-//         const siteMetadata = this.props.data.site.siteMetadata
-//         const currentPage = this.props.data.wordpressPage
+  
+//   render() {
+//     const data = this.props.data.wordpressPage;
 
-//         console.log(currentPage)
-//         console.log(siteMetadata);
+//     return (
+//         <Layout wordpressSiteMetadata={this.props.pageContext.wordpressSiteMetadata}>
+        	
+//           	<SEO title={data.title} />
 
-//         return (
-//             <div>
-//                 <h1>Helllllllow world</h1>
-//                 <h1 dangerouslySetInnerHTML={{__html: currentPage.title}}/>
-//                 <div dangerouslySetInnerHTML={{__html: currentPage.content}}/>
+//           	<section className="hero">
+// 			  	<div className="hero-body">
+// 			    	<div className="container">
+// 			    		<div className="section has-text-centered header">
+// 				      		<h1 className="title" dangerouslySetInnerHTML={{__html:data.title}} />
 
-//                 <p dangerouslySetInnerHTML={{__html: currentPage.date}} />
-//                 <p dangerouslySetInnerHTML={{__html: currentPage.slug}} />
-//             </div>
-//         )
-//     }
+//                   <div className="section hero-content">
+//                     <div className="columns">
+//                         <div className="column is-offset-1 is-10">
+//   				      		      <div dangerouslySetInnerHTML={{ __html: data.content }} />
+//                         </div>
+//                     </div>
+//                   </div>
+
+// 			    		</div>
+
+// 			    	</div>
+// 			  	</div>
+// 			</section>
+			
+//         </Layout>
+//     )
+//   }
 // }
 
 // export default PageTemplate
 
 // export const pageQuery = graphql`
-//     query currentPageQuery($id: String!) {
-//         wordpressPage(id: { eq: $id }) {
-//             title
-//             content
-//             slug
-//             id
-//             date(formatString: "MMMM DD, YYYY")
-//         }
-//         site {
-//             id
-//             siteMetadata {
-//                 title
-//             }
-//         }
+//   query($id: String!) {
+//     wordpressPage(id: { eq: $id }) {
+//       title
+//       content
+//       date(formatString: "MMMM DD, YYYY")
+
 //     }
+//   }
 // `

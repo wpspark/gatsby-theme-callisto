@@ -152,12 +152,10 @@ const PostAuthor = styled.div`
 
 
 class BlogList extends Component {
-    componentWillMount(){
-        
-    }
   render() {
     // const { group, index, first, last, pageCount } = this.props.pageContext;
     const { group } = this.props.pageContext;
+    console.log(group);
 
     // const firstGroup = group.slice(0, 2);
     // const secondGroup = group.slice(3);
@@ -206,22 +204,29 @@ class BlogList extends Component {
                 
                 <FirstGroup className="firstGroup uk-grid uk-child-width-1-1@s uk-child-width-1-2@m">
 
-                {group.map(({node}) => (  
+                {group.map(({node}) => (
+                    
                     <SingleArticleBox key={node.id} className="single-article-box uk-card uk-margin-large-bottom">
                                             
                         <FeaturedImage className="uk-transition-toggle uk-margin" tabindex="0">
                             <div className="image-wrapper uk-transition-opaque">
                                 <Link to={'post/' + node.slug} className="uk-display-block">
                                     <div className="uk-cover-container uk-height-medium">
-                                        <img className="uk-cover" src={node.featured_media.localFile.childImageSharp.original.src} alt="" uk-img="" uk-cover=""/>
+                                        {
+                                            node.featured_media === undefined ? null : 
+                                            <img className="uk-cover" src={node.featured_media.localFile.childImageSharp.original.src} alt="" uk-img="" uk-cover="" />
+                                        }
                                     </div>
                                 </Link>
-
+                                
                                 <PostAuthor className="post-author-meta">
                                     
                                     <div className="author-img">
                                         <span>
-                                            <img src="https://secure.gravatar.com/avatar/0989fdc8ffeffc2bdeba299560136f77" alt=""/>
+                                            {/* {
+                                                node.author.avatar_urls === undefined ? null : 
+                                                <img src={node.author.avatar_urls.wordpress_96} alt={node.author.name}/>
+                                            } */}
                                         </span>
                                     </div>
                                     <div className="post-cat">
