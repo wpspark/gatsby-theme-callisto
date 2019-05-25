@@ -18,7 +18,8 @@ export default class AllPost extends Component {
                     <article className="card"> 
                       {
                         node.node.featured_media === undefined ? null :
-                        <div className="card-image">
+                         node.node.featured_media.localFile === null ? null :
+                         <div className="card-image">
                           <figure className="image">
                             <img src={node.node.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
                           </figure>
