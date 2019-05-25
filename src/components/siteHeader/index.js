@@ -26,23 +26,29 @@ export default class Header extends Component {
       
       let url = this.props.wordpressSiteMetadata.url;
       // this.setState({ loading: true })
+      if(!window.siteData) {
         axios
           .get(`${url}/wp-json/wpspark/sitedata`)
           .then(pupper => {
             let dataObject = pupper.data[0];
-            
+
             const favicon = dataObject.icon
             const logo = dataObject.logo
 
-            this.setState({
+            window.siteData = {
               loading: true,
               favicon,
               logo
-            })
+            }
+
+            this.setState(window.siteData)
           })
           .catch(error => {
             this.setState({ loading: false })
           })
+      } else {
+        this.setState(window.siteData)
+      }
     }
 
     render() {
