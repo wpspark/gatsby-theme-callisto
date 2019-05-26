@@ -28,7 +28,7 @@ export default class Header extends Component {
       // this.setState({ loading: true })
       if(!window.siteData) {
         axios
-          .get(`${url}/wp-json/wpspark/sitedata`)
+          .get(`${url}/wp-json/spark/sitedata`)
           .then(pupper => {
             let dataObject = pupper.data[0];
 

@@ -43,7 +43,7 @@ module.exports = {
           "/wp-api-menus/**",
         ],
         verboseOutput: true,
-        // concurrentRequests: 2,
+        concurrentRequests: 1,
         // use a custom normalizer which is applied after the built-in ones.
         normalizer: function({ entities }) {
           return entities
