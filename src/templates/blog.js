@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Layout from "../layouts"
+import Layout from "../layouts/index"
 import LatestPost from "../components/latest-post"
 import AllPost from "../components/all-post"
 import AllPostPagination from "../components/all-post/pagination"
