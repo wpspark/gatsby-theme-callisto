@@ -41,7 +41,7 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
-          // "/wp-api-menus/**",
+          "/wp-api-menus/**",
         ],
         verboseOutput: true,
         // concurrentRequests: 1,
