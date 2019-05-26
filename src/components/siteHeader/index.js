@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "gatsby"
 import axios from "axios"
 // import Menu from "../siteMenu"
-import CategoryMenu from "../category-menu"
+import CategoryMenu from "../category-menu/index"
 // import logo from "../../images/wpspark-logo.png"
 import Helmet from "react-helmet"
 
