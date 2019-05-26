@@ -1,5 +1,5 @@
-const createPosts = require(`./src/routing/createposts`)
-const createCategories = require(`./src/routing/createcategories`)
+const createPosts = require(`./src/routing/createPosts`)
+const createCategories = require(`./src/routing/createCategories`)
 // const createPages = require(`./src/routing/createpages`)
 // const createUsers = require(`./src/routing/createusers`)
 // const createTags = require(`./src/routing/createtags`)
