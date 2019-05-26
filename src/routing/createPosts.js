@@ -77,7 +77,7 @@ module.exports = async ({ actions, graphql }) => {
   return new Promise((resolve, reject) => {
     graphql(postQuery)
     .then(result => {
-
+    
       if(result.errors) {
         console.log(result.errors);
         reject(result.errors);

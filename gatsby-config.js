@@ -40,9 +40,10 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
-          "/wp-api-menus/**",
+          // "/wp-api-menus/**",
         ],
         verboseOutput: true,
+        // concurrentRequests: 2,
         // use a custom normalizer which is applied after the built-in ones.
         normalizer: function({ entities }) {
           return entities
