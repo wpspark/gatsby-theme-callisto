@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Layout from "../layouts/index"
+import Layout from "../layouts/Index"
 import SEO from "../utils/seo"
 import AllPost from "../components/all-post/index"
 import PageTitle from "../components/page-title/index"
