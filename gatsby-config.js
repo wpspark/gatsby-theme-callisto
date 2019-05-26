@@ -33,6 +33,7 @@ module.exports = {
         useACF: false,
         perPage: 100,
         includedRoutes: [
+          "**/site_metadata",
           "**/posts",
           "**/pages",
           "**/media",
@@ -40,7 +41,7 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
-          "/wp-api-menus/**",
+          // "/wp-api-menus/**",
         ],
         verboseOutput: true,
         concurrentRequests: 1,
