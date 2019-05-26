@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Header from "../components/siteHeader"
-import Footer from "../components/siteFooter"
+import Header from "../components/siteHeader/index"
+import Footer from "../components/siteFooter/index"
 
-import "../utils/Typography"
+import "../utils/typography"
 
 class Layout extends Component {
   
