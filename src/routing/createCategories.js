@@ -47,7 +47,7 @@ module.exports = async ({ actions, graphql }) => {
       }
 
       const categoryTemplate = path.resolve("./src/templates/category.js");
-      const categoriesTemplate = path.resolve("./src/templates/categoriesarchive.js");
+      const categoriesTemplate = path.resolve("./src/templates/CategoriesArchive.js");
       
       createPage({
         path: `categories/`,
