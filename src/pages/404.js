@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Layout from "../layouts/Index"
+import Layout from "../layouts/index"
 import SEO from "../utils/seo"
 import { graphql } from "gatsby"
 
