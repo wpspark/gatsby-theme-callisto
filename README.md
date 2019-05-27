@@ -16,7 +16,7 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
 1.  **Create a Gatsby site.**
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+    Use the Gatsby CLI to create a new site, specifying the default starter.f
 
     ```sh
     # create a new Gatsby site using the default starter
