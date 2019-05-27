@@ -59,17 +59,18 @@ export const categoryQuery = graphql`
                     wordpress_96
                   }
                 }
-                featured_media{
-                  localFile{
-                      childImageSharp{
-                          original {
-                              width
-                              height
-                              src
-                          }
-                      }
-                  }
-                }
+                spark_media
+                # featured_media{
+                #   localFile{
+                #       childImageSharp{
+                #           original {
+                #               width
+                #               height
+                #               src
+                #           }
+                #       }
+                #   }
+                # }
             }
         }
     }

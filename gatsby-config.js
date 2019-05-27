@@ -8,7 +8,8 @@ module.exports = {
     title: `WpSpark`,
     description : `WpSpark specializes in WordPress creates awesome themes and plugins. Choose the perfect WordPress Themes and Plugins from our vast collection.`,
     author : `@wpspark`,
-    disqusShortname: process.env.disqusShortname
+    disqusShortname: process.env.disqusShortname,
+    wordpressBaseUrl: `${process.env.protocol}://${process.env.baseUrl}`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -36,12 +37,12 @@ module.exports = {
           "**/site_metadata",
           "**/posts",
           "**/pages",
-          "**/media",
+          // "**/media",
           "**/categories",
           "**/tags",
           "**/taxonomies",
           "**/users",
-          "/wp-api-menus/**",
+          // "/wp-api-menus/**",
         ],
         verboseOutput: true,
         // concurrentRequests: 1,

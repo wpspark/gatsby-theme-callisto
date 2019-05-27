@@ -12,6 +12,7 @@ const postQuery = `
       description
       author
       disqusShortname
+      wordpressBaseUrl
     }
   } 
   wordpressSiteMetadata{
@@ -29,6 +30,7 @@ const postQuery = `
     edges {
       node{
         id
+        wordpress_id
         title
         excerpt
         content
@@ -48,19 +50,7 @@ const postQuery = `
             wordpress_96
           }
         }
-
-        featured_media{
-          localFile{
-              childImageSharp{
-                  original {
-                      width
-                      height
-                      src
-                  }
-              }
-          }
-        }
-
+        spark_media
         tags {
           id
           name

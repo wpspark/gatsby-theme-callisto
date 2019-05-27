@@ -6,7 +6,7 @@ export default class LatestPost extends Component {
     
     render() {
       let data = this.props.data;
-      // console.log(data);
+ 
       return (
         <section className="hero">
           <div className="hero-body">
@@ -21,10 +21,13 @@ export default class LatestPost extends Component {
                 <Link to={'/post/' + data.slug} dangerouslySetInnerHTML={{__html:data.title + " "}} />
               </h1>
               {
-                data.featured_media === undefined ? null :
-                  data.featured_media.localFile === null ? null :
+                // data.featured_media === undefined ? null :
+                //   data.featured_media.localFile === null ? null :
+                //     <figure className="image is-3by1 image-objectfit-contain">
+                //       <img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
+                //     </figure>
                     <figure className="image is-3by1 image-objectfit-contain">
-                      <img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
+                      <img src={data.spark_media} alt={data.title} />
                     </figure>
               }
               

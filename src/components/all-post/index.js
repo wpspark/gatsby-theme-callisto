@@ -13,15 +13,21 @@ export default class AllPost extends Component {
             <div className="columns is-multiline is-1-mobile">
               {
                 data.map((node, index) => {
+                  console.log("node ", node)
                   return (ignorefirst && index === 0) ? null : 
                   <div key={index} className={'column is-one-third' }>
                     <article className="card"> 
                       {
-                        node.node.featured_media === undefined ? null :
-                         node.node.featured_media.localFile === null ? null :
+                        // node.node.featured_media === undefined ? null :
+                        //  node.node.featured_media.localFile === null ? null :
+                        //  <div className="card-image">
+                        //   <figure className="image">
+                        //     <img src={node.node.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
+                        //   </figure>
+                        // </div>
                          <div className="card-image">
                           <figure className="image">
-                            <img src={node.node.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
+                            <img src={node.node.spark_media} alt={data.title} />
                           </figure>
                         </div>
                       }

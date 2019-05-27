@@ -6,11 +6,20 @@ import { Link } from "gatsby"
 import { DiscussionEmbed } from "disqus-react";
 
 class PostTemplate extends Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			base_url: process.env.baseUrl,
+			featured_image: 'https://via.placeholder.com/600x320'
+		}
+	}
   
   render() {
 		const data = this.props.pageContext.wordpressPost;
 		const disqusShortname = this.props.pageContext.site.siteMetadata.disqusShortname;
-		
+	
     const disqusConfig = {
 			identifier: data.id,
 			title: data.title,
@@ -42,10 +51,13 @@ class PostTemplate extends Component {
 			    		</div>
 
 			      		{
-								data.featured_media === undefined ? null :
-									data.featured_media.localFile === null ? null :
+								// data.featured_media === undefined ? null :
+								// 	data.featured_media.localFile === null ? null :
+								// 		<figure className="image is-3by1 image-objectfit-contain">
+								// 			<img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
+								// 		</figure>
 										<figure className="image is-3by1 image-objectfit-contain">
-											<img src={data.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
+											<img src={data.spark_media} alt={data.title}/>
 										</figure>
 			            }
 			            <div className="section hero-content">
