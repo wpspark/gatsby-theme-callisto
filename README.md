@@ -5,7 +5,7 @@
   </a>
 </p>
 <h1 align="center">
-  Gatsby's default starter UPDATED for gitlab integration testing,ff,, UPDATEDfdfds
+3Gatsby's default starter UPDATED for gitlab integration testing,ff,, UPDATEDfdfdsjjj
 </h1>
 
 Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
@@ -16,7 +16,7 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
 1.  **Create a Gatsby site.**
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+    Use the Gatsby CLI to create a new site, specifying the default starter.f
 
     ```sh
     # create a new Gatsby site using the default starter
