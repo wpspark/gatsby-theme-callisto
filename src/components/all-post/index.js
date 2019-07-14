@@ -18,14 +18,8 @@ export default class AllPost extends Component {
                   <div key={index} className={'column is-one-third' }>
                     <article className="card"> 
                       {
-                        // node.node.featured_media === undefined ? null :
-                        //  node.node.featured_media.localFile === null ? null :
-                        //  <div className="card-image">
-                        //   <figure className="image">
-                        //     <img src={node.node.featured_media.localFile.childImageSharp.original.src} alt={data.title} />
-                        //   </figure>
-                        // </div>
-                         <div className="card-image">
+                        node.node.spark_media === undefined ? null :
+                        <div className="card-image">
                           <figure className="image">
                             <img src={node.node.spark_media} alt={data.title} />
                           </figure>

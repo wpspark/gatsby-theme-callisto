@@ -14,34 +14,15 @@ export default class Menu extends Component {
       return (
         <StaticQuery
           query={graphql`
-          query SiteMenu {
-            allWordpressWpApiMenusMenusItems(filter: {
-              slug: {
-                eq: "main-menu"
-              }
-            }){
-              edges{
-                node{
-                  id
-                  name
-                  items {
-                    wordpress_id
-                    order
-                    wordpress_parent
-                    title
-                    url          
-                  }
-                }
+            query SiteMenu {
+              wordpressSiteMetadata{
+                name
+                description
+                url
+                home
               }
             }
-            wordpressSiteMetadata{
-              name
-              description
-              url
-              home
-            }
-          }
-        `}
+          `}
           render={data => (
             <div className="navbar-item is-hoverable">
               {

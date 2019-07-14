@@ -50,7 +50,9 @@ const postQuery = `
             wordpress_96
           }
         }
+        
         spark_media
+
         tags {
           id
           name

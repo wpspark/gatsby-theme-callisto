@@ -60,17 +60,6 @@ export const categoryQuery = graphql`
                   }
                 }
                 spark_media
-                # featured_media{
-                #   localFile{
-                #       childImageSharp{
-                #           original {
-                #               width
-                #               height
-                #               src
-                #           }
-                #       }
-                #   }
-                # }
             }
         }
     }
