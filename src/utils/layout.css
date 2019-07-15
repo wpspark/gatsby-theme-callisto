@@ -8,3 +8,9 @@ html.has-navbar-fixed-top,
 body.has-navbar-fixed-top {
 	padding-top: 5.5rem;
 }
+.is-flex{
+	display: flex;
+}
+.is-justified-center{
+	justify-content: center;
+}

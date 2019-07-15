@@ -77,21 +77,59 @@ module.exports = async ({ actions, graphql }) => {
 
       const postTemplate = path.resolve("./src/templates/post.js");
       const postsTemplate = path.resolve("./src/templates/blog.js");
+      const postsPerPage = 7;
+      const numberOfPosts = result.data.allWordpressPost.edges.length;
+      const numberOfPostsPages = Math.ceil(numberOfPosts/postsPerPage);
+
+      for(let pageIndex = 0; pageIndex < numberOfPostsPages; pageIndex++){
+        const pageNumber = pageIndex + 1;
+        const path = pageIndex === 0 ? '/' : `/posts/${pageNumber}`
+        const skip = pageIndex * postsPerPage;
+
+        function getPreviousPageLink(){
+          if(!pageIndex) return null
+          if(pageIndex === 1) return '/'
+          return `/posts/${pageIndex}` 
+        }
+
+        function getNextPageLink(){
+          if(pageNumber < numberOfPostsPages){
+            return `/posts/${pageNumber + 1}`
+          }else{
+            return null;
+          }
+        }
+
+        createPage({
+          path: path,
+          component: slash(postsTemplate),
+          context: {
+            limit: postsPerPage,
+            skip: skip,
+            next: getNextPageLink(),
+            prev: getPreviousPageLink(),
+            wordpressSiteMetadata: result.data.wordpressSiteMetadata,
+            allPosts: result.data.allWordpressPost,
+            numberOfPostsPages: numberOfPostsPages
+          },
+        });
+
+      }
 
     
-      createPaginatedPages({
-        edges: result.data.allWordpressPost.edges,
-        createPage: createPage,
-        pageTemplate: slash(postsTemplate),
-        pageLength: 7,
-        pathPrefix: '/',
-        // pathPrefix: 'your_page_name',
-        buildPath: (index, pathPrefix) =>
-          index > 1 ? `${pathPrefix}/page/${index}` : `/${pathPrefix}`, // This is optional and this is the default
-        context: {
-          wordpressSiteMetadata: result.data.wordpressSiteMetadata
-        },
-      });
+      // createPaginatedPages({
+      //   edges: result.data.allWordpressPost.edges,
+      //   createPage: createPage,
+      //   pageTemplate: slash(postsTemplate),
+      //   pageLength: 7,
+      //   pathPrefix: '/',
+      //   // pathPrefix: 'your_page_name',
+      //   buildPath: (index, pathPrefix) =>
+      //     index > 1 ? `${pathPrefix}/page/${index}` : `/${pathPrefix}`, // This is optional and this is the default
+      //   context: {
+      //     wordpressSiteMetadata: result.data.wordpressSiteMetadata
+      //   },
+      // });
       
       _.each(result.data.allWordpressPost.edges, edge => {
           createPage({
