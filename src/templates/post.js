@@ -60,7 +60,7 @@ class PostTemplate extends Component {
 				            	<div className="column is-offset-2 is-8">
 				              		<div className="post content is-medium" dangerouslySetInnerHTML={{__html:data.content}} />
 				              		
-				              		<PostAuthor data={data.author}/>
+				              		<PostAuthor data={data.spark_user}/>
 									
 													<DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
 
