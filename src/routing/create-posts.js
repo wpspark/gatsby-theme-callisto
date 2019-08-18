@@ -2,7 +2,6 @@ const _ = require(`lodash`);
 const Promise = require(`bluebird`);
 const path = require(`path`);
 const slash = require(`slash`);
-const createPaginatedPages = require('gatsby-paginate');
 
 const postQuery = `
 {
@@ -116,21 +115,6 @@ module.exports = async ({ actions, graphql }) => {
 
       }
 
-    
-      // createPaginatedPages({
-      //   edges: result.data.allWordpressPost.edges,
-      //   createPage: createPage,
-      //   pageTemplate: slash(postsTemplate),
-      //   pageLength: 7,
-      //   pathPrefix: '/',
-      //   // pathPrefix: 'your_page_name',
-      //   buildPath: (index, pathPrefix) =>
-      //     index > 1 ? `${pathPrefix}/page/${index}` : `/${pathPrefix}`, // This is optional and this is the default
-      //   context: {
-      //     wordpressSiteMetadata: result.data.wordpressSiteMetadata
-      //   },
-      // });
-      
       _.each(result.data.allWordpressPost.edges, edge => {
           createPage({
               path: `/post/${edge.node.slug}/`,

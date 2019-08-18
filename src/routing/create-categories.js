@@ -2,7 +2,6 @@ const _ = require(`lodash`);
 const Promise = require(`bluebird`);
 const path = require(`path`);
 const slash = require(`slash`);
-const createPaginatedPages = require('gatsby-paginate');
 
 const categoryQuery = `
 {
@@ -47,7 +46,7 @@ module.exports = async ({ actions, graphql }) => {
       }
 
       const categoryTemplate = path.resolve("./src/templates/category.js");
-      const categoriesTemplate = path.resolve("./src/templates/CategoriesArchive.js");
+      const categoriesTemplate = path.resolve("./src/templates/categories-archive.js");
       
       createPage({
         path: `categories/`,
