@@ -45,17 +45,8 @@ module.exports = async ({ actions, graphql }) => {
         reject(result.errors);
       }
 
-      const categoryTemplate = path.resolve("./src/templates/category.js");
-      const categoriesTemplate = path.resolve("./src/templates/categories-archive.js");
+      const categoryTemplate = path.resolve("./src/templates/category.js");      
       
-      createPage({
-        path: `categories/`,
-        component: slash(categoriesTemplate),
-        context: {
-          allWordpressCategory: result.data.allWordpressCategory,
-          wordpressSiteMetadata: result.data.wordpressSiteMetadata
-        },
-    });
       _.each(result.data.allWordpressCategory.edges, edge => {
           createPage({
               path: `/categories/${edge.node.slug}`,

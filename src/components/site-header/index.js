@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Link, StaticQuery, graphql } from "gatsby"
-// import Menu from "../siteMenu"
 import CategoryMenu from "../category-menu/index"
-// import logo from "../../images/wpspark-logo.png"
 import Helmet from "react-helmet"
 
 export default class Header extends Component {
@@ -39,17 +37,10 @@ export default class Header extends Component {
               <div className="navbar-brand">
 
                 <Link to="/" className="navbar-item">
-
-                  {/* {
-                    this.state.loading ? <img src={this.state.logo} alt="" width="112" height="28" /> :
-                      wordpressSiteMetadata.name
-                  } */}
-                  
                   {
                     sparkData.logo ? <img src={sparkData.logo} alt="" width="112" height="28" /> :
                       wordpressSiteMetadata.name
                   }
-
                 </Link>
 
                 <span className="navbar-burger burger" data-target="MainsiteNav" onClick={this.toggleDropdownMenu}>
@@ -65,8 +56,6 @@ export default class Header extends Component {
                 </div>
 
                 <div className="navbar-end">
-                  {/* <Menu data={this.props.pageContext} /> */}
-
                   <div className="navbar-item">
                     <div className="field is-grouped">
                       <p className="control">
