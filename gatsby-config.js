@@ -49,7 +49,6 @@ module.exports = {
         // concurrentRequests: 1,
         // use a custom normalizer which is applied after the built-in ones.
         normalizer: function({ entities }) {
-          console.log(entities)
           return entities
         },
       }
