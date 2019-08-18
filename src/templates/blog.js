@@ -9,8 +9,6 @@ class BlogPage extends Component {
 
   render() {
     
-    // const { group, index, first, last, pageCount} = this.props.pageContext; //pageCount
-    // const data = this.props.pageContext.allPosts.edges;
     const allPosts = this.props.data.allWordpressPost;
     const firstPost = allPosts.edges[0].node;
     const next = this.props.pageContext.next;
