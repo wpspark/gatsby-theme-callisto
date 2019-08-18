@@ -13,7 +13,6 @@ export default class AllPost extends Component {
             <div className="columns is-multiline is-1-mobile">
               {
                 data.map((node, index) => {
-                  console.log("node ", node)
                   return (ignorefirst && index === 0) ? null : 
                   <div key={index} className={'column is-one-third' }>
                     <article className="card"> 
