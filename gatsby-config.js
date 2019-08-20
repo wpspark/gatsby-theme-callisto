@@ -37,17 +37,16 @@ module.exports = {
           "**/site_metadata",
           "**/posts",
           "**/categories",
-          "**/tags",
           "**/taxonomies",
           "**/users",
           "**/spark"
         ],
-        verboseOutput: true,
+        verboseOutput: false,
         // concurrentRequests: 1,
         // use a custom normalizer which is applied after the built-in ones.
-        normalizer: function({ entities }) {
-          return entities
-        },
+        // normalizer: function({ entities }) {
+        //   return entities
+        // },
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
