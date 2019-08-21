@@ -4,15 +4,23 @@
     <img alt="WPSpark" src="./src/images/wpspark-logo.png" width="200" />
   </a>
 </p>
-<h1 align="center">
-Gatsby Template - Callisto
-</h1>
+<div align="center">
+<h1>Gatsby Template - Callisto</h1>
+<button>
+<a target="_blank" href="http://blog1-demo.wpspark.io/"> Demo</a>
+</button>
+</div>
 
 
+####Dependencies
 _Before start development or deploy make sure our `spark-lite` WordPress plugin is installed inside your WordPress installation  [Download Spark Lite](https://github.com/wpspark/spark-lite)._
 
+####Minimum Requirement to build
+1. At least one blog post with featured Image in your WordPress site
+2. One category and that category related post
+
 #### Install gatsby CLI
-Please install gatsby CLI globaly.
+To install gatsby CLI globaly.
 ```sh
 npm install -g gatsby-cli
 ```
